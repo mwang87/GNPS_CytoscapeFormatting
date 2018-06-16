@@ -11,6 +11,21 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 
     <style>
+    .loader {
+border: 50px solid #f3f3f3; /* Light grey */
+border-top: 50px solid blue;
+border-bottom: 50px solid blue;
+border-radius: 50%;
+width: 240px;
+height: 240px;
+animation: spin 2s linear infinite;
+}
+
+
+        @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+        }
     </style>
 
 </head>
@@ -38,6 +53,14 @@
 
 
         <div class="container-fluid">
+            <br>
+            <div class="row">
+              <div class="col-sm"></div>
+              <div class="col-sm text-center">
+                  <div class="loader"></div>
+              </div>
+              <div class="col-sm"></div>
+            </div>
 
         </div>
 
@@ -52,7 +75,7 @@
             dataType: "json",
             success: function(response) {
                 remote_url = "/dashboard?task=((task))"
-                window.location.assign(remote_url);
+                window.location.replace(remote_url);
 
             },
             error: function(error) {
