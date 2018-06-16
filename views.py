@@ -45,6 +45,14 @@ def process_ajax():
     network1 = cy.network.create_from(local_filepath)
 
     mystyle = cy.style.create("Sample2")
+    
+#new_defaults = {
+    # Node defaults
+#    'NODE_CUSTOMGRAPHICS_1': 'org.cytoscape.PieChart:{"cy_range":[0.0,0.0],"cy_colors":["#FF0000","#8000FF","#00FFFF","#80FF00"],"cy_dataColumns":["G1","G2","G3","G4"]}'
+#}
+#mystyle.create_passthrough_mapping(column='Compound_Name', col_type='String', vp='NODE_LABEL')
+# TO update, change the style in real cytoscape, and look for string here: http://localhost:1234/v1/styles/Ming2
+    
     cy.style.apply(style=mystyle, network=network1)
 
     sleep(2)
