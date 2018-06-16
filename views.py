@@ -39,6 +39,9 @@ def process_ajax():
     local_file.write(requests.get(path_to_graphml).text)
     local_file.close()
 
+    clean_gc_url = "http://localhost:1234/v1/gc"
+    requests.get(clean_gc_url)
+
     cy  = CyRestClient()
     cy.session.delete()
     #network1 = cy.network.create_from("/home/mingxun/Downloads/METABOLOMICS-SNETS-V2-305674ff-download_cytoscape_data-main.graphml")
@@ -69,5 +72,8 @@ def process_ajax():
     local_png_file = open(os.path.abspath(os.path.join(app.config['UPLOAD_FOLDER'], "%s.png" % (taskid))), "wb")
     local_png_file.write(network1.get_png())
     local_png_file.close()
+
+    clean_gc_url = "http://localhost:1234/v1/gc"
+    requests.get(clean_gc_url)
 
     return "{}"
