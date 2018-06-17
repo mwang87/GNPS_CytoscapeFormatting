@@ -149,7 +149,7 @@
     "value" : 15.0
   }, {
     "visualProperty" : "NODE_CUSTOMGRAPHICS_1",
-    "value" : "org.cytoscape.PieChart:{\"cy_range\":[0.0,0.0],\"cy_colors\":[\"#FF0000\",\"#8000FF\",\"#00FFFF\",\"#80FF00\"],\"cy_dataColumns\":[\"G1\",\"G2\",\"G3\",\"G4\"]}"
+    "value" : "org.cytoscape.PieChart:{\"cy_range\":[0.0,0.0],\"cy_colors\":[\"#E8747C\",\"#74CBE8\",\"#74E883\",\"#FFA500\",\"#FFFF00\",\"#808080\"],\"cy_dataColumns\":[\"G1\",\"G2\",\"G3\",\"G4\",\"G5\",\"G6\"]}"
   }, {
     "visualProperty" : "NODE_CUSTOMGRAPHICS_2",
     "value" : "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],"
