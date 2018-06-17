@@ -47,14 +47,25 @@ def process_ajax():
     #network1 = cy.network.create_from("/home/mingxun/Downloads/METABOLOMICS-SNETS-V2-305674ff-download_cytoscape_data-main.graphml")
     network1 = cy.network.create_from(local_filepath)
 
-    mystyle = cy.style.create("Sample2")
+    mystyle = cy.style.create("ClassDefault")
 
-    new_defaults = {
-        # Node defaults
-        'NODE_CUSTOMGRAPHICS_1': 'org.cytoscape.PieChart:{"cy_range":[0.0,0.0],"cy_colors":["#FF0000","#8000FF","#00FFFF","#80FF00"],"cy_dataColumns":["G1","G2","G3","G4"]}'
-    }
-    mystyle.create_passthrough_mapping(column='Compound_Name', col_type='String', vp='NODE_LABEL')
-    mystyle.update_defaults(new_defaults)
+    all_parameters = json.loads(open("Styles/Sample2.json").read())
+    new_defaults_dict = {}
+    for item in all_parameters["defaults"]:
+        new_defaults_dict[item["visualProperty"]] = item["value"]
+
+    mappings_list = all_parameters["mappings"]
+    for mapping in mappings_list:
+        if mapping["mappingType"] == "passthrough":
+            mystyle.create_passthrough_mapping(column=mapping["mappingColumn"], col_type=mapping["mappingColumnType"], vp=mapping["visualProperty"])
+
+    mystyle.update_defaults(new_defaults_dict)
+
+    #new_defaults = {
+    #    # Node defaults
+    #    'NODE_CUSTOMGRAPHICS_1': 'org.cytoscape.PieChart:{"cy_range":[0.0,0.0],"cy_colors":["#FF0000","#8000FF","#00FFFF","#80FF00"],"cy_dataColumns":["G1","G2","G3","G4"]}'
+    #}
+    #mystyle.create_passthrough_mapping(column='Compound_Name', col_type='String', vp='NODE_LABEL')
 
 # TO update, change the style in real cytoscape, and look for string here: http://localhost:1234/v1/styles/Ming2
 
@@ -66,6 +77,8 @@ def process_ajax():
     cy.session.save(local_cytoscape_file)
 
     cy.layout.fit(network=network1)
+    #print(cy.__dict__)
+    #cy.view.fit_content()
 
     sleep(2)
 
