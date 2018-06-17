@@ -2,5 +2,5 @@
 
 Xvfb :1 &
 export DISPLAY=:1
-Cytoscape &
+#Cytoscape &
 python3 ./main.py

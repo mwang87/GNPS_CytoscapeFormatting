@@ -3,6 +3,7 @@ from flask import abort, jsonify, render_template, request, redirect, url_for, m
 import uuid
 
 from py2cytoscape.data.cyrest_client import CyRestClient
+from py2cytoscape import cyrest
 
 from app import app
 from werkzeug.utils import secure_filename
@@ -10,6 +11,7 @@ import os
 import glob
 import json
 import requests
+import subprocess
 from time import sleep
 
 @app.route('/', methods=['GET'])
@@ -30,6 +32,8 @@ def dashboard():
 @app.route('/process', methods=['POST'])
 def process_ajax():
     print(request.args)
+    #PORT_NUMBER = 1234
+
     taskid = request.args["task"]
 
     path_to_graphml = "http://gnps.ucsd.edu/ProteoSAFe/DownloadResultFile?task=%s&block=main&file=gnps_molecular_network_graphml/" % (taskid)
@@ -39,11 +43,25 @@ def process_ajax():
     local_file.write(requests.get(path_to_graphml).text)
     local_file.close()
 
-    clean_gc_url = "http://localhost:1234/v1/gc"
-    requests.get(clean_gc_url)
+    #Check if server is up
+    cytoscape_process = subprocess.Popen("Cytoscape", shell=True)
+
+    while(1):
+        try:
+            #cy  = CyRestClient(port=PORT_NUMBER)
+            cy  = CyRestClient()
+            #new_cy = cyrest(port=PORT_NUMBER)
+            break
+        except:
+            print("Failed Cyrest")
+            sleep(1)
+            continue
+
+    #clean_gc_url = "http://localhost:1234/v1/gc"
+    #requests.get(clean_gc_url)
 
     cy  = CyRestClient()
-    cy.session.delete()
+    #cy.session.delete()
     #network1 = cy.network.create_from("/home/mingxun/Downloads/METABOLOMICS-SNETS-V2-305674ff-download_cytoscape_data-main.graphml")
     network1 = cy.network.create_from(local_filepath)
 
@@ -71,7 +89,7 @@ def process_ajax():
 
     cy.style.apply(style=mystyle, network=network1)
 
-    sleep(2)
+    sleep(1)
 
     local_cytoscape_file = os.path.abspath(os.path.join(app.config['UPLOAD_FOLDER'], "%s.cys" % (taskid)))
     cy.session.save(local_cytoscape_file)
@@ -80,13 +98,15 @@ def process_ajax():
     #print(cy.__dict__)
     #cy.view.fit_content()
 
-    sleep(2)
+    sleep(1)
 
     local_png_file = open(os.path.abspath(os.path.join(app.config['UPLOAD_FOLDER'], "%s.png" % (taskid))), "wb")
     local_png_file.write(network1.get_png())
     local_png_file.close()
 
-    clean_gc_url = "http://localhost:1234/v1/gc"
-    requests.get(clean_gc_url)
+    #clean_gc_url = "http://localhost:1234/v1/gc"
+    #requests.get(clean_gc_url)
+    requests.get("http://localhost:%d/v1/commands/command/quit" % (1234))
+    #cy.command.quit()
 
     return "{}"
