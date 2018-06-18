@@ -3,6 +3,7 @@ MAINTAINER Mingxun Wang "mwang87@gmail.com"
 
 RUN apt-get update -y
 RUN apt-get install -y python3-pip python3-dev build-essential
+RUN apt-get install -y zlib1g-dev
 RUN apt-get install -y libxml2-dev
 RUN apt-get install -y xvfb
 
