@@ -3,7 +3,6 @@ from flask import abort, jsonify, render_template, request, redirect, url_for, m
 import uuid
 
 from py2cytoscape.data.cyrest_client import CyRestClient
-from py2cytoscape import cyrest
 
 from app import app
 from werkzeug.utils import secure_filename
@@ -29,19 +28,33 @@ def dashboard():
     taskid = request.args["task"]
     return render_template("dashboard.html", task=taskid)
 
+def get_graph_object(taskid):
+    task_status_url = "https://gnps.ucsd.edu/ProteoSAFe/status_json.jsp?task=%s" % (taskid)
+
+    task_status = requests.get(task_status_url).json()
+    url_to_graph = ""
+
+    if task_status["workflow"] == "NAP_CCMS2":
+        url_to_graph = "http://proteomics2.ucsd.edu/ProteoSAFe/DownloadResultFile?task=%s&block=main&file=final_out/structure_graph_alt.xgmml" % (taskid)
+    if task_status["workflow"] == "METABOLOMICS-SNETS-V2":
+        url_to_graph = "http://gnps.ucsd.edu/ProteoSAFe/DownloadResultFile?task=%s&block=main&file=gnps_molecular_network_graphml/" % (taskid)
+    if task_status["workflow"] == "METABOLOMICS-SNETS":
+        url_to_graph = "http://gnps.ucsd.edu/ProteoSAFe/DownloadResultFile?task=%s&block=main&file=gnps_molecular_network_graphml/" % (taskid)
+
+    local_filepath = os.path.join(app.config['UPLOAD_FOLDER'], "%s.graphml" % (taskid))
+    local_file = open(local_filepath, "w")
+    local_file.write(requests.get(url_to_graph).text)
+    local_file.close()
+
+    return local_filepath
+
 @app.route('/process', methods=['POST'])
 def process_ajax():
     print(request.args)
     #PORT_NUMBER = 1234
 
     taskid = request.args["task"]
-
-    path_to_graphml = "http://gnps.ucsd.edu/ProteoSAFe/DownloadResultFile?task=%s&block=main&file=gnps_molecular_network_graphml/" % (taskid)
-
-    local_filepath = os.path.join(app.config['UPLOAD_FOLDER'], "%s.graphml" % (taskid))
-    local_file = open(local_filepath, "w")
-    local_file.write(requests.get(path_to_graphml).text)
-    local_file.close()
+    local_filepath = get_graph_object(taskid)
 
     #Check if server is up
     cytoscape_process = subprocess.Popen("Cytoscape", shell=True)
