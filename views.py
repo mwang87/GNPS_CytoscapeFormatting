@@ -40,6 +40,8 @@ def get_graph_object(taskid):
         url_to_graph = "http://gnps.ucsd.edu/ProteoSAFe/DownloadResultFile?task=%s&block=main&file=gnps_molecular_network_graphml/" % (taskid)
     if task_status["workflow"] == "METABOLOMICS-SNETS":
         url_to_graph = "http://gnps.ucsd.edu/ProteoSAFe/DownloadResultFile?task=%s&block=main&file=gnps_molecular_network_graphml/" % (taskid)
+    if task_status["workflow"] == "METABOLOMICS-SNETS-MZMINE":
+        url_to_graph = "http://gnps.ucsd.edu/ProteoSAFe/DownloadResultFile?task=%s&block=main&file=gnps_molecular_network_graphml/" % (taskid)
 
     local_filepath = os.path.join(app.config['UPLOAD_FOLDER'], "%s.graphml" % (taskid))
     local_file = open(local_filepath, "w")
