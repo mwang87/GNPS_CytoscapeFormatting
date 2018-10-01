@@ -17,6 +17,10 @@ from time import sleep
 def homepage():
     return render_template("homepage.html")
 
+@app.route('/heartbeat', methods=['GET'])
+def homepage():
+    return "{}"
+
 @app.route('/process', methods=['GET'])
 def process():
     taskid = request.args["task"]
