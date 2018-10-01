@@ -18,7 +18,7 @@ def homepage():
     return render_template("homepage.html")
 
 @app.route('/heartbeat', methods=['GET'])
-def homepage():
+def heartbeat():
     return "{}"
 
 @app.route('/process', methods=['GET'])
