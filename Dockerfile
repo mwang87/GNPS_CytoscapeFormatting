@@ -14,10 +14,11 @@ RUN pip3 install requests
 RUN pip3 install py2cytoscape
 
 RUN apt-get install -y openjdk-8-jre
+RUN apt-get install -y wget
 
-COPY CytoscapeInstall/Cytoscape_3_6_1_unix.sh /
-RUN chmod u+x  /Cytoscape_3_6_1_unix.sh
-RUN sh /Cytoscape_3_6_1_unix.sh -q
+RUN wget http://chianti.ucsd.edu/cytoscape-3.6.1/Cytoscape_3_6_1_unix.sh
+RUN chmod u+x  Cytoscape_3_6_1_unix.sh
+RUN sh Cytoscape_3_6_1_unix.sh -q
 
 COPY . /app
 WORKDIR /app

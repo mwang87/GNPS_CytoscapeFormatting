@@ -12,6 +12,7 @@ import json
 import requests
 import subprocess
 from time import sleep
+import metabotracker
 
 @app.route('/', methods=['GET'])
 def homepage():
@@ -27,6 +28,13 @@ def process():
 
     return render_template("process.html", task=taskid)
 
+@app.route('/metabotracker', methods=['GET'])
+def metabotracker_view():
+    taskid = request.args["task"]
+
+    return render_template("metabotracer.html", task=taskid)
+
+
 @app.route('/dashboard', methods=['GET'])
 def dashboard():
     taskid = request.args["task"]
@@ -39,16 +47,19 @@ def get_graph_object(taskid):
     url_to_graph = ""
 
     if task_status["workflow"] == "NAP_CCMS2":
-        url_to_graph = "http://proteomics2.ucsd.edu/ProteoSAFe/DownloadResultFile?task=%s&block=main&file=final_out/structure_graph_alt.xgmml" % (taskid)
+        url_to_graph = "https://proteomics2.ucsd.edu/ProteoSAFe/DownloadResultFile?task=%s&block=main&file=final_out/structure_graph_alt.xgmml" % (taskid)
     if task_status["workflow"] == "METABOLOMICS-SNETS-V2":
-        url_to_graph = "http://gnps.ucsd.edu/ProteoSAFe/DownloadResultFile?task=%s&block=main&file=gnps_molecular_network_graphml/" % (taskid)
+        url_to_graph = "https://gnps.ucsd.edu/ProteoSAFe/DownloadResultFile?task=%s&block=main&file=gnps_molecular_network_graphml/" % (taskid)
     if task_status["workflow"] == "METABOLOMICS-SNETS":
-        url_to_graph = "http://gnps.ucsd.edu/ProteoSAFe/DownloadResultFile?task=%s&block=main&file=gnps_molecular_network_graphml/" % (taskid)
+        url_to_graph = "https://gnps.ucsd.edu/ProteoSAFe/DownloadResultFile?task=%s&block=main&file=gnps_molecular_network_graphml/" % (taskid)
     if task_status["workflow"] == "METABOLOMICS-SNETS-MZMINE":
-        url_to_graph = "http://gnps.ucsd.edu/ProteoSAFe/DownloadResultFile?task=%s&block=main&file=gnps_molecular_network_graphml/" % (taskid)
+        url_to_graph = "https://gnps.ucsd.edu/ProteoSAFe/DownloadResultFile?task=%s&block=main&file=gnps_molecular_network_graphml/" % (taskid)
     if task_status["workflow"] == "FEATURE-BASED-MOLECULAR-NETWORKING":
-        url_to_graph = "http://gnps.ucsd.edu/ProteoSAFe/DownloadResultFile?task=%s&block=main&file=gnps_molecular_network_graphml/" % (taskid)
+        url_to_graph = "https://gnps.ucsd.edu/ProteoSAFe/DownloadResultFile?task=%s&block=main&file=gnps_molecular_network_graphml/" % (taskid)
+    if task_status["workflow"] == "MS2LDA_MOTIFDB":
+        url_to_graph = "https://gnps.ucsd.edu/ProteoSAFe/DownloadResultFile?task=%s&block=main&file=output_graphml/ms2lda_network.graphml" % (taskid)
 
+    print(url_to_graph)
 
     local_filepath = os.path.join(app.config['UPLOAD_FOLDER'], "%s.graphml" % (taskid))
     local_file = open(local_filepath, "w")
@@ -65,12 +76,15 @@ def process_ajax():
     taskid = request.args["task"]
     local_filepath = get_graph_object(taskid)
 
-    #Check if server is up
+    if "metabotracer" in request.args:
+        source = request.args["metabotracer"]
+        metabotracker.metabotracker_wrapper(local_filepath, local_filepath, source=source)
+
     cytoscape_process = subprocess.Popen("Cytoscape", shell=True)
 
+    #Check if server is up
     while(1):
         try:
-            #cy  = CyRestClient(port=PORT_NUMBER)
             cy  = CyRestClient()
             #new_cy = cyrest(port=PORT_NUMBER)
             break
@@ -79,16 +93,12 @@ def process_ajax():
             sleep(1)
             continue
 
-    #clean_gc_url = "http://localhost:1234/v1/gc"
-    #requests.get(clean_gc_url)
-
     cy  = CyRestClient()
-    #cy.session.delete()
-    #network1 = cy.network.create_from("/home/mingxun/Downloads/METABOLOMICS-SNETS-V2-305674ff-download_cytoscape_data-main.graphml")
     network1 = cy.network.create_from(local_filepath)
 
     mystyle = cy.style.create("ClassDefault")
 
+    #Loading style
     all_parameters = json.loads(open("Styles/Sample2.json").read())
     new_defaults_dict = {}
     for item in all_parameters["defaults"]:
