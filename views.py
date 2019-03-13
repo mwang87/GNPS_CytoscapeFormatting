@@ -32,7 +32,7 @@ def process():
 def metabotracker_view():
     taskid = request.args["task"]
 
-    return render_template("metabotracer.html", task=taskid)
+    return render_template("metabotracker.html", task=taskid)
 
 
 @app.route('/dashboard', methods=['GET'])
@@ -76,8 +76,8 @@ def process_ajax():
     taskid = request.args["task"]
     local_filepath = get_graph_object(taskid)
 
-    if "metabotracer" in request.args:
-        source = request.args["metabotracer"]
+    if "metabotracker" in request.args:
+        source = request.args["metabotracker"]
         metabotracker.metabotracker_wrapper(local_filepath, local_filepath, source=source)
 
     cytoscape_process = subprocess.Popen("Cytoscape", shell=True)
