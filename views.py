@@ -12,6 +12,7 @@ import json
 import requests
 import subprocess
 from time import sleep
+import random
 import metabotracker
 
 @app.route('/', methods=['GET'])
@@ -38,7 +39,7 @@ def metabotracker_view():
 @app.route('/dashboard', methods=['GET'])
 def dashboard():
     taskid = request.args["task"]
-    return render_template("dashboard.html", task=taskid)
+    return render_template("dashboard.html", task=taskid, randomnumber=str(random.randint(1,10001)))
 
 def get_graph_object(taskid):
     task_status_url = "https://gnps.ucsd.edu/ProteoSAFe/status_json.jsp?task=%s" % (taskid)
