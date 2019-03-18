@@ -32,8 +32,9 @@ def process():
 @app.route('/metabotracker', methods=['GET'])
 def metabotracker_view():
     taskid = request.args["task"]
+    source = request.args["source"]
 
-    return render_template("metabotracker.html", task=taskid)
+    return render_template("metabotracker.html", task=taskid, source=source)
 
 
 @app.route('/dashboard', methods=['GET'])
