@@ -102,6 +102,8 @@ def process_ajax():
 
     #Loading style
     all_parameters = json.loads(open("Styles/Sample2.json").read())
+
+
     new_defaults_dict = {}
     for item in all_parameters["defaults"]:
         new_defaults_dict[item["visualProperty"]] = item["value"]
