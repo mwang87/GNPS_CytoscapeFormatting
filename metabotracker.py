@@ -15,8 +15,8 @@ def molnetenhancer_wrapper(input_graphml_filename, output_graphml_filename, clas
     output_network = molnetenhancer_filter(input_network, class_header=class_header, class_name=class_name)
     nx.write_graphml(output_network, output_graphml_filename)
 
-def metabotracker_filter(input_graphML, curated_compound_names_df, source='drug'):
-    sel = curated_compound_names_df[curated_compound_names_df['Source']== source]['GNPS_annotation'].tolist()
+def metabotracker_filter(input_graphML, curated_compound_names_df, source=['drug']):
+    sel = curated_compound_names_df[curated_compound_names_df['Source'].isin(source)]['GNPS_annotation'].tolist()
 
     # select all nodes with library matches within selecte source category
     sel_ids = list()
@@ -38,6 +38,19 @@ def metabotracker_filter(input_graphML, curated_compound_names_df, source='drug'
     sel_ids_final = list(set(sel_ids_neigh + sel_ids))
 
     H = input_graphML.subgraph(sel_ids_final)
+
+    # Plot Delta MZ histogram
+    # mdd = [item[2] for item in list(H.edges(data=True))]
+    # md = [d["mass_difference"] for d in mdd if "mass_difference" in d]
+    # md = [float(i) for i in md]
+    # md = [abs(round(elem, 2)) for elem in md]
+    
+    # n, bins, patches = plt.hist(x=np.asarray(md), bins='auto', color='#67a9cf',
+    #                         alpha=0.7, rwidth=0.85)
+    # plt.grid(axis='y', alpha=0.75)
+    # plt.xlabel('MZ Delta')
+    # plt.ylabel('Pairs')
+    # plt.title('Subnetwork MZ Delta Histogram')
 
     return H
 

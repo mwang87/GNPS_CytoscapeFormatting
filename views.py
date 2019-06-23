@@ -101,7 +101,8 @@ def process_ajax():
         if request.values["filter"] == "tagtracker":
             print("Tag Tracker")
             source = request.values["source"]
-            metabotracker.metabotracker_wrapper(local_filepath, local_filepath, source=source)
+            sources_list = [source]
+            metabotracker.metabotracker_wrapper(local_filepath, local_filepath, source=sources_list)
         if request.values["filter"] == "molnetenhancer":
             print("Molnetenhancer")
             metabotracker.molnetenhancer_wrapper(local_filepath, local_filepath, class_header="CF_class", class_name=request.values["molnetenhancer_class"])
