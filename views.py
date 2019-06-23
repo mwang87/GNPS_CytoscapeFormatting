@@ -27,15 +27,32 @@ def heartbeat():
 def process():
     taskid = request.args["task"]
 
-    return render_template("process.html", task=taskid)
+    query_url = "/process?task=%s" % (taskid)
+
+    query_parameters = {}
+
+    return render_template("process.html", task=taskid, query_parameters=query_parameters)
 
 @app.route('/metabotracker', methods=['GET'])
 def metabotracker_view():
     taskid = request.args["task"]
     source = request.args["source"]
 
-    return render_template("metabotracker.html", task=taskid, source=source)
+    #query_url = "/process?task=%s&source=%s&filter=tagtracker" % (taskid, metabotracker)
 
+    query_parameters = {"task" : taskid, "filter": "tagtracker", "source": source}
+
+    return render_template("process.html", task=taskid, query_parameters=query_parameters)
+
+@app.route('/molnetenhancer', methods=['GET'])
+def molnetenhancer_view():
+    taskid = request.args["task"]
+    molnetenhancer_class = request.args["molnetenhancer_class"]
+
+    #query_url = "/process?task=%s&molnetenhancer_class=%s&filter=molnetenhancer" % (taskid, molnetenhancer_class)
+    query_parameters = {"task" : taskid, "filter": "molnetenhancer", "molnetenhancer_class": molnetenhancer_class}
+
+    return render_template("process.html", task=taskid, query_parameters=query_parameters)
 
 @app.route('/dashboard', methods=['GET'])
 def dashboard():
@@ -63,7 +80,6 @@ def get_graph_object(taskid):
     if task_status["workflow"] == "MOLNETENHANCER":
         url_to_graph = "https://gnps.ucsd.edu/ProteoSAFe/DownloadResultFile?task=%s&block=main&file=output_network/ClassyFireResults_Network.graphml" % (taskid)
 
-
     print(url_to_graph)
 
     local_filepath = os.path.join(app.config['UPLOAD_FOLDER'], "%s.graphml" % (taskid))
@@ -75,15 +91,20 @@ def get_graph_object(taskid):
 
 @app.route('/process', methods=['POST'])
 def process_ajax():
-    print(request.args)
+    print(request.values)
     #PORT_NUMBER = 1234
 
-    taskid = request.args["task"]
+    taskid = request.values["task"]
     local_filepath = get_graph_object(taskid)
 
-    if "metabotracker" in request.args:
-        source = request.args["metabotracker"]
-        metabotracker.metabotracker_wrapper(local_filepath, local_filepath, source=source)
+    if "filter" in request.values:
+        if request.values["filter"] == "tagtracker":
+            print("Tag Tracker")
+            source = request.values["source"]
+            metabotracker.metabotracker_wrapper(local_filepath, local_filepath, source=source)
+        if request.values["filter"] == "molnetenhancer":
+            print("Molnetenhancer")
+            metabotracker.molnetenhancer_wrapper(local_filepath, local_filepath, class_header="CF_class", class_name=request.values["molnetenhancer_class"])
 
     cytoscape_process = subprocess.Popen("Cytoscape", shell=True)
 

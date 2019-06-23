@@ -54,29 +54,21 @@
                           <input type="text" class="form-control" name="task" id="task" placeholder="Enter GNPS Networking Task ID">
                       </div>
                   </div>
-                  <div class="col-sm"></div>
-                </div>
-
-                <br>
-
-                <div class="row">
-                  <div class="col-sm"></div>
                   <div class="col-sm">
                       <div class="text-center" >
                           <button id="analyzebutton" class="btn btn-primary" onclick="myFunction()" >Create Cytoscape File</button>
                       </div>
                   </div>
-                  <div class="col-sm"></div>
                 </div>
 
+                <br>
+                <hr>
                 <br>
 
                 <div class="row">
                   <div class="col-sm"></div>
-                  <div class="col-sm">
-                      <div class="text-center" >
-                          <input type="text" class="form-control" name="source" id="source" placeholder="Enter Metabotracker Source Name (e.g. drugs)">
-                      </div>
+                  <div class="col-sm text-center">
+                      <h2>Tag Tracker Cytoscape Downloader</h2>
                   </div>
                   <div class="col-sm"></div>
                 </div>
@@ -84,13 +76,59 @@
                 <br>
 
                 <div class="row">
-                  <div class="col-sm"></div>
                   <div class="col-sm">
                       <div class="text-center" >
-                          <button id="analyzebutton" class="btn btn-primary" onclick="runMetabotracker()" >Create Cytoscape File with Metabotracker</button>
+                          Select Tag To Filter
+                          <select name="source">
+                            <option value="drugs">drugs</option>
+                          </select>
                       </div>
                   </div>
+                  <div class="col-sm">
+                      <div class="text-center" >
+                          <input type="text" class="form-control" name="task_for_tagtracker" id="task_for_tagtracker" placeholder="Enter GNPS Networking Task ID">
+                      </div>
+                  </div>
+                  <div class="col-sm">
+                      <div class="text-center" >
+                          <button id="analyzebutton" class="btn btn-primary" onclick="runMetabotracker()" >Create Cytoscape File with TagTracker</button>
+                      </div>
+                  </div>
+                </div>
+
+                <br>
+                <hr>
+                <br>
+
+                <div class="row">
                   <div class="col-sm"></div>
+                  <div class="col-sm text-center">
+                      <h2>Molecular Network Enhancer Cytoscape Downloader</h2>
+                  </div>
+                  <div class="col-sm"></div>
+                </div>
+
+                <br>
+
+                <div class="row">
+                  <div class="col-sm">
+                      <div class="text-center" >
+                          Select Structral Class To Filter
+                          <select name="molnetenhancer_class">
+                            <option value="Glycerophospholipids">Glycerophospholipids</option>
+                          </select>
+                      </div>
+                  </div>
+                  <div class="col-sm">
+                      <div class="text-center" >
+                          <input type="text" class="form-control" name="task_for_molnetenhancer" id="task_for_molnetenhancer" placeholder="Enter GNPS Networking Task ID">
+                      </div>
+                  </div>
+                  <div class="col-sm">
+                      <div class="text-center" >
+                          <button id="analyzebutton" class="btn btn-primary" onclick="runMolnetEnhancer()" >Create Cytoscape File with Molecular Network Enhancer</button>
+                      </div>
+                  </div>
                 </div>
             </div>
         </div>
@@ -106,7 +144,12 @@
     }
 
     function runMetabotracker() {
-        remote_url = "/metabotracker?task=" + $("#task").val() + "&source=" + $("#source").val()
+        remote_url = "/metabotracker?task=" + $("#task_for_tagtracker").val() + "&source=" + $("#source").val()
+        window.location.assign(remote_url);
+    }
+
+    function runMolnetEnhancer() {
+        remote_url = "/molnetenhancer?task=" + $("#task_for_molnetenhancer").val() + "&molnetenhancer_class=" + $("#molnetenhancer_class").val()
         window.location.assign(remote_url);
     }
     </script>

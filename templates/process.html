@@ -70,13 +70,13 @@ animation: spin 2s linear infinite;
     <script>
     $( document ).ready(function() {
         $.ajax({
-            url: '/process?task=((task))',
+            url: '/process',
             type: 'POST',
             dataType: "json",
+            data: (( query_parameters | tojson )), 
             success: function(response) {
                 remote_url = "/dashboard?task=((task))"
                 window.location.replace(remote_url);
-
             },
             error: function(error) {
                 alert("Error")
