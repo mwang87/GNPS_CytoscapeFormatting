@@ -60,6 +60,9 @@ def get_graph_object(taskid):
         url_to_graph = "https://gnps.ucsd.edu/ProteoSAFe/DownloadResultFile?task=%s&block=main&file=gnps_molecular_network_graphml/" % (taskid)
     if task_status["workflow"] == "MS2LDA_MOTIFDB":
         url_to_graph = "https://gnps.ucsd.edu/ProteoSAFe/DownloadResultFile?task=%s&block=main&file=output_graphml/ms2lda_network.graphml" % (taskid)
+    if task_status["workflow"] == "MOLNETENHANCER":
+        url_to_graph = "https://gnps.ucsd.edu/ProteoSAFe/DownloadResultFile?task=%s&block=main&file=output_network/ClassyFireResults_Network.graphml" % (taskid)
+
 
     print(url_to_graph)
 
