@@ -96,6 +96,8 @@ def process_ajax():
     #Defining style given the type of data
     if workflow_name == "MOLNETENHANCER":
         style_filename = "Styles/MolnetEnhancer_ChemicalSuperClasses.json"
+    if workflow_name == "MS2LDA_MOTIFDB":
+        style_filename = "Styles/MotifEdgesStyle.json"
 
     if "filter" in request.values:
         if request.values["filter"] == "tagtracker":
@@ -106,7 +108,7 @@ def process_ajax():
         if request.values["filter"] == "molnetenhancer":
             print("Molnetenhancer")
             metabotracker.molnetenhancer_wrapper(local_filepath, local_filepath, class_header="CF_superclass", class_name=request.values["molnetenhancer_superclass"])
-            style_filename = "Styles/MolnetEnhancer_ChemicalSuperClasses.json"
+            style_filename = "Styles/MolnetEnhancer_ChemicalClasses.json"
 
     cytoscape_process = subprocess.Popen("Cytoscape", shell=True)
 
