@@ -113,9 +113,9 @@
                 <div class="row">
                   <div class="col-sm">
                       <div class="text-center" >
-                          Select Structral Class To Filter
-                          <select name="molnetenhancer_class">
-                            <option value="Glycerophospholipids">Glycerophospholipids</option>
+                          Select Structral Super Class To Filter 
+                          <select id="molnetenhancer_superclass" name="molnetenhancer_superclass">
+                            <option value="Lipids and lipid-like molecules">Lipids and lipid-like molecules</option>
                           </select>
                       </div>
                   </div>
@@ -149,7 +149,7 @@
     }
 
     function runMolnetEnhancer() {
-        remote_url = "/molnetenhancer?task=" + $("#task_for_molnetenhancer").val() + "&molnetenhancer_class=" + $("#molnetenhancer_class").val()
+        remote_url = "/molnetenhancer?task=" + $("#task_for_molnetenhancer").val() + "&molnetenhancer_superclass=" + $("#molnetenhancer_superclass").val()
         window.location.assign(remote_url);
     }
     </script>

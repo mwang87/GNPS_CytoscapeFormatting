@@ -43,9 +43,9 @@ def metabotracker_view():
 @app.route('/molnetenhancer', methods=['GET'])
 def molnetenhancer_view():
     taskid = request.args["task"]
-    molnetenhancer_class = request.args["molnetenhancer_class"]
+    molnetenhancer_superclass = request.args["molnetenhancer_superclass"]
 
-    query_parameters = {"task" : taskid, "filter": "molnetenhancer", "molnetenhancer_class": molnetenhancer_class}
+    query_parameters = {"task" : taskid, "filter": "molnetenhancer", "molnetenhancer_superclass": molnetenhancer_superclass}
 
     return render_template("process.html", task=taskid, query_parameters=query_parameters)
 
@@ -105,7 +105,7 @@ def process_ajax():
             metabotracker.metabotracker_wrapper(local_filepath, local_filepath, source=sources_list)
         if request.values["filter"] == "molnetenhancer":
             print("Molnetenhancer")
-            metabotracker.molnetenhancer_wrapper(local_filepath, local_filepath, class_header="CF_class", class_name=request.values["molnetenhancer_class"])
+            metabotracker.molnetenhancer_wrapper(local_filepath, local_filepath, class_header="CF_superclass", class_name=request.values["molnetenhancer_superclass"])
             style_filename = "Styles/MolnetEnhancer_ChemicalSuperClasses.json"
 
     cytoscape_process = subprocess.Popen("Cytoscape", shell=True)

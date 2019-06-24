@@ -1,0 +1,370 @@
+{
+  "title" : "ColouredMotifs",
+  "defaults" : [ {
+    "visualProperty" : "COMPOUND_NODE_PADDING",
+    "value" : 10.0
+  }, {
+    "visualProperty" : "COMPOUND_NODE_SHAPE",
+    "value" : "ROUND_RECTANGLE"
+  }, {
+    "visualProperty" : "DING_RENDERING_ENGINE_ROOT",
+    "value" : "org.cytoscape.view.presentation.property.NullVisualProperty$NullDataTypeImpl@5f9c2e65"
+  }, {
+    "visualProperty" : "EDGE",
+    "value" : "DefaultVisualizableVisualProperty(id=EDGE, name=Edge Visual Property)"
+  }, {
+    "visualProperty" : "EDGE_BEND",
+    "value" : ""
+  }, {
+    "visualProperty" : "EDGE_CURVED",
+    "value" : true
+  }, {
+    "visualProperty" : "EDGE_LABEL",
+    "value" : ""
+  }, {
+    "visualProperty" : "EDGE_LABEL_COLOR",
+    "value" : "#000000"
+  }, {
+    "visualProperty" : "EDGE_LABEL_FONT_FACE",
+    "value" : "Dialog,plain,10"
+  }, {
+    "visualProperty" : "EDGE_LABEL_FONT_SIZE",
+    "value" : 14
+  }, {
+    "visualProperty" : "EDGE_LABEL_TRANSPARENCY",
+    "value" : 255
+  }, {
+    "visualProperty" : "EDGE_LABEL_WIDTH",
+    "value" : 200.0
+  }, {
+    "visualProperty" : "EDGE_LINE_TYPE",
+    "value" : "SOLID"
+  }, {
+    "visualProperty" : "EDGE_PAINT",
+    "value" : "#323232"
+  }, {
+    "visualProperty" : "EDGE_SELECTED",
+    "value" : false
+  }, {
+    "visualProperty" : "EDGE_SELECTED_PAINT",
+    "value" : "#FF0000"
+  }, {
+    "visualProperty" : "EDGE_SOURCE_ARROW_SELECTED_PAINT",
+    "value" : "#FFFF00"
+  }, {
+    "visualProperty" : "EDGE_SOURCE_ARROW_SHAPE",
+    "value" : "NONE"
+  }, {
+    "visualProperty" : "EDGE_SOURCE_ARROW_UNSELECTED_PAINT",
+    "value" : "#000000"
+  }, {
+    "visualProperty" : "EDGE_STROKE_SELECTED_PAINT",
+    "value" : "#FF0000"
+  }, {
+    "visualProperty" : "EDGE_STROKE_UNSELECTED_PAINT",
+    "value" : "#848484"
+  }, {
+    "visualProperty" : "EDGE_TARGET_ARROW_SELECTED_PAINT",
+    "value" : "#FFFF00"
+  }, {
+    "visualProperty" : "EDGE_TARGET_ARROW_SHAPE",
+    "value" : "NONE"
+  }, {
+    "visualProperty" : "EDGE_TARGET_ARROW_UNSELECTED_PAINT",
+    "value" : "#000000"
+  }, {
+    "visualProperty" : "EDGE_TOOLTIP",
+    "value" : ""
+  }, {
+    "visualProperty" : "EDGE_TRANSPARENCY",
+    "value" : 255
+  }, {
+    "visualProperty" : "EDGE_UNSELECTED_PAINT",
+    "value" : "#404040"
+  }, {
+    "visualProperty" : "EDGE_VISIBLE",
+    "value" : true
+  }, {
+    "visualProperty" : "EDGE_WIDTH",
+    "value" : 8.0
+  }, {
+    "visualProperty" : "NETWORK",
+    "value" : "DefaultVisualizableVisualProperty(id=NETWORK, name=Network Visual Property)"
+  }, {
+    "visualProperty" : "NETWORK_BACKGROUND_PAINT",
+    "value" : "#FFFFFF"
+  }, {
+    "visualProperty" : "NETWORK_CENTER_X_LOCATION",
+    "value" : 0.0
+  }, {
+    "visualProperty" : "NETWORK_CENTER_Y_LOCATION",
+    "value" : 0.0
+  }, {
+    "visualProperty" : "NETWORK_CENTER_Z_LOCATION",
+    "value" : 0.0
+  }, {
+    "visualProperty" : "NETWORK_DEPTH",
+    "value" : 0.0
+  }, {
+    "visualProperty" : "NETWORK_EDGE_SELECTION",
+    "value" : true
+  }, {
+    "visualProperty" : "NETWORK_HEIGHT",
+    "value" : 400.0
+  }, {
+    "visualProperty" : "NETWORK_NODE_SELECTION",
+    "value" : true
+  }, {
+    "visualProperty" : "NETWORK_SCALE_FACTOR",
+    "value" : 1.0
+  }, {
+    "visualProperty" : "NETWORK_SIZE",
+    "value" : 550.0
+  }, {
+    "visualProperty" : "NETWORK_TITLE",
+    "value" : ""
+  }, {
+    "visualProperty" : "NETWORK_WIDTH",
+    "value" : 550.0
+  }, {
+    "visualProperty" : "NODE",
+    "value" : "DefaultVisualizableVisualProperty(id=NODE, name=Node Visual Property)"
+  }, {
+    "visualProperty" : "NODE_BORDER_PAINT",
+    "value" : "#CCCCCC"
+  }, {
+    "visualProperty" : "NODE_BORDER_STROKE",
+    "value" : "SOLID"
+  }, {
+    "visualProperty" : "NODE_BORDER_TRANSPARENCY",
+    "value" : 255
+  }, {
+    "visualProperty" : "NODE_BORDER_WIDTH",
+    "value" : 0.0
+  }, {
+    "visualProperty" : "NODE_CUSTOMGRAPHICS_1",
+    "value" : "org.cytoscape.PieChart:{\"cy_range\":[0.5955245,0.8651902],\"cy_colors\":[\"#0033CC\",\"#CC0000\",\"#00CCFF\",\"#FF9999\",\"#CC00FF\",\"#9966FF\",\"#33FF33\",\"#66CC00\",\"#66FF99\",\"#009999\",\"#996600\",\"#FF00CC\",\"#FF6666\",\"#FFCC00\",\"#9999FF\",\"#33CC00\",\"#FF005A\",\"#00FFAA\",\"#FF0051\",\"#00FFB3\"],\"cy_dataColumns\":[]}"
+  }, {
+    "visualProperty" : "NODE_CUSTOMGRAPHICS_2",
+    "value" : "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],"
+  }, {
+    "visualProperty" : "NODE_CUSTOMGRAPHICS_3",
+    "value" : "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],"
+  }, {
+    "visualProperty" : "NODE_CUSTOMGRAPHICS_4",
+    "value" : "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],"
+  }, {
+    "visualProperty" : "NODE_CUSTOMGRAPHICS_5",
+    "value" : "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],"
+  }, {
+    "visualProperty" : "NODE_CUSTOMGRAPHICS_6",
+    "value" : "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],"
+  }, {
+    "visualProperty" : "NODE_CUSTOMGRAPHICS_7",
+    "value" : "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],"
+  }, {
+    "visualProperty" : "NODE_CUSTOMGRAPHICS_8",
+    "value" : "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],"
+  }, {
+    "visualProperty" : "NODE_CUSTOMGRAPHICS_9",
+    "value" : "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],"
+  }, {
+    "visualProperty" : "NODE_CUSTOMGRAPHICS_POSITION_1",
+    "value" : "C,C,c,0.00,0.00"
+  }, {
+    "visualProperty" : "NODE_CUSTOMGRAPHICS_POSITION_2",
+    "value" : "C,C,c,0.00,0.00"
+  }, {
+    "visualProperty" : "NODE_CUSTOMGRAPHICS_POSITION_3",
+    "value" : "C,C,c,0.00,0.00"
+  }, {
+    "visualProperty" : "NODE_CUSTOMGRAPHICS_POSITION_4",
+    "value" : "C,C,c,0.00,0.00"
+  }, {
+    "visualProperty" : "NODE_CUSTOMGRAPHICS_POSITION_5",
+    "value" : "C,C,c,0.00,0.00"
+  }, {
+    "visualProperty" : "NODE_CUSTOMGRAPHICS_POSITION_6",
+    "value" : "C,C,c,0.00,0.00"
+  }, {
+    "visualProperty" : "NODE_CUSTOMGRAPHICS_POSITION_7",
+    "value" : "C,C,c,0.00,0.00"
+  }, {
+    "visualProperty" : "NODE_CUSTOMGRAPHICS_POSITION_8",
+    "value" : "C,C,c,0.00,0.00"
+  }, {
+    "visualProperty" : "NODE_CUSTOMGRAPHICS_POSITION_9",
+    "value" : "C,C,c,0.00,0.00"
+  }, {
+    "visualProperty" : "NODE_CUSTOMGRAPHICS_SIZE_1",
+    "value" : 50.0
+  }, {
+    "visualProperty" : "NODE_CUSTOMGRAPHICS_SIZE_2",
+    "value" : 50.0
+  }, {
+    "visualProperty" : "NODE_CUSTOMGRAPHICS_SIZE_3",
+    "value" : 50.0
+  }, {
+    "visualProperty" : "NODE_CUSTOMGRAPHICS_SIZE_4",
+    "value" : 50.0
+  }, {
+    "visualProperty" : "NODE_CUSTOMGRAPHICS_SIZE_5",
+    "value" : 50.0
+  }, {
+    "visualProperty" : "NODE_CUSTOMGRAPHICS_SIZE_6",
+    "value" : 50.0
+  }, {
+    "visualProperty" : "NODE_CUSTOMGRAPHICS_SIZE_7",
+    "value" : 50.0
+  }, {
+    "visualProperty" : "NODE_CUSTOMGRAPHICS_SIZE_8",
+    "value" : 50.0
+  }, {
+    "visualProperty" : "NODE_CUSTOMGRAPHICS_SIZE_9",
+    "value" : 50.0
+  }, {
+    "visualProperty" : "NODE_CUSTOMPAINT_1",
+    "value" : "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_1, name=Node Custom Paint 1)"
+  }, {
+    "visualProperty" : "NODE_CUSTOMPAINT_2",
+    "value" : "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_2, name=Node Custom Paint 2)"
+  }, {
+    "visualProperty" : "NODE_CUSTOMPAINT_3",
+    "value" : "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_3, name=Node Custom Paint 3)"
+  }, {
+    "visualProperty" : "NODE_CUSTOMPAINT_4",
+    "value" : "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_4, name=Node Custom Paint 4)"
+  }, {
+    "visualProperty" : "NODE_CUSTOMPAINT_5",
+    "value" : "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_5, name=Node Custom Paint 5)"
+  }, {
+    "visualProperty" : "NODE_CUSTOMPAINT_6",
+    "value" : "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_6, name=Node Custom Paint 6)"
+  }, {
+    "visualProperty" : "NODE_CUSTOMPAINT_7",
+    "value" : "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_7, name=Node Custom Paint 7)"
+  }, {
+    "visualProperty" : "NODE_CUSTOMPAINT_8",
+    "value" : "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_8, name=Node Custom Paint 8)"
+  }, {
+    "visualProperty" : "NODE_CUSTOMPAINT_9",
+    "value" : "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_9, name=Node Custom Paint 9)"
+  }, {
+    "visualProperty" : "NODE_DEPTH",
+    "value" : 0.0
+  }, {
+    "visualProperty" : "NODE_FILL_COLOR",
+    "value" : "#CCCCCC"
+  }, {
+    "visualProperty" : "NODE_HEIGHT",
+    "value" : 35.0
+  }, {
+    "visualProperty" : "NODE_LABEL",
+    "value" : ""
+  }, {
+    "visualProperty" : "NODE_LABEL_COLOR",
+    "value" : "#000000"
+  }, {
+    "visualProperty" : "NODE_LABEL_FONT_FACE",
+    "value" : "SansSerif,plain,12"
+  }, {
+    "visualProperty" : "NODE_LABEL_FONT_SIZE",
+    "value" : 14
+  }, {
+    "visualProperty" : "NODE_LABEL_POSITION",
+    "value" : "C,C,c,0.00,0.00"
+  }, {
+    "visualProperty" : "NODE_LABEL_TRANSPARENCY",
+    "value" : 255
+  }, {
+    "visualProperty" : "NODE_LABEL_WIDTH",
+    "value" : 200.0
+  }, {
+    "visualProperty" : "NODE_NESTED_NETWORK_IMAGE_VISIBLE",
+    "value" : true
+  }, {
+    "visualProperty" : "NODE_PAINT",
+    "value" : "#1E90FF"
+  }, {
+    "visualProperty" : "NODE_SELECTED",
+    "value" : false
+  }, {
+    "visualProperty" : "NODE_SELECTED_PAINT",
+    "value" : "#FFFF00"
+  }, {
+    "visualProperty" : "NODE_SHAPE",
+    "value" : "ELLIPSE"
+  }, {
+    "visualProperty" : "NODE_SIZE",
+    "value" : 70.0
+  }, {
+    "visualProperty" : "NODE_TOOLTIP",
+    "value" : ""
+  }, {
+    "visualProperty" : "NODE_TRANSPARENCY",
+    "value" : 255
+  }, {
+    "visualProperty" : "NODE_VISIBLE",
+    "value" : true
+  }, {
+    "visualProperty" : "NODE_WIDTH",
+    "value" : 75.0
+  }, {
+    "visualProperty" : "NODE_X_LOCATION",
+    "value" : 0.0
+  }, {
+    "visualProperty" : "NODE_Y_LOCATION",
+    "value" : 0.0
+  }, {
+    "visualProperty" : "NODE_Z_LOCATION",
+    "value" : 0.0
+  } ],
+  "mappings" : [ {
+    "mappingType" : "discrete",
+    "mappingColumn" : "CF_superclass",
+    "mappingColumnType" : "String",
+    "visualProperty" : "NODE_FILL_COLOR",
+    "map" : [ {
+      "key" : "Benzenoids",
+      "value" : "#FFFF00"
+    }, {
+      "key" : "Organic acids and derivatives",
+      "value" : "#00FFFF"
+    }, {
+      "key" : "Alkaloids and derivatives",
+      "value" : "#FF8000"
+    }, {
+      "key" : "no matches",
+      "value" : "#FF0000"
+    }, {
+      "key" : "Phenylpropanoids and polyketides",
+      "value" : "#FF0080"
+    }, {
+      "key" : "Lipids and lipid-like molecules",
+      "value" : "#80FF00"
+    }, {
+      "key" : "Organic nitrogen compounds",
+      "value" : "#0080FF"
+    }, {
+      "key" : "Organic Polymers",
+      "value" : "#00FF80"
+    }, {
+      "key" : "Nucleosides, nucleotides, and analogues",
+      "value" : "#00FF00"
+    }, {
+      "key" : "Organic oxygen compounds",
+      "value" : "#0000FF"
+    }, {
+      "key" : "Organohalogen compounds",
+      "value" : "#7F00FF"
+    }, {
+      "key" : "Organoheterocyclic compounds",
+      "value" : "#FF00FF"
+    } ]
+  }, {
+    "mappingType" : "passthrough",
+    "mappingColumn" : "parent mass",
+    "mappingColumnType" : "Double",
+    "visualProperty" : "NODE_LABEL"
+  } ]
+}
