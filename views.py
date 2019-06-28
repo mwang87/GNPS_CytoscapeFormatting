@@ -14,6 +14,7 @@ import subprocess
 from time import sleep
 import random
 import shutil
+import urllib
 import metabotracker
 
 @app.route('/', methods=['GET'])
@@ -52,8 +53,12 @@ def molnetenhancer_view():
 
 @app.route('/dashboard', methods=['GET'])
 def dashboard():
-    taskid = request.args["task"]
-    return render_template("dashboard.html", task=taskid, randomnumber=str(random.randint(1,10001)))
+    output_cytoscape_filename, output_img_filename = calculate_output_filenames(request.values)
+
+    return render_template("dashboard.html", \
+        cytoscapefilename=os.path.basename(output_cytoscape_filename), \
+        imagefilename=os.path.basename(output_img_filename), \
+        randomnumber=str(random.randint(1,10001)))
 
 #Retreiving graphml from workflow output. 
 def get_graph_object(taskid):
@@ -112,6 +117,14 @@ def get_graph_object(taskid):
 def process_ajax():
     print(request.values)
 
+    output_cytoscape_filename, output_img_filename = calculate_output_filenames(request.values)
+    
+    if os.path.exists(output_cytoscape_filename):
+        return json.dumps({"redirect_url" : "/dashboard?%s" % (urllib.parse.urlencode(request.values))})
+
+
+    print(output_cytoscape_filename, output_img_filename)
+
     #TODO, check if output is already produced, if so, then we'll just not do it. 
 
     style_filename = "Styles/Sample2.json"
@@ -133,7 +146,8 @@ def process_ajax():
             metabotracker.metabotracker_wrapper(local_filepath, local_filepath, source=sources_list)
         if request.values["filter"] == "molnetenhancer":
             print("Molnetenhancer")
-            metabotracker.molnetenhancer_wrapper(local_filepath, local_filepath, class_header="CF_superclass", class_name=request.values["molnetenhancer_superclass"])
+            super_classname = request.values["molnetenhancer_superclass"]
+            metabotracker.molnetenhancer_wrapper(local_filepath, local_filepath, class_header="CF_superclass", class_name=super_classname)
             style_filename = "Styles/MolnetEnhancer_ChemicalClasses.json"
 
     #Launching Import into Cytoscape
@@ -201,15 +215,15 @@ def process_ajax():
 
     sleep(1)
 
-    local_cytoscape_file = os.path.abspath(os.path.join(app.config['UPLOAD_FOLDER'], "%s.cys" % (taskid)))
-    local_network_img_path = os.path.join(app.config['UPLOAD_FOLDER'], "%s.png" % (taskid))
+    #local_cytoscape_file = os.path.abspath(os.path.join(app.config['UPLOAD_FOLDER'], "%s.cys" % (taskid)))
+    #local_network_img_path = os.path.join(app.config['UPLOAD_FOLDER'], "%s.png" % (taskid))
 
-    cy.session.save(local_cytoscape_file)
+    cy.session.save(output_cytoscape_filename)
     cy.layout.fit(network=network1)
 
     sleep(1)
 
-    local_png_file = open(os.path.abspath(local_network_img_path), "wb")
+    local_png_file = open(os.path.abspath(output_img_filename), "wb")
     local_png_file.write(network1.get_png())
     local_png_file.close()
 
@@ -218,4 +232,18 @@ def process_ajax():
     requests.get("http://localhost:%d/v1/commands/command/quit" % (1234))
     #cy.command.quit()
 
-    return "{}"
+    return json.dumps({"redirect_url" : "/dashboard?%s" % (urllib.parse.urlencode(request.values))})
+
+#Calculating the output cytoscape and img filename
+def calculate_output_filenames(params_dict):
+    expected_keys = ["task", "filter", "source", "molnetenhancer_superclass"]
+    param_keys = list(params_dict.keys())
+    param_keys.sort()
+    all_values = [str(params_dict[key]) for key in param_keys]
+
+    filename_base = "_".join(all_values)
+
+    local_cytoscape_file = os.path.abspath(os.path.join(app.config['UPLOAD_FOLDER'], "%s.cys" % (filename_base)))
+    local_network_img_path = os.path.abspath(os.path.join(app.config['UPLOAD_FOLDER'], "%s.png" % (filename_base)))
+
+    return local_cytoscape_file, local_network_img_path

@@ -75,8 +75,8 @@ animation: spin 2s linear infinite;
             dataType: "json",
             data: (( query_parameters | tojson )), 
             success: function(response) {
-                remote_url = "/dashboard?task=((task))"
-                window.location.replace(remote_url);
+                //remote_url = "/dashboard?task=((task))"
+                window.location.replace(response.redirect_url);
             },
             error: function(error) {
                 alert("Error")
