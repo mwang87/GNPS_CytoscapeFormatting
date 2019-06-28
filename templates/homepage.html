@@ -144,12 +144,12 @@
     }
 
     function runMetabotracker() {
-        remote_url = "/metabotracker?task=" + $("#task_for_tagtracker").val() + "&source=" + $("#source").val()
+        remote_url = "/process?task=" + $("#task_for_tagtracker").val() + "&source=" + $("#source").val() + "&filter=tagtracker" 
         window.location.assign(remote_url);
     }
 
     function runMolnetEnhancer() {
-        remote_url = "/molnetenhancer?task=" + $("#task_for_molnetenhancer").val() + "&molnetenhancer_superclass=" + $("#molnetenhancer_superclass").val()
+        remote_url = "/process?task=" + $("#task_for_molnetenhancer").val() + "&molnetenhancer_superclass=" + $("#molnetenhancer_superclass").val() + "&filter=molnetenhancer" 
         window.location.assign(remote_url);
     }
     </script>

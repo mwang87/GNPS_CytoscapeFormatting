@@ -20,5 +20,7 @@ RUN wget http://chianti.ucsd.edu/cytoscape-3.6.1/Cytoscape_3_6_1_unix.sh
 RUN chmod u+x  Cytoscape_3_6_1_unix.sh
 RUN sh Cytoscape_3_6_1_unix.sh -q
 
+RUN pip3 install pathvalidate
+
 COPY . /app
 WORKDIR /app

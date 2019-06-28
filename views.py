@@ -16,6 +16,8 @@ import random
 import shutil
 import urllib
 import metabotracker
+from pathvalidate import sanitize_filename
+
 
 @app.route('/', methods=['GET'])
 def homepage():
@@ -29,27 +31,7 @@ def heartbeat():
 def process():
     taskid = request.args["task"]
 
-    query_parameters = {"task" : taskid}
-
-    return render_template("process.html", task=taskid, query_parameters=query_parameters)
-
-@app.route('/metabotracker', methods=['GET'])
-def metabotracker_view():
-    taskid = request.args["task"]
-    source = request.args["source"]
-
-    query_parameters = {"task" : taskid, "filter": "tagtracker", "source": source}
-
-    return render_template("process.html", task=taskid, query_parameters=query_parameters)
-
-@app.route('/molnetenhancer', methods=['GET'])
-def molnetenhancer_view():
-    taskid = request.args["task"]
-    molnetenhancer_superclass = request.args["molnetenhancer_superclass"]
-
-    query_parameters = {"task" : taskid, "filter": "molnetenhancer", "molnetenhancer_superclass": molnetenhancer_superclass}
-
-    return render_template("process.html", task=taskid, query_parameters=query_parameters)
+    return render_template("process.html", task=taskid, query_parameters=dict(request.values))
 
 @app.route('/dashboard', methods=['GET'])
 def dashboard():
@@ -122,10 +104,7 @@ def process_ajax():
     if os.path.exists(output_cytoscape_filename):
         return json.dumps({"redirect_url" : "/dashboard?%s" % (urllib.parse.urlencode(request.values))})
 
-
     print(output_cytoscape_filename, output_img_filename)
-
-    #TODO, check if output is already produced, if so, then we'll just not do it. 
 
     style_filename = "Styles/Sample2.json"
     taskid = request.values["task"]
@@ -150,6 +129,25 @@ def process_ajax():
             metabotracker.molnetenhancer_wrapper(local_filepath, local_filepath, class_header="CF_superclass", class_name=super_classname)
             style_filename = "Styles/MolnetEnhancer_ChemicalClasses.json"
 
+    create_cytoscape(local_filepath, style_filename, output_cytoscape_filename, output_img_filename)
+
+    return json.dumps({"redirect_url" : "/dashboard?%s" % (urllib.parse.urlencode(request.values))})
+
+#Calculating the output cytoscape and img filename
+def calculate_output_filenames(params_dict):
+    expected_keys = ["task", "filter", "source", "molnetenhancer_superclass"]
+    param_keys = list(params_dict.keys())
+    param_keys.sort()
+    all_values = [sanitize_filename(str(params_dict[key])).replace(" ", "") for key in param_keys]
+
+    filename_base = "_".join(all_values)
+
+    local_cytoscape_file = os.path.abspath(os.path.join(app.config['UPLOAD_FOLDER'], "%s.cys" % (filename_base)))
+    local_network_img_path = os.path.abspath(os.path.join(app.config['UPLOAD_FOLDER'], "%s.png" % (filename_base)))
+
+    return local_cytoscape_file, local_network_img_path
+
+def create_cytoscape(input_graphml, input_style, output_cytoscape_filename, output_img_filename):
     #Launching Import into Cytoscape
     cytoscape_process = subprocess.Popen("Cytoscape", shell=True)
 
@@ -167,13 +165,13 @@ def process_ajax():
             continue
 
     print("Loading graphml into Cytoscape")
-    network1 = cy.network.create_from(local_filepath)
+    network1 = cy.network.create_from(input_graphml)
 
     mystyle = cy.style.create("ClassDefault")
 
     """Loading style"""
     print("Loading Style")
-    all_parameters = json.loads(open(style_filename).read())
+    all_parameters = json.loads(open(input_style).read())
 
     new_defaults_dict = {}
     for item in all_parameters["defaults"]:
@@ -231,19 +229,3 @@ def process_ajax():
     #requests.get(clean_gc_url)
     requests.get("http://localhost:%d/v1/commands/command/quit" % (1234))
     #cy.command.quit()
-
-    return json.dumps({"redirect_url" : "/dashboard?%s" % (urllib.parse.urlencode(request.values))})
-
-#Calculating the output cytoscape and img filename
-def calculate_output_filenames(params_dict):
-    expected_keys = ["task", "filter", "source", "molnetenhancer_superclass"]
-    param_keys = list(params_dict.keys())
-    param_keys.sort()
-    all_values = [str(params_dict[key]) for key in param_keys]
-
-    filename_base = "_".join(all_values)
-
-    local_cytoscape_file = os.path.abspath(os.path.join(app.config['UPLOAD_FOLDER'], "%s.cys" % (filename_base)))
-    local_network_img_path = os.path.abspath(os.path.join(app.config['UPLOAD_FOLDER'], "%s.png" % (filename_base)))
-
-    return local_cytoscape_file, local_network_img_path
