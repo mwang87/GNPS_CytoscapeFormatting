@@ -13,6 +13,7 @@ import requests
 import subprocess
 from time import sleep
 import random
+import shutil
 import metabotracker
 
 @app.route('/', methods=['GET'])
@@ -60,27 +61,48 @@ def get_graph_object(taskid):
     task_status = requests.get(task_status_url).json()
     url_to_graph = ""
 
-    if task_status["workflow"] == "NAP_CCMS2":
-        url_to_graph = "https://proteomics2.ucsd.edu/ProteoSAFe/DownloadResultFile?task=%s&block=main&file=final_out/structure_graph_alt.xgmml" % (taskid)
-    if task_status["workflow"] == "METABOLOMICS-SNETS-V2":
-        url_to_graph = "https://gnps.ucsd.edu/ProteoSAFe/DownloadResultFile?task=%s&block=main&file=gnps_molecular_network_graphml/" % (taskid)
-    if task_status["workflow"] == "METABOLOMICS-SNETS":
-        url_to_graph = "https://gnps.ucsd.edu/ProteoSAFe/DownloadResultFile?task=%s&block=main&file=gnps_molecular_network_graphml/" % (taskid)
-    if task_status["workflow"] == "METABOLOMICS-SNETS-MZMINE":
-        url_to_graph = "https://gnps.ucsd.edu/ProteoSAFe/DownloadResultFile?task=%s&block=main&file=gnps_molecular_network_graphml/" % (taskid)
-    if task_status["workflow"] == "FEATURE-BASED-MOLECULAR-NETWORKING":
-        url_to_graph = "https://gnps.ucsd.edu/ProteoSAFe/DownloadResultFile?task=%s&block=main&file=gnps_molecular_network_graphml/" % (taskid)
-    if task_status["workflow"] == "MS2LDA_MOTIFDB":
-        url_to_graph = "https://gnps.ucsd.edu/ProteoSAFe/DownloadResultFile?task=%s&block=main&file=output_graphml/ms2lda_network.graphml" % (taskid)
-    if task_status["workflow"] == "MOLNETENHANCER":
-        url_to_graph = "https://gnps.ucsd.edu/ProteoSAFe/DownloadResultFile?task=%s&block=main&file=output_network/ClassyFireResults_Network.graphml" % (taskid)
-
-    print(url_to_graph)
-
     local_filepath = os.path.join(app.config['UPLOAD_FOLDER'], "%s.graphml" % (taskid))
-    local_file = open(local_filepath, "w")
-    local_file.write(requests.get(url_to_graph).text)
-    local_file.close()
+
+    if task_status["workflow"] == "MS2LDA_MOTIFDB":
+        #Special case using zip file
+        url_to_zip = "https://gnps.ucsd.edu/ProteoSAFe/DownloadResult?task=%s&show=true&view=download_cytoscape_data" % (taskid)
+        r = requests.post(url_to_zip)
+
+        zip_filename = os.path.join(app.config['UPLOAD_FOLDER'], "%s.zip" % (taskid))
+        local_file = open(zip_filename, "wb")
+        local_file.write(r.content)
+        local_file.close()
+
+        from zipfile import ZipFile
+        with ZipFile(zip_filename, 'r') as zipObj:
+            listOfFileNames = zipObj.namelist()
+            for fileName in listOfFileNames:
+                if fileName.endswith('.graphml'):
+                    #print(fileName)
+                    #zipObj.extract(fileName, local_filepath)
+                    source = zipObj.open(fileName)
+                    target = open(os.path.join(app.config['UPLOAD_FOLDER'], "%s.graphml" % (taskid)), "wb")
+                    with source, target:
+                        shutil.copyfileobj(source, target)
+
+    else:
+        if task_status["workflow"] == "NAP_CCMS2":
+            url_to_graph = "https://proteomics2.ucsd.edu/ProteoSAFe/DownloadResultFile?task=%s&block=main&file=final_out/structure_graph_alt.xgmml" % (taskid)
+        if task_status["workflow"] == "METABOLOMICS-SNETS-V2":
+            url_to_graph = "https://gnps.ucsd.edu/ProteoSAFe/DownloadResultFile?task=%s&block=main&file=gnps_molecular_network_graphml/" % (taskid)
+        if task_status["workflow"] == "METABOLOMICS-SNETS":
+            url_to_graph = "https://gnps.ucsd.edu/ProteoSAFe/DownloadResultFile?task=%s&block=main&file=gnps_molecular_network_graphml/" % (taskid)
+        if task_status["workflow"] == "METABOLOMICS-SNETS-MZMINE":
+            url_to_graph = "https://gnps.ucsd.edu/ProteoSAFe/DownloadResultFile?task=%s&block=main&file=gnps_molecular_network_graphml/" % (taskid)
+        if task_status["workflow"] == "FEATURE-BASED-MOLECULAR-NETWORKING":
+            url_to_graph = "https://gnps.ucsd.edu/ProteoSAFe/DownloadResultFile?task=%s&block=main&file=gnps_molecular_network_graphml/" % (taskid)
+        if task_status["workflow"] == "MOLNETENHANCER":
+            url_to_graph = "https://gnps.ucsd.edu/ProteoSAFe/DownloadResultFile?task=%s&block=main&file=output_network/ClassyFireResults_Network.graphml" % (taskid)
+
+        print(url_to_graph)
+        local_file = open(local_filepath, "w")
+        local_file.write(requests.get(url_to_graph).text)
+        local_file.close()
 
     return local_filepath, task_status["workflow"]
 
@@ -88,6 +110,8 @@ def get_graph_object(taskid):
 @app.route('/process', methods=['POST'])
 def process_ajax():
     print(request.values)
+
+    #TODO, check if output is already produced, if so, then we'll just not do it. 
 
     style_filename = "Styles/Sample2.json"
     taskid = request.values["task"]
@@ -112,6 +136,7 @@ def process_ajax():
 
     cytoscape_process = subprocess.Popen("Cytoscape", shell=True)
 
+    cy = None
     #Check if server is up
     while(1):
         try:
@@ -124,12 +149,13 @@ def process_ajax():
             sleep(1)
             continue
 
-    cy  = CyRestClient()
+    print("Loading graphml into Cytoscape")
     network1 = cy.network.create_from(local_filepath)
 
     mystyle = cy.style.create("ClassDefault")
 
     """Loading style"""
+    print("Loading Style")
     all_parameters = json.loads(open(style_filename).read())
 
     new_defaults_dict = {}
