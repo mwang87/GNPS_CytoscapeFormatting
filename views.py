@@ -55,6 +55,7 @@ def dashboard():
     taskid = request.args["task"]
     return render_template("dashboard.html", task=taskid, randomnumber=str(random.randint(1,10001)))
 
+#Retreiving graphml from workflow output. 
 def get_graph_object(taskid):
     task_status_url = "https://gnps.ucsd.edu/ProteoSAFe/status_json.jsp?task=%s" % (taskid)
 
@@ -78,12 +79,12 @@ def get_graph_object(taskid):
             listOfFileNames = zipObj.namelist()
             for fileName in listOfFileNames:
                 if fileName.endswith('.graphml'):
-                    #print(fileName)
-                    #zipObj.extract(fileName, local_filepath)
                     source = zipObj.open(fileName)
                     target = open(os.path.join(app.config['UPLOAD_FOLDER'], "%s.graphml" % (taskid)), "wb")
                     with source, target:
                         shutil.copyfileobj(source, target)
+                    #Found, lets break
+                    break
 
     else:
         if task_status["workflow"] == "NAP_CCMS2":
@@ -106,7 +107,7 @@ def get_graph_object(taskid):
 
     return local_filepath, task_status["workflow"]
 
-
+#Actually doing the processing
 @app.route('/process', methods=['POST'])
 def process_ajax():
     print(request.values)
@@ -123,6 +124,7 @@ def process_ajax():
     if workflow_name == "MS2LDA_MOTIFDB":
         style_filename = "Styles/MotifEdgesStyle.json"
 
+    #Option to filter data
     if "filter" in request.values:
         if request.values["filter"] == "tagtracker":
             print("Tag Tracker")
@@ -134,6 +136,7 @@ def process_ajax():
             metabotracker.molnetenhancer_wrapper(local_filepath, local_filepath, class_header="CF_superclass", class_name=request.values["molnetenhancer_superclass"])
             style_filename = "Styles/MolnetEnhancer_ChemicalClasses.json"
 
+    #Launching Import into Cytoscape
     cytoscape_process = subprocess.Popen("Cytoscape", shell=True)
 
     cy = None
@@ -199,15 +202,14 @@ def process_ajax():
     sleep(1)
 
     local_cytoscape_file = os.path.abspath(os.path.join(app.config['UPLOAD_FOLDER'], "%s.cys" % (taskid)))
-    cy.session.save(local_cytoscape_file)
+    local_network_img_path = os.path.join(app.config['UPLOAD_FOLDER'], "%s.png" % (taskid))
 
+    cy.session.save(local_cytoscape_file)
     cy.layout.fit(network=network1)
-    #print(cy.__dict__)
-    #cy.view.fit_content()
 
     sleep(1)
 
-    local_png_file = open(os.path.abspath(os.path.join(app.config['UPLOAD_FOLDER'], "%s.png" % (taskid))), "wb")
+    local_png_file = open(os.path.abspath(local_network_img_path), "wb")
     local_png_file.write(network1.get_png())
     local_png_file.close()
 
