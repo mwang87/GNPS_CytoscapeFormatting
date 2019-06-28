@@ -147,8 +147,8 @@ def calculate_output_filenames(params_dict):
 
     return local_cytoscape_file, local_network_img_path
 
+#Launching Import into Cytoscape
 def create_cytoscape(input_graphml, input_style, output_cytoscape_filename, output_img_filename):
-    #Launching Import into Cytoscape
     cytoscape_process = subprocess.Popen("Cytoscape", shell=True)
 
     cy = None
@@ -157,7 +157,6 @@ def create_cytoscape(input_graphml, input_style, output_cytoscape_filename, outp
         try:
             cy  = CyRestClient()
             print("Success Cyrest")
-            #new_cy = cyrest(port=PORT_NUMBER)
             break
         except:
             print("Failed Cyrest")
@@ -201,20 +200,11 @@ def create_cytoscape(input_graphml, input_style, output_cytoscape_filename, outp
 
     mystyle.update_defaults(new_defaults_dict)
 
-    #new_defaults = {
-    #    # Node defaults
-    #    'NODE_CUSTOMGRAPHICS_1': 'org.cytoscape.PieChart:{"cy_range":[0.0,0.0],"cy_colors":["#FF0000","#8000FF","#00FFFF","#80FF00"],"cy_dataColumns":["G1","G2","G3","G4"]}'
-    #}
-    #mystyle.create_passthrough_mapping(column='Compound_Name', col_type='String', vp='NODE_LABEL')
-
-# TO update, change the style in real cytoscape, and look for string here: http://localhost:1234/v1/styles/Ming2
+    # TO update, change the style in real cytoscape, and look for string here: http://localhost:1234/v1/styles/Ming2
 
     cy.style.apply(style=mystyle, network=network1)
 
     sleep(1)
-
-    #local_cytoscape_file = os.path.abspath(os.path.join(app.config['UPLOAD_FOLDER'], "%s.cys" % (taskid)))
-    #local_network_img_path = os.path.join(app.config['UPLOAD_FOLDER'], "%s.png" % (taskid))
 
     cy.session.save(output_cytoscape_filename)
     cy.layout.fit(network=network1)
@@ -225,7 +215,4 @@ def create_cytoscape(input_graphml, input_style, output_cytoscape_filename, outp
     local_png_file.write(network1.get_png())
     local_png_file.close()
 
-    #clean_gc_url = "http://localhost:1234/v1/gc"
-    #requests.get(clean_gc_url)
     requests.get("http://localhost:%d/v1/commands/command/quit" % (1234))
-    #cy.command.quit()
