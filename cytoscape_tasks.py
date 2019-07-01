@@ -3,6 +3,7 @@ import subprocess
 import requests
 from time import sleep
 import json
+import os
 
 from py2cytoscape.data.cyrest_client import CyRestClient
 
@@ -23,12 +24,12 @@ def create_cytoscape(input_graphml, input_style, output_cytoscape_filename, outp
     #Check if server is up
     while(1):
         try:
-            cy  = CyRestClient()
+            cy = CyRestClient()
             print("Success Cyrest")
             break
         except:
             print("Failed Cyrest")
-            sleep(1)
+            sleep(3)
             continue
 
     print("Loading graphml into Cytoscape")
