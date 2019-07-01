@@ -6,7 +6,7 @@ export DISPLAY=:1
 #Cytoscape &
 
 #Running Celery Worker
-sh ./run_celery_worker.sh &
+#sh ./run_celery_worker.sh &
 
 #Running Web Server
 

@@ -12,8 +12,8 @@ wget "http://localhost:5051/process?task=aa63a632d3c24c338e7a5ed046678564"
 
 #Doing Tag Tracker
 
-wget "http://localhost:5051/metabotracker?task=a9cb57ff8dfb4eeba04d73ba1ff3bcfd&filter=tagtracker&source=drugs"
+wget "http://localhost:5051/process?task=a9cb57ff8dfb4eeba04d73ba1ff3bcfd&filter=tagtracker&source=drugs"
 
 #Doing Mol Net Enhancer input
 
-wget "http://localhost:5051/molnetenhancer?task=bda30509c61347fba19ff8c6064d7801&molnetenhancer_superclass=Lipids%20and%20lipid-like%20molecules"
+wget "http://localhost:5051/process?task=bda30509c61347fba19ff8c6064d7801&molnetenhancer_superclass=Lipids%20and%20lipid-like%20molecules&filter=molnetenhancer"

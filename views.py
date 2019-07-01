@@ -104,7 +104,7 @@ def test_celery_endpoint():
     local_filepath = ""
 
     print("Before Celery Submit")
-    result = test_celery.delay(4)
+    result = test_celery.delay(4, 9)
     print(result)
     print("After Celery Submit")
     result.ready()

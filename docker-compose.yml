@@ -2,10 +2,22 @@ version: '3'
 services:
   web:
     build: .
-    container_name: gnpscytoscape
+    container_name: gnpscytoscape_web
     ports:
     - "5051:5051"
     volumes:
     - ./static:/app/static
+  worker1:
+    build: .
+    container_name: gnpscytoscape_worker1
+    volumes:
+    - ./static:/app/static
+    command: /app/run_celery_worker.sh
+  worker2:
+    build: .
+    container_name: gnpscytoscape_worker2
+    volumes:
+    - ./static:/app/static
+    command: /app/run_celery_worker.sh
   redis:
     image: redis
