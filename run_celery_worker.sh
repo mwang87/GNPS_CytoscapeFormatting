@@ -1,0 +1,1 @@
+celery -A cytoscape_tasks worker -l info

@@ -22,3 +22,4 @@ app = CustomFlask(__name__)
 app.config.from_object(__name__)
 UPLOAD_FOLDER = './static/cytoscape'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+

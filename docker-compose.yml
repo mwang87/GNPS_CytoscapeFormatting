@@ -1,0 +1,11 @@
+version: '3'
+services:
+  web:
+    build: .
+    container_name: gnpscytoscape
+    ports:
+    - "5051:5051"
+    volumes:
+    - ./static:/app/static
+  redis:
+    image: redis

@@ -5,6 +5,9 @@ import uuid
 from py2cytoscape.data.cyrest_client import CyRestClient
 
 from app import app
+#from app import celery_instance
+from cytoscape_tasks import test_celery
+
 from werkzeug.utils import secure_filename
 import os
 import glob
@@ -94,6 +97,21 @@ def get_graph_object(taskid):
 
     return local_filepath, task_status["workflow"]
 
+@app.route('/testcelery', methods=['GET'])
+def test_celery_endpoint():
+    #Putting the request on the queue
+    style_filename = ""
+    local_filepath = ""
+
+    print("Before Celery Submit")
+    result = test_celery.delay(4)
+    print(result)
+    print("After Celery Submit")
+    result.ready()
+    result = result.get()
+
+    return str(result)
+
 #Actually doing the processing
 @app.route('/process', methods=['POST'])
 def process_ajax():
@@ -129,9 +147,15 @@ def process_ajax():
             metabotracker.molnetenhancer_wrapper(local_filepath, local_filepath, class_header="CF_superclass", class_name=super_classname)
             style_filename = "Styles/MolnetEnhancer_ChemicalClasses.json"
 
-    create_cytoscape(local_filepath, style_filename, output_cytoscape_filename, output_img_filename)
+    #Doing it in the thread
+    #create_cytoscape(local_filepath, style_filename, output_cytoscape_filename, output_img_filename)
 
+    
     return json.dumps({"redirect_url" : "/dashboard?%s" % (urllib.parse.urlencode(request.values))})
+
+#Test Function
+def test_function(a, b, c, d):
+    print(a, b, c, d)
 
 #Calculating the output cytoscape and img filename
 def calculate_output_filenames(params_dict):
