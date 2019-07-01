@@ -15,6 +15,7 @@ import requests
 import random
 import shutil
 import urllib
+from time import sleep
 import metabotracker
 from pathvalidate import sanitize_filename
 
@@ -104,7 +105,10 @@ def test_celery_endpoint():
     result = test_celery.delay(4, 9)
     print(result)
     print("After Celery Submit")
-    result.ready()
+    while(1):
+        if result.ready():
+            break
+        sleep(10)
     result = result.get()
 
     return str(result)
@@ -152,7 +156,10 @@ def process_ajax2():
     result = create_cytoscape.delay(local_filepath, style_filename, output_cytoscape_filename, output_img_filename)
     print(result)
     print("After Celery Submit")
-    result.ready()
+    while(1):
+        if result.ready():
+            break
+        sleep(10)
     result = result.get()
 
     return json.dumps({"redirect_url" : "/dashboard?%s" % (urllib.parse.urlencode(request.values))})

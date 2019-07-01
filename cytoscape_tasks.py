@@ -13,6 +13,7 @@ celery_instance = Celery('cytoscape_tasks', backend='redis://redis', broker='red
 
 @celery_instance.task
 def test_celery(input_value, input_value2):
+    sleep(60)
     return input_value + input_value2
 
 #Launching Import into Cytoscape
@@ -84,4 +85,8 @@ def create_cytoscape(input_graphml, input_style, output_cytoscape_filename, outp
     local_png_file.write(network1.get_png())
     local_png_file.close()
 
+    #Clean up
     requests.get("http://localhost:%d/v1/commands/command/quit" % (1234))
+
+    #TODO: Perform more compehensive cleanup
+

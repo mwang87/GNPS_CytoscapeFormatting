@@ -13,11 +13,11 @@ services:
     volumes:
     - ./static:/app/static
     command: /app/run_celery_worker.sh
-  # worker2:
-  #   build: .
-  #   container_name: gnpscytoscape_worker2
-  #   volumes:
-  #   - ./static:/app/static
-  #   command: /app/run_celery_worker.sh
+  worker2:
+    build: .
+    container_name: gnpscytoscape_worker2
+    volumes:
+    - ./static:/app/static
+    command: /app/run_celery_worker.sh
   redis:
     image: redis
