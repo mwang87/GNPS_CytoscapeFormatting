@@ -5,6 +5,7 @@ from time import sleep
 import json
 import os
 import networkx as nx
+import psutil
 
 from py2cytoscape.data.cyrest_client import CyRestClient
 
@@ -114,4 +115,11 @@ def create_cytoscape(input_graphml, input_style, output_cytoscape_filename, outp
     requests.get("http://localhost:%d/v1/commands/command/quit" % (1234))
 
     #TODO: Perform more compehensive cleanup
+    cytoscape_process.kill()
 
+
+    for proc in psutil.process_iter(attrs=['pid', 'name', 'username']):
+        if "java" in proc.info["name"]:
+            print("Killing Java")
+            proc.kill()
+        

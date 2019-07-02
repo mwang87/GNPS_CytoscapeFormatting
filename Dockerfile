@@ -21,7 +21,8 @@ RUN chmod u+x  Cytoscape_3_6_1_unix.sh
 RUN sh Cytoscape_3_6_1_unix.sh -q
 
 RUN pip3 install pathvalidate
-RUN pip3 install rq
+RUN pip3 install psutil
+RUN pip3 install redis
 RUN pip3 install -U Celery
 
 COPY . /app

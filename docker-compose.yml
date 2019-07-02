@@ -15,12 +15,7 @@ services:
     volumes:
     - ./static:/app/static
     command: /app/run_celery_worker.sh
-    deploy:
-      restart_policy:
-        condition: on-failure
-      resources:
-        limits:
-          memory: 5000M
+    restart: unless-stopped
     depends_on: 
       - redis
   worker2:
@@ -29,12 +24,7 @@ services:
     volumes:
     - ./static:/app/static
     command: /app/run_celery_worker.sh
-    deploy:
-      restart_policy:
-        condition: on-failure
-      resources:
-        limits:
-          memory: 5000M
+    restart: unless-stopped
     depends_on: 
       - redis
   worker3:
@@ -43,12 +33,16 @@ services:
     volumes:
     - ./static:/app/static
     command: /app/run_celery_worker.sh
-    deploy:
-      restart_policy:
-        condition: on-failure
-      resources:
-        limits:
-          memory: 5000M
+    restart: unless-stopped
+    depends_on: 
+      - redis
+  worker4:
+    build: .
+    container_name: gnpscytoscape_worker4
+    volumes:
+    - ./static:/app/static
+    command: /app/run_celery_worker.sh
+    restart: unless-stopped
     depends_on: 
       - redis
   redis:

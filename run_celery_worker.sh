@@ -4,4 +4,4 @@
 Xvfb :1 &
 export DISPLAY=:1
 
-celery -A cytoscape_tasks worker -l info
+celery -A cytoscape_tasks worker -l info -c 1
