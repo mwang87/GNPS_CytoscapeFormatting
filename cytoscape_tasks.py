@@ -20,12 +20,29 @@ def test_celery(input_value, input_value2):
 #Launching Import into Cytoscape
 @celery_instance.task
 def create_cytoscape(input_graphml, input_style, output_cytoscape_filename, output_img_filename):
-    #Lets check if the output is already there
-    if os.path.exists(output_cytoscape_filename):
-        return
+    # #Lets check if the output is already there
+    # if os.path.exists(output_cytoscape_filename):
+    #     return
 
     #Check if the number of nodes is too large
     print("GRAPHML SIZE", input_graphml, os.path.getsize(input_graphml))
+
+    network_graph = nx.read_graphml(input_graphml)
+    number_of_nodes = network_graph.number_of_nodes()
+    number_of_edges = network_graph.number_of_edges()
+    print("Graph node count", number_of_nodes)
+    print("Graph edge count", number_of_edges)
+
+    MAX_NODES = 10000
+    MAX_EDGES = 50000
+    if number_of_nodes > MAX_NODES:
+        raise Exception("Too Many Nodes in Graphml, will crash Cytoscape")
+    if number_of_edges > MAX_EDGES:
+        raise Exception("Too Many EDGES in Graphml, will crash Cytoscape")
+
+    #Lets check if the output is already there
+    if os.path.exists(output_cytoscape_filename):
+        return
 
     cytoscape_process = subprocess.Popen("Cytoscape", shell=True)
 

@@ -32,6 +32,14 @@ def heartbeat():
 def process():
     taskid = request.args["task"]
 
+    expected_graphml_filename, output_cytoscape_filename, output_img_filename = calculate_output_filenames(request.values)
+
+    if os.path.exists(output_cytoscape_filename):
+        return render_template("dashboard.html", \
+            cytoscapefilename=os.path.basename(output_cytoscape_filename), \
+            imagefilename=os.path.basename(output_img_filename), \
+            randomnumber=str(random.randint(1,10001)))
+
     return render_template("process.html", task=taskid, query_parameters=dict(request.values))
 
 @app.route('/dashboard', methods=['GET'])
@@ -95,74 +103,74 @@ def get_graph_object(taskid):
 
     return local_filepath, task_status["workflow"]
 
-@app.route('/testcelery', methods=['GET'])
-def test_celery_endpoint():
-    #Putting the request on the queue
-    style_filename = ""
-    local_filepath = ""
+# @app.route('/testcelery', methods=['GET'])
+# def test_celery_endpoint():
+#     #Putting the request on the queue
+#     style_filename = ""
+#     local_filepath = ""
 
-    print("Before Celery Submit")
-    result = test_celery.delay(4, 9)
-    print(result)
-    print("After Celery Submit")
-    while(1):
-        if result.ready():
-            break
-        sleep(10)
-    result = result.get()
+#     print("Before Celery Submit")
+#     result = test_celery.delay(4, 9)
+#     print(result)
+#     print("After Celery Submit")
+#     while(1):
+#         if result.ready():
+#             break
+#         sleep(10)
+#     result = result.get()
 
-    return str(result)
+#     return str(result)
 
-@app.route('/process2', methods=['GET'])
-def process_ajax2():
-    print(request.values)
+# @app.route('/process2', methods=['GET'])
+# def process_ajax2():
+#     print(request.values)
 
-    expected_graphml_filename, output_cytoscape_filename, output_img_filename = calculate_output_filenames(request.values)
+#     expected_graphml_filename, output_cytoscape_filename, output_img_filename = calculate_output_filenames(request.values)
     
-    #if os.path.exists(output_cytoscape_filename):
-    #    return json.dumps({"redirect_url" : "/dashboard?%s" % (urllib.parse.urlencode(request.values))})
+#     #if os.path.exists(output_cytoscape_filename):
+#     #    return json.dumps({"redirect_url" : "/dashboard?%s" % (urllib.parse.urlencode(request.values))})
 
-    print(output_cytoscape_filename, output_img_filename)
+#     print(output_cytoscape_filename, output_img_filename)
 
-    style_filename = "Styles/Sample2.json"
-    taskid = request.values["task"]
+#     style_filename = "Styles/Sample2.json"
+#     taskid = request.values["task"]
 
-    #TESTING
-    local_filepath = expected_graphml_filename
-    workflow_name = ""
+#     #TESTING
+#     local_filepath = expected_graphml_filename
+#     workflow_name = ""
     
-    #local_filepath, workflow_name = get_graph_object(taskid)
+#     #local_filepath, workflow_name = get_graph_object(taskid)
 
-    #Defining style given the type of data
-    if workflow_name == "MOLNETENHANCER":
-        style_filename = "Styles/MolnetEnhancer_ChemicalSuperClasses.json"
-    if workflow_name == "MS2LDA_MOTIFDB":
-        style_filename = "Styles/MotifEdgesStyle.json"
+#     #Defining style given the type of data
+#     if workflow_name == "MOLNETENHANCER":
+#         style_filename = "Styles/MolnetEnhancer_ChemicalSuperClasses.json"
+#     if workflow_name == "MS2LDA_MOTIFDB":
+#         style_filename = "Styles/MotifEdgesStyle.json"
 
-    #Option to filter data
-    if "filter" in request.values:
-        if request.values["filter"] == "tagtracker":
-            print("Tag Tracker")
-            source = request.values["source"]
-            sources_list = [source]
-            metabotracker.metabotracker_wrapper(local_filepath, local_filepath, source=sources_list)
-        if request.values["filter"] == "molnetenhancer":
-            print("Molnetenhancer")
-            super_classname = request.values["molnetenhancer_superclass"]
-            metabotracker.molnetenhancer_wrapper(local_filepath, local_filepath, class_header="CF_superclass", class_name=super_classname)
-            style_filename = "Styles/MolnetEnhancer_ChemicalClasses.json"
+#     #Option to filter data
+#     if "filter" in request.values:
+#         if request.values["filter"] == "tagtracker":
+#             print("Tag Tracker")
+#             source = request.values["source"]
+#             sources_list = [source]
+#             metabotracker.metabotracker_wrapper(local_filepath, local_filepath, source=sources_list)
+#         if request.values["filter"] == "molnetenhancer":
+#             print("Molnetenhancer")
+#             super_classname = request.values["molnetenhancer_superclass"]
+#             metabotracker.molnetenhancer_wrapper(local_filepath, local_filepath, class_header="CF_superclass", class_name=super_classname)
+#             style_filename = "Styles/MolnetEnhancer_ChemicalClasses.json"
 
-    #Doing it in the worker
-    result = create_cytoscape.delay(local_filepath, style_filename, output_cytoscape_filename, output_img_filename)
-    print(result)
-    print("After Celery Submit")
-    while(1):
-        if result.ready():
-            break
-        sleep(10)
-    result = result.get()
+#     #Doing it in the worker
+#     result = create_cytoscape.delay(local_filepath, style_filename, output_cytoscape_filename, output_img_filename)
+#     print(result)
+#     print("After Celery Submit")
+#     while(1):
+#         if result.ready():
+#             break
+#         sleep(10)
+#     result = result.get()
 
-    return json.dumps({"redirect_url" : "/dashboard?%s" % (urllib.parse.urlencode(request.values))})
+#     return json.dumps({"redirect_url" : "/dashboard?%s" % (urllib.parse.urlencode(request.values))})
 
 
 
@@ -173,8 +181,8 @@ def process_ajax():
 
     expected_graphml_filename, output_cytoscape_filename, output_img_filename = calculate_output_filenames(request.values)
     
-    #if os.path.exists(output_cytoscape_filename):
-    #    return json.dumps({"redirect_url" : "/dashboard?%s" % (urllib.parse.urlencode(request.values))})
+    # if os.path.exists(output_cytoscape_filename):
+    #     return json.dumps({"redirect_url" : "/dashboard?%s" % (urllib.parse.urlencode(request.values))})
 
     print(output_cytoscape_filename, output_img_filename)
 
@@ -212,10 +220,10 @@ def process_ajax():
     while(1):
         if result.ready():
             break
-        sleep(10)
+        sleep(3)
     result = result.get()
 
-    return json.dumps({"redirect_url" : "/dashboard?%s" % (urllib.parse.urlencode(request.values))})
+    return json.dumps({"redirect_url" : "/process?%s" % (urllib.parse.urlencode(request.values))})
 
 #Calculating the output cytoscape and img filename
 def calculate_output_filenames(params_dict):

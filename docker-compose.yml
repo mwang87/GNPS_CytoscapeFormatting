@@ -7,6 +7,8 @@ services:
     - "5051:5051"
     volumes:
     - ./static:/app/static
+    depends_on: 
+      - redis
   worker1:
     build: .
     container_name: gnpscytoscape_worker1
@@ -19,6 +21,8 @@ services:
       resources:
         limits:
           memory: 5000M
+    depends_on: 
+      - redis
   worker2:
     build: .
     container_name: gnpscytoscape_worker2
@@ -31,6 +35,8 @@ services:
       resources:
         limits:
           memory: 5000M
+    depends_on: 
+      - redis
   worker3:
     build: .
     container_name: gnpscytoscape_worker3
@@ -43,5 +49,7 @@ services:
       resources:
         limits:
           memory: 5000M
+    depends_on: 
+      - redis
   redis:
     image: redis
