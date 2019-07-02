@@ -14,9 +14,13 @@ server:
 interactive:
 	docker run -it -p 5051:5051 -v $(PWD)/static:/app/static --memory=20G --rm --name gnpscytoscape gnpscytoscape /app/run_server_in_docker.sh
 
-server-compose:
+server-compose-interactive:
 	docker-compose build
 	docker-compose up
+
+server-compose:
+	docker-compose build
+	docker-compose up -d
 
 attach:
 	docker exec -i -t gnpscytoscape  /bin/bash
