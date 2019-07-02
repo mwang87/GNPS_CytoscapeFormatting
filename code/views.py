@@ -52,15 +52,10 @@ def dashboard():
         randomnumber=str(random.randint(1,10001)))
 
 #Retreiving graphml from workflow output. 
-def get_graph_object(taskid):
-    task_status_url = "https://gnps.ucsd.edu/ProteoSAFe/status_json.jsp?task=%s" % (taskid)
-
-    task_status = requests.get(task_status_url).json()
+def get_graph_object(taskid, workflow_name, output_graphml_filename):
     url_to_graph = ""
 
-    local_filepath = os.path.join(app.config['UPLOAD_FOLDER'], "%s.graphml" % (taskid))
-
-    if task_status["workflow"] == "MS2LDA_MOTIFDB":
+    if workflow_name == "MS2LDA_MOTIFDB":
         #Special case using zip file
         url_to_zip = "https://gnps.ucsd.edu/ProteoSAFe/DownloadResult?task=%s&show=true&view=download_cytoscape_data" % (taskid)
         r = requests.post(url_to_zip)
@@ -76,32 +71,33 @@ def get_graph_object(taskid):
             for fileName in listOfFileNames:
                 if fileName.endswith('.graphml'):
                     source = zipObj.open(fileName)
-                    target = open(os.path.join(app.config['UPLOAD_FOLDER'], "%s.graphml" % (taskid)), "wb")
+                    target = open(output_graphml_filename, "wb")
                     with source, target:
                         shutil.copyfileobj(source, target)
                     #Found, lets break
                     break
 
     else:
-        if task_status["workflow"] == "NAP_CCMS2":
+        if workflow_name == "NAP_CCMS2":
             url_to_graph = "https://proteomics2.ucsd.edu/ProteoSAFe/DownloadResultFile?task=%s&block=main&file=final_out/structure_graph_alt.xgmml" % (taskid)
-        if task_status["workflow"] == "METABOLOMICS-SNETS-V2":
+        if workflow_name == "METABOLOMICS-SNETS-V2":
             url_to_graph = "https://gnps.ucsd.edu/ProteoSAFe/DownloadResultFile?task=%s&block=main&file=gnps_molecular_network_graphml/" % (taskid)
-        if task_status["workflow"] == "METABOLOMICS-SNETS":
+        if workflow_name == "METABOLOMICS-SNETS":
             url_to_graph = "https://gnps.ucsd.edu/ProteoSAFe/DownloadResultFile?task=%s&block=main&file=gnps_molecular_network_graphml/" % (taskid)
-        if task_status["workflow"] == "METABOLOMICS-SNETS-MZMINE":
+        if workflow_name == "METABOLOMICS-SNETS-MZMINE":
             url_to_graph = "https://gnps.ucsd.edu/ProteoSAFe/DownloadResultFile?task=%s&block=main&file=gnps_molecular_network_graphml/" % (taskid)
-        if task_status["workflow"] == "FEATURE-BASED-MOLECULAR-NETWORKING":
+        if workflow_name == "FEATURE-BASED-MOLECULAR-NETWORKING":
             url_to_graph = "https://gnps.ucsd.edu/ProteoSAFe/DownloadResultFile?task=%s&block=main&file=gnps_molecular_network_graphml/" % (taskid)
-        if task_status["workflow"] == "MOLNETENHANCER":
+        if workflow_name == "MOLNETENHANCER":
             url_to_graph = "https://gnps.ucsd.edu/ProteoSAFe/DownloadResultFile?task=%s&block=main&file=output_network/ClassyFireResults_Network.graphml" % (taskid)
 
         print(url_to_graph)
-        local_file = open(local_filepath, "w")
+        local_file = open(output_graphml_filename, "w")
         local_file.write(requests.get(url_to_graph).text)
         local_file.close()
 
-    return local_filepath, task_status["workflow"]
+    #TODO checkout to make sure the graphml is ok
+    return True
 
 # @app.route('/testcelery', methods=['GET'])
 # def test_celery_endpoint():
@@ -179,7 +175,7 @@ def get_graph_object(taskid):
 def process_ajax():
     print(request.values)
 
-    expected_graphml_filename, output_cytoscape_filename, output_img_filename = calculate_output_filenames(request.values)
+    output_graphml_filename, output_cytoscape_filename, output_img_filename = calculate_output_filenames(request.values)
     
     # if os.path.exists(output_cytoscape_filename):
     #     return json.dumps({"redirect_url" : "/dashboard?%s" % (urllib.parse.urlencode(request.values))})
@@ -189,7 +185,14 @@ def process_ajax():
     style_filename = "Styles/Sample2.json"
     taskid = request.values["task"]
 
-    local_filepath, workflow_name = get_graph_object(taskid)
+    task_status_url = "https://gnps.ucsd.edu/ProteoSAFe/status_json.jsp?task=%s" % (taskid)
+    task_status = requests.get(task_status_url).json()
+    workflow_name = task_status["workflow"]
+
+    retreval_status = get_graph_object(taskid, workflow_name, output_graphml_filename)
+
+    if not retreval_status:
+        raise Exception("Did not retreive graphml properly")
 
     #Defining style given the type of data
     if workflow_name == "MOLNETENHANCER":
@@ -203,18 +206,18 @@ def process_ajax():
             print("Tag Tracker")
             source = request.values["source"]
             sources_list = [source]
-            metabotracker.metabotracker_wrapper(local_filepath, local_filepath, source=sources_list)
+            metabotracker.metabotracker_wrapper(output_graphml_filename, output_graphml_filename, source=sources_list)
         if request.values["filter"] == "molnetenhancer":
             print("Molnetenhancer")
             super_classname = request.values["molnetenhancer_superclass"]
-            metabotracker.molnetenhancer_wrapper(local_filepath, local_filepath, class_header="CF_superclass", class_name=super_classname)
+            metabotracker.molnetenhancer_wrapper(output_graphml_filename, output_graphml_filename, class_header="CF_superclass", class_name=super_classname)
             style_filename = "Styles/MolnetEnhancer_ChemicalClasses.json"
 
     #Doing it in the thread
     #create_cytoscape(local_filepath, style_filename, output_cytoscape_filename, output_img_filename)
 
     #Doing it in the worker
-    result = create_cytoscape.delay(local_filepath, style_filename, output_cytoscape_filename, output_img_filename)
+    result = create_cytoscape.delay(output_graphml_filename, style_filename, output_cytoscape_filename, output_img_filename)
     print(result)
     print("After Celery Submit")
     while(1):
