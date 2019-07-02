@@ -19,7 +19,7 @@ def test_celery(input_value, input_value2):
     return input_value + input_value2
 
 #Launching Import into Cytoscape
-@celery_instance.task
+@celery_instance.task(time_limit=120)
 def create_cytoscape(input_graphml, input_style, output_cytoscape_filename, output_img_filename):
     # #Lets check if the output is already there
     # if os.path.exists(output_cytoscape_filename):
