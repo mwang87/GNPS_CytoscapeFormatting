@@ -203,13 +203,19 @@ def process_ajax():
             style_filename = "Styles/MolnetEnhancer_ChemicalClasses.json"
 
     #Doing it in the thread
-    create_cytoscape(local_filepath, style_filename, output_cytoscape_filename, output_img_filename)
+    #create_cytoscape(local_filepath, style_filename, output_cytoscape_filename, output_img_filename)
+
+    #Doing it in the worker
+    result = create_cytoscape.delay(local_filepath, style_filename, output_cytoscape_filename, output_img_filename)
+    print(result)
+    print("After Celery Submit")
+    while(1):
+        if result.ready():
+            break
+        sleep(10)
+    result = result.get()
 
     return json.dumps({"redirect_url" : "/dashboard?%s" % (urllib.parse.urlencode(request.values))})
-
-#Test Function
-def test_function(a, b, c, d):
-    print(a, b, c, d)
 
 #Calculating the output cytoscape and img filename
 def calculate_output_filenames(params_dict):

@@ -1,6 +1,10 @@
-#Doing Standard:
+#Doing Metabolomics V1:
 
-wget "http://localhost:5051/process?task=345346423bf643a29206ed3b4b60a2d7"
+wget "http://localhost:5051/process?task=55230cf0fbd14b95bc0eced5bb61353f"
+
+#Doing Metabolomics V2:
+
+wget "http://localhost:5051/process?task=a9cb57ff8dfb4eeba04d73ba1ff3bcfd"
 
 #Standard from MolNetEnhancer
 
@@ -17,3 +21,10 @@ wget "http://localhost:5051/process?task=a9cb57ff8dfb4eeba04d73ba1ff3bcfd&filter
 #Doing Mol Net Enhancer input
 
 wget "http://localhost:5051/process?task=bda30509c61347fba19ff8c6064d7801&molnetenhancer_superclass=Lipids%20and%20lipid-like%20molecules&filter=molnetenhancer"
+
+
+### Error Cases
+
+#Too large network
+wget "http://localhost:5051/process?task=2385676aea054d0689de6c839e5d6633"
+

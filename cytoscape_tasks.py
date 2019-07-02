@@ -4,6 +4,7 @@ import requests
 from time import sleep
 import json
 import os
+import networkx as nx
 
 from py2cytoscape.data.cyrest_client import CyRestClient
 
@@ -19,6 +20,13 @@ def test_celery(input_value, input_value2):
 #Launching Import into Cytoscape
 @celery_instance.task
 def create_cytoscape(input_graphml, input_style, output_cytoscape_filename, output_img_filename):
+    #Lets check if the output is already there
+    if os.path.exists(output_cytoscape_filename):
+        return
+
+    #Check if the number of nodes is too large
+    print("GRAPHML SIZE", input_graphml, os.path.getsize(input_graphml))
+
     cytoscape_process = subprocess.Popen("Cytoscape", shell=True)
 
     cy = None
