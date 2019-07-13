@@ -9,6 +9,10 @@ services:
     - ../static:/app/static
     depends_on: 
       - redis
+    environment:
+      - VIRTUAL_HOST=gnps-cytoscape.ucsd.edu
+      - VIRTUAL_PORT=5051
+    restart: unless-stopped
   worker1:
     build: .
     container_name: gnpscytoscape_worker1
