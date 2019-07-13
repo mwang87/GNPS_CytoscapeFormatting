@@ -5,6 +5,8 @@ services:
     container_name: gnpscytoscape
     ports:
     - "5051:5051"
+    expose:
+    - "5051"
     volumes:
     - ../static:/app/static
     depends_on: 
