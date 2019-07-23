@@ -11,9 +11,6 @@ services:
       - redis
     networks:
       - default
-    environment:
-      VIRTUAL_HOST: gnps-cytoscape.ucsd.edu
-      VIRTUAL_PORT: 5051
     restart: unless-stopped
   worker1:
     build: .
