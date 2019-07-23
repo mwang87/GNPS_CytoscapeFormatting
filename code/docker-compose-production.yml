@@ -5,10 +5,12 @@ services:
       - default
       - nginx-net
     environment:
-      VIRTUAL_HOST: gnps-cytoscape.ucsd.edu
+      #VIRTUAL_HOST: gnps-cytoscape.ucsd.edu
+      VIRTUAL_HOST: dorresteinappshub.ucsd.edu
       #VIRTUAL_HOST: mingwangbeta.ucsd.edu
       VIRTUAL_PORT: 5051
-      LETSENCRYPT_HOST: gnps-cytoscape.ucsd.edu
+      #LETSENCRYPT_HOST: gnps-cytoscape.ucsd.edu
+      LETSENCRYPT_HOST: dorresteinappshub.ucsd.edu
       #LETSENCRYPT_HOST: mingwangbeta.ucsd.edu
       LETSENCRYPT_EMAIL: miw023@ucsd.edu
 
