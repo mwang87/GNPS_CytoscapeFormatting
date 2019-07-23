@@ -99,86 +99,12 @@ def get_graph_object(taskid, workflow_name, output_graphml_filename):
     #TODO checkout to make sure the graphml is ok
     return True
 
-# @app.route('/testcelery', methods=['GET'])
-# def test_celery_endpoint():
-#     #Putting the request on the queue
-#     style_filename = ""
-#     local_filepath = ""
-
-#     print("Before Celery Submit")
-#     result = test_celery.delay(4, 9)
-#     print(result)
-#     print("After Celery Submit")
-#     while(1):
-#         if result.ready():
-#             break
-#         sleep(10)
-#     result = result.get()
-
-#     return str(result)
-
-# @app.route('/process2', methods=['GET'])
-# def process_ajax2():
-#     print(request.values)
-
-#     expected_graphml_filename, output_cytoscape_filename, output_img_filename = calculate_output_filenames(request.values)
-    
-#     #if os.path.exists(output_cytoscape_filename):
-#     #    return json.dumps({"redirect_url" : "/dashboard?%s" % (urllib.parse.urlencode(request.values))})
-
-#     print(output_cytoscape_filename, output_img_filename)
-
-#     style_filename = "Styles/Sample2.json"
-#     taskid = request.values["task"]
-
-#     #TESTING
-#     local_filepath = expected_graphml_filename
-#     workflow_name = ""
-    
-#     #local_filepath, workflow_name = get_graph_object(taskid)
-
-#     #Defining style given the type of data
-#     if workflow_name == "MOLNETENHANCER":
-#         style_filename = "Styles/MolnetEnhancer_ChemicalSuperClasses.json"
-#     if workflow_name == "MS2LDA_MOTIFDB":
-#         style_filename = "Styles/MotifEdgesStyle.json"
-
-#     #Option to filter data
-#     if "filter" in request.values:
-#         if request.values["filter"] == "tagtracker":
-#             print("Tag Tracker")
-#             source = request.values["source"]
-#             sources_list = [source]
-#             metabotracker.metabotracker_wrapper(local_filepath, local_filepath, source=sources_list)
-#         if request.values["filter"] == "molnetenhancer":
-#             print("Molnetenhancer")
-#             super_classname = request.values["molnetenhancer_superclass"]
-#             metabotracker.molnetenhancer_wrapper(local_filepath, local_filepath, class_header="CF_superclass", class_name=super_classname)
-#             style_filename = "Styles/MolnetEnhancer_ChemicalClasses.json"
-
-#     #Doing it in the worker
-#     result = create_cytoscape.delay(local_filepath, style_filename, output_cytoscape_filename, output_img_filename)
-#     print(result)
-#     print("After Celery Submit")
-#     while(1):
-#         if result.ready():
-#             break
-#         sleep(10)
-#     result = result.get()
-
-#     return json.dumps({"redirect_url" : "/dashboard?%s" % (urllib.parse.urlencode(request.values))})
-
-
-
 #Actually doing the processing
 @app.route('/process', methods=['POST'])
 def process_ajax():
     print(request.values)
 
     output_graphml_filename, output_cytoscape_filename, output_img_filename = calculate_output_filenames(request.values)
-    
-    # if os.path.exists(output_cytoscape_filename):
-    #     return json.dumps({"redirect_url" : "/dashboard?%s" % (urllib.parse.urlencode(request.values))})
 
     print(output_cytoscape_filename, output_img_filename)
 
@@ -218,8 +144,7 @@ def process_ajax():
 
     #Doing it in the worker
     result = create_cytoscape.delay(output_graphml_filename, style_filename, output_cytoscape_filename, output_img_filename)
-    print(result)
-    print("After Celery Submit")
+
     while(1):
         if result.ready():
             break
@@ -233,7 +158,7 @@ def calculate_output_filenames(params_dict):
     expected_keys = ["task", "filter", "source", "molnetenhancer_superclass"]
     param_keys = list(params_dict.keys())
     param_keys.sort()
-    all_values = [sanitize_filename(str(params_dict[key])).replace(" ", "") for key in param_keys]
+    all_values = [os.path.basename(sanitize_filename(str(params_dict[key])).replace(" ", "")) for key in param_keys if key in expected_keys]
 
     filename_base = "_".join(all_values)
 

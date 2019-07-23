@@ -9,6 +9,8 @@ services:
     - ../static:/app/static
     depends_on: 
       - redis
+    networks:
+      - default
     environment:
       VIRTUAL_HOST: gnps-cytoscape.ucsd.edu
       VIRTUAL_PORT: 5051
@@ -22,6 +24,8 @@ services:
     restart: unless-stopped
     depends_on: 
       - redis
+    networks:
+      - default
   worker2:
     build: .
     container_name: gnpscytoscape_worker2
@@ -31,6 +35,8 @@ services:
     restart: unless-stopped
     depends_on: 
       - redis
+    networks:
+      - default
   worker3:
     build: .
     container_name: gnpscytoscape_worker3
@@ -40,6 +46,8 @@ services:
     restart: unless-stopped
     depends_on: 
       - redis
+    networks:
+      - default
   worker4:
     build: .
     container_name: gnpscytoscape_worker4
@@ -49,5 +57,9 @@ services:
     restart: unless-stopped
     depends_on: 
       - redis
+    networks:
+      - default
   redis:
     image: redis
+    networks:
+      - default

@@ -1,0 +1,14 @@
+version: '3'
+services:
+  web:
+    networks:
+      - default
+      - nginx-net
+    environment:
+      VIRTUAL_HOST: gnps-cytoscape.ucsd.edu
+      VIRTUAL_PORT: 5051
+
+networks:
+  nginx-net:
+    external:
+      name: nginx-net
