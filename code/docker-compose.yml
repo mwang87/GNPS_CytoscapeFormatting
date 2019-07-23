@@ -23,39 +23,39 @@ services:
       - redis
     networks:
       - default
-  worker2:
-    build: .
-    container_name: gnpscytoscape_worker2
-    volumes:
-    - ../static:/app/static
-    command: /app/run_celery_worker.sh
-    restart: unless-stopped
-    depends_on: 
-      - redis
-    networks:
-      - default
-  worker3:
-    build: .
-    container_name: gnpscytoscape_worker3
-    volumes:
-    - ../static:/app/static
-    command: /app/run_celery_worker.sh
-    restart: unless-stopped
-    depends_on: 
-      - redis
-    networks:
-      - default
-  worker4:
-    build: .
-    container_name: gnpscytoscape_worker4
-    volumes:
-    - ../static:/app/static
-    command: /app/run_celery_worker.sh
-    restart: unless-stopped
-    depends_on: 
-      - redis
-    networks:
-      - default
+  # worker2:
+  #   build: .
+  #   container_name: gnpscytoscape_worker2
+  #   volumes:
+  #   - ../static:/app/static
+  #   command: /app/run_celery_worker.sh
+  #   restart: unless-stopped
+  #   depends_on: 
+  #     - redis
+  #   networks:
+  #     - default
+  # worker3:
+  #   build: .
+  #   container_name: gnpscytoscape_worker3
+  #   volumes:
+  #   - ../static:/app/static
+  #   command: /app/run_celery_worker.sh
+  #   restart: unless-stopped
+  #   depends_on: 
+  #     - redis
+  #   networks:
+  #     - default
+  # worker4:
+  #   build: .
+  #   container_name: gnpscytoscape_worker4
+  #   volumes:
+  #   - ../static:/app/static
+  #   command: /app/run_celery_worker.sh
+  #   restart: unless-stopped
+  #   depends_on: 
+  #     - redis
+  #   networks:
+  #     - default
   redis:
     image: redis
     networks:
