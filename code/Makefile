@@ -29,7 +29,7 @@ server-compose:
 
 server-compose-production:
 	docker-compose build
-	docker-compose -f docker-compose.yml -f docker-compose-production.yml up
+	docker-compose -f docker-compose.yml -f docker-compose-production.yml up -d
 
 attach:
 	docker exec -i -t gnpscytoscape  /bin/bash
