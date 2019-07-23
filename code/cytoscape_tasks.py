@@ -45,7 +45,12 @@ def create_cytoscape(input_graphml, input_style, output_cytoscape_filename, outp
     if os.path.exists(output_cytoscape_filename):
         return
 
-    cytoscape_process = subprocess.Popen("Cytoscape", shell=True)
+    cytoscape_process = subprocess.Popen("Cytoscape", shell=True, 
+            stdout=subprocess.PIPE,
+            stderr=subprocess.STDOUT)
+
+    
+
 
     cy = None
     #Check if server is up
@@ -56,6 +61,11 @@ def create_cytoscape(input_graphml, input_style, output_cytoscape_filename, outp
             break
         except:
             print("Failed Cyrest")
+            if cytoscape_process.poll() != None:
+                process_output, process_erroutput =  cytoscape_process.communicate()
+                print("Error Cytoscape Died Before we could Use")
+                print(process_output, process_erroutput)
+                return
             sleep(3)
             continue
 
