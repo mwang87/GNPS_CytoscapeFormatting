@@ -20,10 +20,10 @@ def test_celery(input_value, input_value2):
 
 #Launching Import into Cytoscape
 @celery_instance.task(time_limit=120)
-def create_cytoscape(input_graphml, input_style, output_cytoscape_filename, output_img_filename):
+def create_cytoscape(input_graphml, input_style, output_cytoscape_filename, output_img_filename, force_generate=False):
     # #Lets check if the output is already there
-    # if os.path.exists(output_cytoscape_filename):
-    #     return
+    if os.path.exists(output_cytoscape_filename) and force_generate == False:
+        return
 
     #Check if the number of nodes is too large
     print("GRAPHML SIZE", input_graphml, os.path.getsize(input_graphml))
@@ -41,15 +41,9 @@ def create_cytoscape(input_graphml, input_style, output_cytoscape_filename, outp
     if number_of_edges > MAX_EDGES:
         raise Exception("Too Many EDGES in Graphml, will crash Cytoscape")
 
-    #Lets check if the output is already there
-    if os.path.exists(output_cytoscape_filename):
-        return
-
     cytoscape_process = subprocess.Popen("Cytoscape", shell=True, 
             stdout=subprocess.PIPE,
             stderr=subprocess.STDOUT)
-
-    
 
 
     cy = None
@@ -65,7 +59,7 @@ def create_cytoscape(input_graphml, input_style, output_cytoscape_filename, outp
                 process_output, process_erroutput =  cytoscape_process.communicate()
                 print("Error Cytoscape Died Before we could Use")
                 print(process_output, process_erroutput)
-                return
+            #    return
             sleep(3)
             continue
 

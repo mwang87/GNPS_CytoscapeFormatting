@@ -34,8 +34,13 @@ def process():
 
     expected_graphml_filename, output_cytoscape_filename, output_img_filename = calculate_output_filenames(request.values)
 
-    if os.path.exists(output_cytoscape_filename):
+    force_generate = False
+    if "force" in request.values:
+        force_generate = True
+
+    if os.path.exists(output_cytoscape_filename) and force_generate == False:
         return render_template("dashboard.html", \
+            task=taskid, \
             cytoscapefilename=os.path.basename(output_cytoscape_filename), \
             imagefilename=os.path.basename(output_img_filename), \
             randomnumber=str(random.randint(1,10001)))
@@ -139,11 +144,21 @@ def process_ajax():
             metabotracker.molnetenhancer_wrapper(output_graphml_filename, output_graphml_filename, class_header="CF_superclass", class_name=super_classname)
             style_filename = "Styles/MolnetEnhancer_ChemicalClasses.json"
 
+
+    if "style" in request.values:
+        putative_style_filename = os.path.join("Styles", os.path.basename(request.values["style"]))
+        if os.path.isfile(putative_style_filename):
+            style_filename = putative_style_filename
+
+    force_generate = False
+    if "force" in request.values:
+        force_generate = True
+
     #Doing it in the thread
     #create_cytoscape(local_filepath, style_filename, output_cytoscape_filename, output_img_filename)
 
     #Doing it in the worker
-    result = create_cytoscape.delay(output_graphml_filename, style_filename, output_cytoscape_filename, output_img_filename)
+    result = create_cytoscape.delay(output_graphml_filename, style_filename, output_cytoscape_filename, output_img_filename, force_generate=force_generate)
 
     while(1):
         if result.ready():
