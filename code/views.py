@@ -108,7 +108,7 @@ def process_ajax():
 
     print(output_cytoscape_filename, output_img_filename)
 
-    style_filename = "Styles/Sample2.json"
+    style_filename = "Styles/GNPSDefault.json"
     taskid = request.values["task"]
 
     task_status_url = "https://gnps.ucsd.edu/ProteoSAFe/status_json.jsp?task=%s" % (taskid)
@@ -155,7 +155,7 @@ def process_ajax():
 
 #Calculating the output cytoscape and img filename
 def calculate_output_filenames(params_dict):
-    expected_keys = ["task", "filter", "source", "molnetenhancer_superclass"]
+    expected_keys = ["task", "filter", "source", "molnetenhancer_superclass", "style"]
     param_keys = list(params_dict.keys())
     param_keys.sort()
     all_values = [os.path.basename(sanitize_filename(str(params_dict[key])).replace(" ", "")) for key in param_keys if key in expected_keys]
