@@ -1,5 +1,8 @@
 #!/bin/bash
 
+#Trying to remove X1 lock
+rm /tmp/.X1-lock || true
+
 #Running Cytoscape Virtual Buffer
 Xvfb :1 &
 sleep 1
