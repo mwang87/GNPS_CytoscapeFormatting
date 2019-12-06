@@ -166,7 +166,7 @@ def process_ajax():
         sleep(3)
     result = result.get()
 
-    response_parameters = request.values
+    response_parameters = request.values.copy()
     response_parameters.pop("force", None)
 
     return json.dumps({"redirect_url" : "/process?%s" % (urllib.parse.urlencode(response_parameters))})
