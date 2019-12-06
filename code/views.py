@@ -166,7 +166,10 @@ def process_ajax():
         sleep(3)
     result = result.get()
 
-    return json.dumps({"redirect_url" : "/process?%s" % (urllib.parse.urlencode(request.values))})
+    response_parameters = request.values
+    response_parameters.pop("force", None)
+
+    return json.dumps({"redirect_url" : "/process?%s" % (urllib.parse.urlencode(response_parameters))})
 
 #Calculating the output cytoscape and img filename
 def calculate_output_filenames(params_dict):
