@@ -6,7 +6,7 @@ services:
     ports:
     - "5051:5051"
     volumes:
-    - ../static:/app/static
+    - ./static:/app/static
     depends_on: 
       - redis
     networks:
@@ -16,7 +16,7 @@ services:
     build: .
     container_name: gnpscytoscape_worker1
     volumes:
-    - ../static:/app/static
+    - ./static:/app/static
     command: /app/run_celery_worker.sh
     restart: unless-stopped
     depends_on: 
