@@ -1,4 +1,4 @@
-name: production integration
+name: production-integration
 
 on: 
   push:
