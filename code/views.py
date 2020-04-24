@@ -95,6 +95,8 @@ def get_graph_object(taskid, workflow_name, output_graphml_filename):
             url_to_graph = "https://gnps.ucsd.edu/ProteoSAFe/DownloadResultFile?task=%s&block=main&file=gnps_molecular_network_graphml/" % (taskid)
         if workflow_name == "MOLNETENHANCER":
             url_to_graph = "https://gnps.ucsd.edu/ProteoSAFe/DownloadResultFile?task=%s&block=main&file=output_network/ClassyFireResults_Network.graphml" % (taskid)
+        if workflow_name == "CHEMDIR":
+            url_to_graph = "https://gnps.ucsd.edu/ProteoSAFe/DownloadResultFile?task=%s&block=main&file=output_folder/chemdir_network.graphml" % (taskid)
 
         print(url_to_graph)
         local_file = open(output_graphml_filename, "w")
@@ -130,6 +132,8 @@ def process_ajax():
         style_filename = "Styles/MolnetEnhancer_ChemicalSuperClasses.json"
     if workflow_name == "MS2LDA_MOTIFDB":
         style_filename = "Styles/MotifEdgesStyle.json"
+    if workflow_name == "CHEMDIR":
+        style_filename = "Styles/ChemDir.json"
 
     #Option to filter data
     if "filter" in request.values:
