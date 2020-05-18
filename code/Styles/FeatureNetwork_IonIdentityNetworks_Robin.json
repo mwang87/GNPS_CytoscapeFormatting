@@ -1,0 +1,899 @@
+{
+    "title": "IIN_style",
+    "defaults": [
+        {
+            "visualProperty": "COMPOUND_NODE_PADDING",
+            "value": 10.0
+        },
+        {
+            "visualProperty": "COMPOUND_NODE_SHAPE",
+            "value": "ROUND_RECTANGLE"
+        },
+        {
+            "visualProperty": "DING_RENDERING_ENGINE_ROOT",
+            "value": "org.cytoscape.view.presentation.property.NullVisualProperty$NullDataTypeImpl@54e47a2e"
+        },
+        {
+            "visualProperty": "EDGE",
+            "value": "DefaultVisualizableVisualProperty(id=EDGE, name=Edge Visual Property)"
+        },
+        {
+            "visualProperty": "EDGE_BEND",
+            "value": null
+        },
+        {
+            "visualProperty": "EDGE_CURVED",
+            "value": true
+        },
+        {
+            "visualProperty": "EDGE_LABEL",
+            "value": ""
+        },
+        {
+            "visualProperty": "EDGE_LABEL_COLOR",
+            "value": "#000000"
+        },
+        {
+            "visualProperty": "EDGE_LABEL_FONT_FACE",
+            "value": "SansSerif.plain,plain,10"
+        },
+        {
+            "visualProperty": "EDGE_LABEL_FONT_SIZE",
+            "value": 10
+        },
+        {
+            "visualProperty": "EDGE_LABEL_TRANSPARENCY",
+            "value": 255
+        },
+        {
+            "visualProperty": "EDGE_LABEL_WIDTH",
+            "value": 200.0
+        },
+        {
+            "visualProperty": "EDGE_LINE_TYPE",
+            "value": "SOLID"
+        },
+        {
+            "visualProperty": "EDGE_PAINT",
+            "value": "#808080"
+        },
+        {
+            "visualProperty": "EDGE_SELECTED",
+            "value": false
+        },
+        {
+            "visualProperty": "EDGE_SELECTED_PAINT",
+            "value": "#FF0000"
+        },
+        {
+            "visualProperty": "EDGE_SOURCE_ARROW_SELECTED_PAINT",
+            "value": "#FFFF00"
+        },
+        {
+            "visualProperty": "EDGE_SOURCE_ARROW_SHAPE",
+            "value": "NONE"
+        },
+        {
+            "visualProperty": "EDGE_SOURCE_ARROW_SIZE",
+            "value": 6.0
+        },
+        {
+            "visualProperty": "EDGE_SOURCE_ARROW_UNSELECTED_PAINT",
+            "value": "#000000"
+        },
+        {
+            "visualProperty": "EDGE_STROKE_SELECTED_PAINT",
+            "value": "#FF0000"
+        },
+        {
+            "visualProperty": "EDGE_STROKE_UNSELECTED_PAINT",
+            "value": "#FFFFFF"
+        },
+        {
+            "visualProperty": "EDGE_TARGET_ARROW_SELECTED_PAINT",
+            "value": "#FFFF00"
+        },
+        {
+            "visualProperty": "EDGE_TARGET_ARROW_SHAPE",
+            "value": "NONE"
+        },
+        {
+            "visualProperty": "EDGE_TARGET_ARROW_SIZE",
+            "value": 6.0
+        },
+        {
+            "visualProperty": "EDGE_TARGET_ARROW_UNSELECTED_PAINT",
+            "value": "#000000"
+        },
+        {
+            "visualProperty": "EDGE_TOOLTIP",
+            "value": ""
+        },
+        {
+            "visualProperty": "EDGE_TRANSPARENCY",
+            "value": 255
+        },
+        {
+            "visualProperty": "EDGE_UNSELECTED_PAINT",
+            "value": "#404040"
+        },
+        {
+            "visualProperty": "EDGE_VISIBLE",
+            "value": true
+        },
+        {
+            "visualProperty": "EDGE_WIDTH",
+            "value": 10.0
+        },
+        {
+            "visualProperty": "NETWORK",
+            "value": "DefaultVisualizableVisualProperty(id=NETWORK, name=Network Visual Property)"
+        },
+        {
+            "visualProperty": "NETWORK_ANNOTATION_SELECTION",
+            "value": false
+        },
+        {
+            "visualProperty": "NETWORK_BACKGROUND_PAINT",
+            "value": "#FFFFFF"
+        },
+        {
+            "visualProperty": "NETWORK_CENTER_X_LOCATION",
+            "value": 0.0
+        },
+        {
+            "visualProperty": "NETWORK_CENTER_Y_LOCATION",
+            "value": 0.0
+        },
+        {
+            "visualProperty": "NETWORK_CENTER_Z_LOCATION",
+            "value": 0.0
+        },
+        {
+            "visualProperty": "NETWORK_DEPTH",
+            "value": 0.0
+        },
+        {
+            "visualProperty": "NETWORK_EDGE_SELECTION",
+            "value": true
+        },
+        {
+            "visualProperty": "NETWORK_HEIGHT",
+            "value": 400.0
+        },
+        {
+            "visualProperty": "NETWORK_NODE_SELECTION",
+            "value": true
+        },
+        {
+            "visualProperty": "NETWORK_SCALE_FACTOR",
+            "value": 1.0
+        },
+        {
+            "visualProperty": "NETWORK_SIZE",
+            "value": 550.0
+        },
+        {
+            "visualProperty": "NETWORK_TITLE",
+            "value": ""
+        },
+        {
+            "visualProperty": "NETWORK_WIDTH",
+            "value": 550.0
+        },
+        {
+            "visualProperty": "NODE",
+            "value": "DefaultVisualizableVisualProperty(id=NODE, name=Node Visual Property)"
+        },
+        {
+            "visualProperty": "NODE_BORDER_PAINT",
+            "value": "#000000"
+        },
+        {
+            "visualProperty": "NODE_BORDER_STROKE",
+            "value": "SOLID"
+        },
+        {
+            "visualProperty": "NODE_BORDER_TRANSPARENCY",
+            "value": 255
+        },
+        {
+            "visualProperty": "NODE_BORDER_WIDTH",
+            "value": 8.0
+        },
+        {
+            "visualProperty": "NODE_CUSTOMGRAPHICS_1",
+            "value": "org.cytoscape.PieChart:{\"cy_range\":[0.0,0.0],\"cy_colors\":[\"#FF0000\",\"#0055FF\",\"#AAFF00\",\"#FF00FF\",\"#00FFAA\",\"#FF5500\",\"#0000FF\",\"#55FF00\",\"#FF00AA\"],\"cy_dataColumns\":[\"GNPSGROUP_BLANK\",\"GNPSGROUP_E1190\",\"GNPSGROUP_E16012\",\"GNPSGROUP_medium\",\"GNPSGROUP_noen\",\"GNPSGROUP_Pal\",\"GNPSGROUP_Pch\",\"GNPSGROUP_SAMPLE\"]}"
+        },
+        {
+            "visualProperty": "NODE_CUSTOMGRAPHICS_2",
+            "value": "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],"
+        },
+        {
+            "visualProperty": "NODE_CUSTOMGRAPHICS_3",
+            "value": "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],"
+        },
+        {
+            "visualProperty": "NODE_CUSTOMGRAPHICS_4",
+            "value": "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],"
+        },
+        {
+            "visualProperty": "NODE_CUSTOMGRAPHICS_5",
+            "value": "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],"
+        },
+        {
+            "visualProperty": "NODE_CUSTOMGRAPHICS_6",
+            "value": "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],"
+        },
+        {
+            "visualProperty": "NODE_CUSTOMGRAPHICS_7",
+            "value": "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],"
+        },
+        {
+            "visualProperty": "NODE_CUSTOMGRAPHICS_8",
+            "value": "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],"
+        },
+        {
+            "visualProperty": "NODE_CUSTOMGRAPHICS_9",
+            "value": "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],"
+        },
+        {
+            "visualProperty": "NODE_CUSTOMGRAPHICS_POSITION_1",
+            "value": "C,C,c,0.00,0.00"
+        },
+        {
+            "visualProperty": "NODE_CUSTOMGRAPHICS_POSITION_2",
+            "value": "C,C,c,0.00,0.00"
+        },
+        {
+            "visualProperty": "NODE_CUSTOMGRAPHICS_POSITION_3",
+            "value": "C,C,c,0.00,0.00"
+        },
+        {
+            "visualProperty": "NODE_CUSTOMGRAPHICS_POSITION_4",
+            "value": "C,C,c,0.00,0.00"
+        },
+        {
+            "visualProperty": "NODE_CUSTOMGRAPHICS_POSITION_5",
+            "value": "C,C,c,0.00,0.00"
+        },
+        {
+            "visualProperty": "NODE_CUSTOMGRAPHICS_POSITION_6",
+            "value": "C,C,c,0.00,0.00"
+        },
+        {
+            "visualProperty": "NODE_CUSTOMGRAPHICS_POSITION_7",
+            "value": "C,C,c,0.00,0.00"
+        },
+        {
+            "visualProperty": "NODE_CUSTOMGRAPHICS_POSITION_8",
+            "value": "C,C,c,0.00,0.00"
+        },
+        {
+            "visualProperty": "NODE_CUSTOMGRAPHICS_POSITION_9",
+            "value": "C,C,c,0.00,0.00"
+        },
+        {
+            "visualProperty": "NODE_CUSTOMGRAPHICS_SIZE_1",
+            "value": 0.0
+        },
+        {
+            "visualProperty": "NODE_CUSTOMGRAPHICS_SIZE_2",
+            "value": 0.0
+        },
+        {
+            "visualProperty": "NODE_CUSTOMGRAPHICS_SIZE_3",
+            "value": 0.0
+        },
+        {
+            "visualProperty": "NODE_CUSTOMGRAPHICS_SIZE_4",
+            "value": 0.0
+        },
+        {
+            "visualProperty": "NODE_CUSTOMGRAPHICS_SIZE_5",
+            "value": 0.0
+        },
+        {
+            "visualProperty": "NODE_CUSTOMGRAPHICS_SIZE_6",
+            "value": 0.0
+        },
+        {
+            "visualProperty": "NODE_CUSTOMGRAPHICS_SIZE_7",
+            "value": 0.0
+        },
+        {
+            "visualProperty": "NODE_CUSTOMGRAPHICS_SIZE_8",
+            "value": 0.0
+        },
+        {
+            "visualProperty": "NODE_CUSTOMGRAPHICS_SIZE_9",
+            "value": 0.0
+        },
+        {
+            "visualProperty": "NODE_CUSTOMPAINT_1",
+            "value": "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_1, name=Node Custom Paint 1)"
+        },
+        {
+            "visualProperty": "NODE_CUSTOMPAINT_2",
+            "value": "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_2, name=Node Custom Paint 2)"
+        },
+        {
+            "visualProperty": "NODE_CUSTOMPAINT_3",
+            "value": "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_3, name=Node Custom Paint 3)"
+        },
+        {
+            "visualProperty": "NODE_CUSTOMPAINT_4",
+            "value": "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_4, name=Node Custom Paint 4)"
+        },
+        {
+            "visualProperty": "NODE_CUSTOMPAINT_5",
+            "value": "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_5, name=Node Custom Paint 5)"
+        },
+        {
+            "visualProperty": "NODE_CUSTOMPAINT_6",
+            "value": "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_6, name=Node Custom Paint 6)"
+        },
+        {
+            "visualProperty": "NODE_CUSTOMPAINT_7",
+            "value": "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_7, name=Node Custom Paint 7)"
+        },
+        {
+            "visualProperty": "NODE_CUSTOMPAINT_8",
+            "value": "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_8, name=Node Custom Paint 8)"
+        },
+        {
+            "visualProperty": "NODE_CUSTOMPAINT_9",
+            "value": "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_9, name=Node Custom Paint 9)"
+        },
+        {
+            "visualProperty": "NODE_DEPTH",
+            "value": 0.0
+        },
+        {
+            "visualProperty": "NODE_FILL_COLOR",
+            "value": "#CCCCCC"
+        },
+        {
+            "visualProperty": "NODE_HEIGHT",
+            "value": 40.0
+        },
+        {
+            "visualProperty": "NODE_LABEL",
+            "value": ""
+        },
+        {
+            "visualProperty": "NODE_LABEL_COLOR",
+            "value": "#000000"
+        },
+        {
+            "visualProperty": "NODE_LABEL_FONT_FACE",
+            "value": "Dialog.plain,plain,12"
+        },
+        {
+            "visualProperty": "NODE_LABEL_FONT_SIZE",
+            "value": 20
+        },
+        {
+            "visualProperty": "NODE_LABEL_POSITION",
+            "value": "C,C,c,0.00,0.00"
+        },
+        {
+            "visualProperty": "NODE_LABEL_TRANSPARENCY",
+            "value": 255
+        },
+        {
+            "visualProperty": "NODE_LABEL_WIDTH",
+            "value": 200.0
+        },
+        {
+            "visualProperty": "NODE_NESTED_NETWORK_IMAGE_VISIBLE",
+            "value": true
+        },
+        {
+            "visualProperty": "NODE_PAINT",
+            "value": "#787878"
+        },
+        {
+            "visualProperty": "NODE_SELECTED",
+            "value": false
+        },
+        {
+            "visualProperty": "NODE_SELECTED_PAINT",
+            "value": "#FFFF00"
+        },
+        {
+            "visualProperty": "NODE_SHAPE",
+            "value": "ELLIPSE"
+        },
+        {
+            "visualProperty": "NODE_SIZE",
+            "value": 50.0
+        },
+        {
+            "visualProperty": "NODE_TOOLTIP",
+            "value": ""
+        },
+        {
+            "visualProperty": "NODE_TRANSPARENCY",
+            "value": 255
+        },
+        {
+            "visualProperty": "NODE_VISIBLE",
+            "value": true
+        },
+        {
+            "visualProperty": "NODE_WIDTH",
+            "value": 60.0
+        },
+        {
+            "visualProperty": "NODE_X_LOCATION",
+            "value": 0.0
+        },
+        {
+            "visualProperty": "NODE_Y_LOCATION",
+            "value": 0.0
+        },
+        {
+            "visualProperty": "NODE_Z_LOCATION",
+            "value": 0.0
+        }
+    ],
+    "mappings": [
+        {
+            "mappingType": "discrete",
+            "mappingColumn": "EdgeType",
+            "mappingColumnType": "String",
+            "visualProperty": "EDGE_STROKE_UNSELECTED_PAINT",
+            "map": [
+                {
+                    "key": "MS1 shape correlation",
+                    "value": "#999999"
+                },
+                {
+                    "key": "MS1 annotation",
+                    "value": "#DC0B14"
+                },
+                {
+                    "key": "IIN M relationship",
+                    "value": "#FF9900"
+                },
+                {
+                    "key": "Cosine",
+                    "value": "#294496"
+                }
+            ]
+        },
+        {
+            "mappingType": "continuous",
+            "mappingColumn": "sum(precursor intensity)",
+            "mappingColumnType": "Number",
+            "visualProperty": "NODE_SIZE",
+            "points": [
+                {
+                    "value": 506972.9038694268,
+                    "lesser": "1.0",
+                    "equal": "40.0",
+                    "greater": "40.0"
+                },
+                {
+                    "value": 946205172.2360443,
+                    "lesser": "90.0",
+                    "equal": "90.0",
+                    "greater": "90.0"
+                },
+                {
+                    "value": 3395321042.542106,
+                    "lesser": "100.0",
+                    "equal": "100.0",
+                    "greater": "1.0"
+                }
+            ]
+        },
+        {
+            "mappingType": "discrete",
+            "mappingColumn": "EdgeType",
+            "mappingColumnType": "String",
+            "visualProperty": "EDGE_LINE_TYPE",
+            "map": [
+                {
+                    "key": "MS1 shape correlation",
+                    "value": "EQUAL_DASH"
+                },
+                {
+                    "key": "MS1 annotation",
+                    "value": "DOT"
+                },
+                {
+                    "key": "IIN M relationship",
+                    "value": "SEPARATE_ARROW"
+                }
+            ]
+        },
+        {
+            "mappingType": "discrete",
+            "mappingColumn": "Best Ion",
+            "mappingColumnType": "String",
+            "visualProperty": "NODE_SHAPE",
+            "map": [
+                {
+                    "key": "[M-H2O+H]+",
+                    "value": "VEE"
+                },
+                {
+                    "key": "[M-2H2O+H]+",
+                    "value": "VEE"
+                },
+                {
+                    "key": "[M-3H2O+H]+",
+                    "value": "VEE"
+                },
+                {
+                    "key": "[M-4H2O+H]+",
+                    "value": "VEE"
+                }
+            ]
+        },
+        {
+            "mappingType": "discrete",
+            "mappingColumn": "Best Ion",
+            "mappingColumnType": "String",
+            "visualProperty": "NODE_FILL_COLOR",
+            "map": [
+                {
+                    "key": "[3M-3H2O+2H]2+",
+                    "value": "#212C56"
+                },
+                {
+                    "key": "[M-3H2O+2H]2+",
+                    "value": "#8FA9D8"
+                },
+                {
+                    "key": "[2M+NH4]+",
+                    "value": "#386816"
+                },
+                {
+                    "key": "[2M+Fe-H]+",
+                    "value": "#CC00CC"
+                },
+                {
+                    "key": "[M-2H2O+NH4]+",
+                    "value": "#79D71A"
+                },
+                {
+                    "key": "[2M-H+2Na]+",
+                    "value": "#BF9109"
+                },
+                {
+                    "key": "[3M+NH4]+",
+                    "value": "#386816"
+                },
+                {
+                    "key": "[2M+Ca]2+",
+                    "value": "#673A8E"
+                },
+                {
+                    "key": "[3M+Ca]2+",
+                    "value": "#673A8E"
+                },
+                {
+                    "key": "[3M-H2O+2H]2+",
+                    "value": "#212C56"
+                },
+                {
+                    "key": "[M-H2O+H]+",
+                    "value": "#305597"
+                },
+                {
+                    "key": "[2M-H2O+Na]+",
+                    "value": "#BF9109"
+                },
+                {
+                    "key": "[M+Ca]2+",
+                    "value": "#673A8E"
+                },
+                {
+                    "key": "[M-2H2O+H]+",
+                    "value": "#305597"
+                },
+                {
+                    "key": "[2M+Na]+",
+                    "value": "#BF9109"
+                },
+                {
+                    "key": "[M-3H2O+H]+",
+                    "value": "#305597"
+                },
+                {
+                    "key": "[M-4H2O+H]+",
+                    "value": "#305597"
+                },
+                {
+                    "key": "[2M+K]+",
+                    "value": "#CC0033"
+                },
+                {
+                    "key": "[M-3H2O+NH4]+",
+                    "value": "#79D71A"
+                },
+                {
+                    "key": "[2M-H2O+NH4]+",
+                    "value": "#386816"
+                },
+                {
+                    "key": "[M+Na]+",
+                    "value": "#FFD966"
+                },
+                {
+                    "key": "[M-4H2O+2H]2+",
+                    "value": "#8FA9D8"
+                },
+                {
+                    "key": "[5M-H2O+Ca]2+",
+                    "value": "#673A8E"
+                },
+                {
+                    "key": "[M+Fe]2+",
+                    "value": "#CC00CC"
+                },
+                {
+                    "key": "[M-H2O+Ca]2+",
+                    "value": "#673A8E"
+                },
+                {
+                    "key": "[3M+K]+",
+                    "value": "#CC0033"
+                },
+                {
+                    "key": "[2M+H+Na]2+",
+                    "value": "#BF9109"
+                },
+                {
+                    "key": "[4M+H+NH4]2+",
+                    "value": "#386816"
+                },
+                {
+                    "key": "[2M-H2O+Fe]2+",
+                    "value": "#CC00CC"
+                },
+                {
+                    "key": "[6M+2H]2+",
+                    "value": "#212C56"
+                },
+                {
+                    "key": "[2M-H2O+H]+",
+                    "value": "#212C56"
+                },
+                {
+                    "key": "[M+NH4]+",
+                    "value": "#558235"
+                },
+                {
+                    "key": "[4M+Fe]2+",
+                    "value": "#CC00CC"
+                },
+                {
+                    "key": "[2M+Fe]2+",
+                    "value": "#CC00CC"
+                },
+                {
+                    "key": "[2M+2H]2+",
+                    "value": "#212C56"
+                },
+                {
+                    "key": "[4M+2H]2+",
+                    "value": "#212C56"
+                },
+                {
+                    "key": "[M+Ca-H]+",
+                    "value": "#673A8E"
+                },
+                {
+                    "key": "[8M+2H]2+",
+                    "value": "#212C56"
+                },
+                {
+                    "key": "[2M-2H2O+H]+",
+                    "value": "#212C56"
+                },
+                {
+                    "key": "[6M+Fe]2+",
+                    "value": "#CC00CC"
+                },
+                {
+                    "key": "[2M-H2O+2H]2+",
+                    "value": "#212C56"
+                },
+                {
+                    "key": "[5M+Fe]2+",
+                    "value": "#CC00CC"
+                },
+                {
+                    "key": "[3M+H+Na]2+",
+                    "value": "#BF9109"
+                },
+                {
+                    "key": "[M-H2O+Na]+",
+                    "value": "#FFCC00"
+                },
+                {
+                    "key": "[3M+Fe-H]+",
+                    "value": "#CC00CC"
+                },
+                {
+                    "key": "[3M+H+K]2+",
+                    "value": "#CC0033"
+                },
+                {
+                    "key": "[M+2H]2+",
+                    "value": "#8FA9D8"
+                },
+                {
+                    "key": "[2M-H2O+H+Na]2+",
+                    "value": "#BF9109"
+                },
+                {
+                    "key": "[M-H2O+Ca-H]+",
+                    "value": "#673A8E"
+                },
+                {
+                    "key": "[M-H2O-H+2Na]+",
+                    "value": "#FCBF0D"
+                },
+                {
+                    "key": "[3M-H2O+Ca]2+",
+                    "value": "#673A8E"
+                },
+                {
+                    "key": "[3M-2H2O+2H]2+",
+                    "value": "#212C56"
+                },
+                {
+                    "key": "[M-2H2O+2H]2+",
+                    "value": "#8FA9D8"
+                },
+                {
+                    "key": "[M+K]+",
+                    "value": "#E52620"
+                },
+                {
+                    "key": "[2M+H]+",
+                    "value": "#212C56"
+                },
+                {
+                    "key": "[M-H2O+K]+",
+                    "value": "#F46262"
+                },
+                {
+                    "key": "[2M+H+NH4]2+",
+                    "value": "#386816"
+                },
+                {
+                    "key": "[3M-H+2Na]+",
+                    "value": "#BF9109"
+                },
+                {
+                    "key": "[2M-H2O-H+2Na]+",
+                    "value": "#BF9109"
+                },
+                {
+                    "key": "[M+H]+",
+                    "value": "#166FB7"
+                },
+                {
+                    "key": "[2M-H2O+Ca]2+",
+                    "value": "#673A8E"
+                },
+                {
+                    "key": "[3M+Na]+",
+                    "value": "#BF9109"
+                },
+                {
+                    "key": "[5M+H+Na]2+",
+                    "value": "#BF9109"
+                },
+                {
+                    "key": "[M-H2O+NH4]+",
+                    "value": "#79D71A"
+                },
+                {
+                    "key": "[6M+ACN+2H]2+",
+                    "value": "#8EDC74"
+                },
+                {
+                    "key": "[3M+H]+",
+                    "value": "#212C56"
+                },
+                {
+                    "key": "[M+Fe-H]+",
+                    "value": "#CC00CC"
+                },
+                {
+                    "key": "[4M+H+Na]2+",
+                    "value": "#BF9109"
+                },
+                {
+                    "key": "[M+ACN+H]+",
+                    "value": "#8EDC74"
+                },
+                {
+                    "key": "[2M-3H2O+H]+",
+                    "value": "#212C56"
+                },
+                {
+                    "key": "[3M+2H]2+",
+                    "value": "#212C56"
+                },
+                {
+                    "key": "[3M+Fe]2+",
+                    "value": "#CC00CC"
+                },
+                {
+                    "key": "[M-H+2Na]+",
+                    "value": "#FCBF0D"
+                },
+                {
+                    "key": "[2M-H2O+H+NH4]2+",
+                    "value": "#386816"
+                },
+                {
+                    "key": "[M+H+Na]2+",
+                    "value": "#BF9109"
+                },
+                {
+                    "key": "[2M-2H2O+NH4]+",
+                    "value": "#386816"
+                },
+                {
+                    "key": "[M-H2O+Fe]2+",
+                    "value": "#CC00CC"
+                },
+                {
+                    "key": "[2M+H+K]2+",
+                    "value": "#E52620"
+                },
+                {
+                    "key": "[M+H+K]2+",
+                    "value": "#FF0033"
+                }
+            ]
+        },
+        {
+            "mappingType": "continuous",
+            "mappingColumn": "EdgeScore",
+            "mappingColumnType": "Number",
+            "visualProperty": "EDGE_WIDTH",
+            "points": [
+                {
+                    "value": 0.0,
+                    "lesser": "1.0",
+                    "equal": "8.0",
+                    "greater": "8.0"
+                },
+                {
+                    "value": 0.6999999582767487,
+                    "lesser": "6.0",
+                    "equal": "6.0",
+                    "greater": "6.0"
+                },
+                {
+                    "value": 0.9999989904463291,
+                    "lesser": "20.0",
+                    "equal": "20.0",
+                    "greater": "20.0"
+                },
+                {
+                    "value": 1.0000000037252903,
+                    "lesser": "8.0",
+                    "equal": "8.0",
+                    "greater": "8.0"
+                },
+                {
+                    "value": 34.0,
+                    "lesser": "5.203252032520325",
+                    "equal": "5.203252032520325",
+                    "greater": "1.0"
+                }
+            ]
+        }
+    ]
+}
