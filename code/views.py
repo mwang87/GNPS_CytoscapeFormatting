@@ -148,7 +148,7 @@ def process_ajax():
             metabotracker.molnetenhancer_wrapper(output_graphml_filename, output_graphml_filename, class_header="CF_superclass", class_name=super_classname)
             style_filename = "Styles/MolnetEnhancer_ChemicalClasses.json"
 
-
+    # Allowing the client to dynamically specify
     if "style" in request.values:
         putative_style_filename = os.path.join("Styles", os.path.basename(request.values["style"]))
         if os.path.isfile(putative_style_filename):
