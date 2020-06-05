@@ -8,7 +8,7 @@
     "value" : "ROUND_RECTANGLE"
   }, {
     "visualProperty" : "DING_RENDERING_ENGINE_ROOT",
-    "value" : "org.cytoscape.view.presentation.property.NullVisualProperty$NullDataTypeImpl@61627bc5"
+    "value" : "org.cytoscape.view.presentation.property.NullVisualProperty$NullDataTypeImpl@1b85d6ed"
   }, {
     "visualProperty" : "EDGE",
     "value" : "DefaultVisualizableVisualProperty(id=EDGE, name=Edge Visual Property)"
@@ -65,7 +65,7 @@
     "value" : "#FF0000"
   }, {
     "visualProperty" : "EDGE_STROKE_UNSELECTED_PAINT",
-    "value" : "#FFFFFF"
+    "value" : "#FFCCCC"
   }, {
     "visualProperty" : "EDGE_TARGET_ARROW_SELECTED_PAINT",
     "value" : "#FFFF00"
@@ -101,7 +101,7 @@
     "value" : false
   }, {
     "visualProperty" : "NETWORK_BACKGROUND_PAINT",
-    "value" : "#EBE8E1"
+    "value" : "#FFFFFF"
   }, {
     "visualProperty" : "NETWORK_CENTER_X_LOCATION",
     "value" : 0.0
@@ -140,7 +140,7 @@
     "value" : "DefaultVisualizableVisualProperty(id=NODE, name=Node Visual Property)"
   }, {
     "visualProperty" : "NODE_BORDER_PAINT",
-    "value" : "#FFFFFF"
+    "value" : "#666666"
   }, {
     "visualProperty" : "NODE_BORDER_STROKE",
     "value" : "SOLID"
@@ -263,7 +263,7 @@
     "value" : 0.0
   }, {
     "visualProperty" : "NODE_FILL_COLOR",
-    "value" : "#3A7FB6"
+    "value" : "#CCCCCC"
   }, {
     "visualProperty" : "NODE_HEIGHT",
     "value" : 40.0
@@ -329,21 +329,33 @@
     "value" : 0.0
   } ],
   "mappings" : [ {
+    "mappingType" : "passthrough",
+    "mappingColumn" : "Compound_Name",
+    "mappingColumnType" : "String",
+    "visualProperty" : "NODE_LABEL"
+  }, {
     "mappingType" : "discrete",
     "mappingColumn" : "EdgeType",
     "mappingColumnType" : "String",
     "visualProperty" : "EDGE_STROKE_UNSELECTED_PAINT",
     "map" : [ {
       "key" : "IonMode",
-      "value" : "#FF0066"
+      "value" : "#6666FF"
     }, {
       "key" : "Cosine",
       "value" : "#FFFFFF"
     } ]
   }, {
-    "mappingType" : "passthrough",
-    "mappingColumn" : "Compound_Name",
+    "mappingType" : "discrete",
+    "mappingColumn" : "Library_Class",
     "mappingColumnType" : "String",
-    "visualProperty" : "NODE_LABEL"
+    "visualProperty" : "NODE_FILL_COLOR",
+    "map" : [ {
+      "key" : "1",
+      "value" : "#E41A1C"
+    }, {
+      "key" : "3",
+      "value" : "#E41A1C"
+    } ]
   } ]
 }
