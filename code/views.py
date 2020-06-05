@@ -97,6 +97,8 @@ def get_graph_object(taskid, workflow_name, output_graphml_filename):
             url_to_graph = "https://gnps.ucsd.edu/ProteoSAFe/DownloadResultFile?task=%s&block=main&file=output_network/ClassyFireResults_Network.graphml" % (taskid)
         if workflow_name == "CHEMDIR":
             url_to_graph = "https://gnps.ucsd.edu/ProteoSAFe/DownloadResultFile?task=%s&block=main&file=output_folder/chemdir_network.graphml" % (taskid)
+        if workflow_name == "MERGE_NETWORKS_POLARITY":
+            url_to_graph = "https://gnps.ucsd.edu/ProteoSAFe/DownloadResultFile?task=%s&block=main&file=merged_network/" % (taskid)
 
         print(url_to_graph)
         local_file = open(output_graphml_filename, "w")
@@ -134,6 +136,8 @@ def process_ajax():
         style_filename = "Styles/MotifEdgesStyle.json"
     if workflow_name == "CHEMDIR":
         style_filename = "Styles/ChemDir.json"
+    if workflow_name == "MERGE_NETWORKS_POLARITY":
+        style_filename = "Styles/MergeNetworks.json"        
 
     #Option to filter data
     if "filter" in request.values:
