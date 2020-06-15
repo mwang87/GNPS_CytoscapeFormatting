@@ -4,11 +4,18 @@
 <head>
     <title>GNPS Cytoscape Downloader</title>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.js"
+        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+        integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 
     <style>
     </style>
@@ -22,15 +29,15 @@
             <img src="static/img/GNPS_logo.png" alt="Logo" style="width:120px;">
         </a>
 
-      <!-- Links -->
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" href="/">GNPS Cytoscape Downloader</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="https://ccms-ucsd.github.io/GNPSDocumentation/">Documentation</a>
-        </li>
-      </ul>
+        <!-- Links -->
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="/">GNPS Cytoscape Downloader</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="https://ccms-ucsd.github.io/GNPSDocumentation/">Documentation</a>
+            </li>
+        </ul>
 
     </nav>
 
@@ -39,26 +46,31 @@
             <br>
             <br>
             <div class="row">
-              <div class="col-sm"></div>
-              <div class="col-sm text-center">
-                  <h2>Cytoscape Downloader</h2>
-              </div>
-              <div class="col-sm"></div>
+                <div class="col-sm">
+                </div>
+                <div class="col-sm text-center">
+                    <h2>GNPS Molecular Networking - Cytoscape Downloader</h2>
+                </div>
+                <div class="col-sm"></div>
             </div>
+
+            <br>
 
             <div id="displayer">
                 <div class="row">
-                  <div class="col-sm"></div>
-                  <div class="col-sm">
-                      <div class="text-center" >
-                          <input type="text" class="form-control" name="task" id="task" placeholder="Enter GNPS Networking Task ID">
-                      </div>
-                  </div>
-                  <div class="col-sm">
-                      <div class="text-center" >
-                          <button id="analyzebutton" class="btn btn-primary" onclick="myFunction()" >Create Cytoscape File</button>
-                      </div>
-                  </div>
+                    <div class="col-sm"></div>
+                    <div class="col-sm">
+                        <div class="text-center">
+                            <input type="text" class="form-control" name="task" id="task"
+                                placeholder="Enter GNPS Networking Task ID">
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                        <div class="text-center">
+                            <button id="analyzebutton" class="btn btn-primary" onclick="myFunction()">Create Cytoscape
+                                File</button>
+                        </div>
+                    </div>
                 </div>
 
                 <br>
@@ -66,44 +78,46 @@
                 <br>
 
                 <div class="row">
-                  <div class="col-sm"></div>
-                  <div class="col-sm text-center">
-                      <h2>Tag Tracker Cytoscape Downloader</h2>
-                  </div>
-                  <div class="col-sm"></div>
+                    <div class="col-sm"></div>
+                    <div class="col-sm text-center">
+                        <h2>Tag Tracker Cytoscape Downloader</h2>
+                    </div>
+                    <div class="col-sm"></div>
                 </div>
 
                 <br>
 
                 <div class="row">
-                  <div class="col-sm">
-                      <div class="text-center" >
-                          Select Tag To Filter
-                          <select id="source" name="source" class="col-md-5 custom-select">
-                            <option value="drugs">drugs</option>
-                            <option value="algae">algae</option>
-                            <option value="analysis artifact">analysis artifact</option>
-                            <option value="bacteria'">bacteria'</option>
-                            <option value="biotransformer">biotransformer</option>
-                            <option value="coloring agent">coloring agent</option>
-                            <option value="environmental">environmental</option>
-                            <option value="food">food</option>
-                            <option value="fungi">fungi</option>
-                            <option value="human metabolite">human metabolite</option>
-                            <option value="internal standard">internal standard</option>
-                          </select>
-                      </div>
-                  </div>
-                  <div class="col-sm">
-                      <div class="text-center" >
-                          <input type="text" class="form-control" name="task_for_tagtracker" id="task_for_tagtracker" placeholder="Enter GNPS Networking Task ID">
-                      </div>
-                  </div>
-                  <div class="col-sm">
-                      <div class="text-center" >
-                          <button id="analyzebutton" class="btn btn-primary" onclick="runMetabotracker()" >Create Cytoscape File with TagTracker</button>
-                      </div>
-                  </div>
+                    <div class="col-sm">
+                        <div class="text-center">
+                            Select Tag To Filter
+                            <select id="source" name="source" class="col-md-5 custom-select">
+                                <option value="drugs">drugs</option>
+                                <option value="algae">algae</option>
+                                <option value="analysis artifact">analysis artifact</option>
+                                <option value="bacteria'">bacteria'</option>
+                                <option value="biotransformer">biotransformer</option>
+                                <option value="coloring agent">coloring agent</option>
+                                <option value="environmental">environmental</option>
+                                <option value="food">food</option>
+                                <option value="fungi">fungi</option>
+                                <option value="human metabolite">human metabolite</option>
+                                <option value="internal standard">internal standard</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                        <div class="text-center">
+                            <input type="text" class="form-control" name="task_for_tagtracker" id="task_for_tagtracker"
+                                placeholder="Enter GNPS Networking Task ID">
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                        <div class="text-center">
+                            <button id="analyzebutton" class="btn btn-primary" onclick="runMetabotracker()">Create
+                                Cytoscape File with TagTracker</button>
+                        </div>
+                    </div>
                 </div>
 
                 <br>
@@ -111,35 +125,69 @@
                 <br>
 
                 <div class="row">
-                  <div class="col-sm"></div>
-                  <div class="col-sm text-center">
-                      <h2>Molecular Network Enhancer Cytoscape Downloader</h2>
-                  </div>
-                  <div class="col-sm"></div>
+                    <div class="col-sm"></div>
+                    <div class="col-sm text-center">
+                        <h2>Molecular Network Enhancer Cytoscape Downloader</h2>
+                    </div>
+                    <div class="col-sm"></div>
                 </div>
 
                 <br>
 
                 <div class="row">
-                  <div class="col-sm">
-                      <div class="text-center" >
-                          Select Structral Super Class To Filter 
-                          <select id="molnetenhancer_superclass" name="molnetenhancer_superclass" class="col-md-5 custom-select">
-                            <option value="Lipids and lipid-like molecules">Lipids and lipid-like molecules</option>
-                          </select>
-                      </div>
-                  </div>
-                  <div class="col-sm">
-                      <div class="text-center" >
-                          <input type="text" class="form-control" name="task_for_molnetenhancer" id="task_for_molnetenhancer" placeholder="Enter GNPS Networking Task ID">
-                      </div>
-                  </div>
-                  <div class="col-sm">
-                      <div class="text-center" >
-                          <button id="analyzebutton" class="btn btn-primary" onclick="runMolnetEnhancer()" >Create Cytoscape File with Molecular Network Enhancer</button>
-                      </div>
-                  </div>
+                    <div class="col-sm">
+                        <div class="text-center">
+                            Select Structral Super Class To Filter
+                            <select id="molnetenhancer_superclass" name="molnetenhancer_superclass"
+                                class="col-md-5 custom-select">
+                                <option value="Lipids and lipid-like molecules">Lipids and lipid-like molecules</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                        <div class="text-center">
+                            <input type="text" class="form-control" name="task_for_molnetenhancer"
+                                id="task_for_molnetenhancer" placeholder="Enter GNPS Networking Task ID">
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                        <div class="text-center">
+                            <button id="analyzebutton" class="btn btn-primary" onclick="runMolnetEnhancer()">Create
+                                Cytoscape File with Molecular Network Enhancer</button>
+                        </div>
+                    </div>
                 </div>
+
+                <br>
+                <hr>
+                <br>
+
+                <div class="row">
+                    <div class="col-sm"></div>
+                    <div class="col-sm text-center">
+                        <h2>Example Exports from GNPS Cytoscape</h2>
+                    </div>
+                    <div class="col-sm"></div>
+                </div>
+
+                <br>
+                
+                <div class="row">
+                    <div class="col-sm">
+                    </div>
+                    <div class="col-sm">
+                        <div class="text-center">
+                            <div class="text-center">
+                                <a class="btn btn-secondary" style="margin: 10px;" href="/process?task=1ad7bc366aef45ce81d2dfcca0a9a5e7">Example Classical Molecular Network</a>
+                                <a class="btn btn-secondary" style="margin: 10px;" href="/process?task=6e36f9fe328c402fa486b01524412f61">Example MolNetEnhancer Network</a>
+                                <a class="btn btn-secondary" style="margin: 10px;" href="/process?task=3bd4def5e0e348c9b113f4a072f03ea9&style=FeatureNetwork_IonIdentityNetworks_Robin.json">Example IIN Styled Network</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
@@ -148,20 +196,20 @@
 
 
     <script>
-    function myFunction() {
-        remote_url = "/process?task=" + $("#task").val()
-        window.location.assign(remote_url);
-    }
+        function myFunction() {
+            remote_url = "/process?task=" + $("#task").val()
+            window.location.assign(remote_url);
+        }
 
-    function runMetabotracker() {
-        remote_url = "/process?task=" + $("#task_for_tagtracker").val() + "&source=" + $("#source").val() + "&filter=tagtracker" 
-        window.location.assign(remote_url);
-    }
+        function runMetabotracker() {
+            remote_url = "/process?task=" + $("#task_for_tagtracker").val() + "&source=" + $("#source").val() + "&filter=tagtracker"
+            window.location.assign(remote_url);
+        }
 
-    function runMolnetEnhancer() {
-        remote_url = "/process?task=" + $("#task_for_molnetenhancer").val() + "&molnetenhancer_superclass=" + $("#molnetenhancer_superclass").val() + "&filter=molnetenhancer" 
-        window.location.assign(remote_url);
-    }
+        function runMolnetEnhancer() {
+            remote_url = "/process?task=" + $("#task_for_molnetenhancer").val() + "&molnetenhancer_superclass=" + $("#molnetenhancer_superclass").val() + "&filter=molnetenhancer"
+            window.location.assign(remote_url);
+        }
     </script>
 </body>
 
