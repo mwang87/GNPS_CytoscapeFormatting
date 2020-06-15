@@ -464,32 +464,6 @@
             ]
         },
         {
-            "mappingType": "continuous",
-            "mappingColumn": "sum(precursor intensity)",
-            "mappingColumnType": "Number",
-            "visualProperty": "NODE_SIZE",
-            "points": [
-                {
-                    "value": 506972.9038694268,
-                    "lesser": "1.0",
-                    "equal": "40.0",
-                    "greater": "40.0"
-                },
-                {
-                    "value": 946205172.2360443,
-                    "lesser": "90.0",
-                    "equal": "90.0",
-                    "greater": "90.0"
-                },
-                {
-                    "value": 3395321042.542106,
-                    "lesser": "100.0",
-                    "equal": "100.0",
-                    "greater": "1.0"
-                }
-            ]
-        },
-        {
             "mappingType": "discrete",
             "mappingColumn": "EdgeType",
             "mappingColumnType": "String",
@@ -854,44 +828,6 @@
                 {
                     "key": "[M+H+K]2+",
                     "value": "#FF0033"
-                }
-            ]
-        },
-        {
-            "mappingType": "continuous",
-            "mappingColumn": "EdgeScore",
-            "mappingColumnType": "Number",
-            "visualProperty": "EDGE_WIDTH",
-            "points": [
-                {
-                    "value": 0.0,
-                    "lesser": "1.0",
-                    "equal": "8.0",
-                    "greater": "8.0"
-                },
-                {
-                    "value": 0.6999999582767487,
-                    "lesser": "6.0",
-                    "equal": "6.0",
-                    "greater": "6.0"
-                },
-                {
-                    "value": 0.9999989904463291,
-                    "lesser": "20.0",
-                    "equal": "20.0",
-                    "greater": "20.0"
-                },
-                {
-                    "value": 1.0000000037252903,
-                    "lesser": "8.0",
-                    "equal": "8.0",
-                    "greater": "8.0"
-                },
-                {
-                    "value": 34.0,
-                    "lesser": "5.203252032520325",
-                    "equal": "5.203252032520325",
-                    "greater": "1.0"
                 }
             ]
         }
