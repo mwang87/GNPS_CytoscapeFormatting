@@ -1,5 +1,5 @@
 {
-  "title" : "Sample2",
+  "title" : "ChemDirNetwork_MaxChemDir",
   "defaults" : [ {
     "visualProperty" : "COMPOUND_NODE_PADDING",
     "value" : 10.0
@@ -8,7 +8,7 @@
     "value" : "ROUND_RECTANGLE"
   }, {
     "visualProperty" : "DING_RENDERING_ENGINE_ROOT",
-    "value" : "org.cytoscape.view.presentation.property.NullVisualProperty$NullDataTypeImpl@32a5ff11"
+    "value" : "org.cytoscape.view.presentation.property.NullVisualProperty$NullDataTypeImpl@6d3fdd1c"
   }, {
     "visualProperty" : "EDGE",
     "value" : "DefaultVisualizableVisualProperty(id=EDGE, name=Edge Visual Property)"
@@ -55,14 +55,17 @@
     "visualProperty" : "EDGE_SOURCE_ARROW_SHAPE",
     "value" : "NONE"
   }, {
+    "visualProperty" : "EDGE_SOURCE_ARROW_SIZE",
+    "value" : 6.0
+  }, {
     "visualProperty" : "EDGE_SOURCE_ARROW_UNSELECTED_PAINT",
-    "value" : "#000000"
+    "value" : "#999999"
   }, {
     "visualProperty" : "EDGE_STROKE_SELECTED_PAINT",
     "value" : "#FF0000"
   }, {
     "visualProperty" : "EDGE_STROKE_UNSELECTED_PAINT",
-    "value" : "#FFFFFF"
+    "value" : "#404040"
   }, {
     "visualProperty" : "EDGE_TARGET_ARROW_SELECTED_PAINT",
     "value" : "#FFFF00"
@@ -70,8 +73,11 @@
     "visualProperty" : "EDGE_TARGET_ARROW_SHAPE",
     "value" : "NONE"
   }, {
+    "visualProperty" : "EDGE_TARGET_ARROW_SIZE",
+    "value" : 6.0
+  }, {
     "visualProperty" : "EDGE_TARGET_ARROW_UNSELECTED_PAINT",
-    "value" : "#000000"
+    "value" : "#999999"
   }, {
     "visualProperty" : "EDGE_TOOLTIP",
     "value" : ""
@@ -86,13 +92,16 @@
     "value" : true
   }, {
     "visualProperty" : "EDGE_WIDTH",
-    "value" : 20.0
+    "value" : 5.0
   }, {
     "visualProperty" : "NETWORK",
     "value" : "DefaultVisualizableVisualProperty(id=NETWORK, name=Network Visual Property)"
   }, {
+    "visualProperty" : "NETWORK_ANNOTATION_SELECTION",
+    "value" : false
+  }, {
     "visualProperty" : "NETWORK_BACKGROUND_PAINT",
-    "value" : "#EBE8E1"
+    "value" : "#FFFFFF"
   }, {
     "visualProperty" : "NETWORK_CENTER_X_LOCATION",
     "value" : 0.0
@@ -131,7 +140,7 @@
     "value" : "DefaultVisualizableVisualProperty(id=NODE, name=Node Visual Property)"
   }, {
     "visualProperty" : "NODE_BORDER_PAINT",
-    "value" : "#FFFFFF"
+    "value" : "#000000"
   }, {
     "visualProperty" : "NODE_BORDER_STROKE",
     "value" : "SOLID"
@@ -140,7 +149,7 @@
     "value" : 255
   }, {
     "visualProperty" : "NODE_BORDER_WIDTH",
-    "value" : 15.0
+    "value" : 2.0
   }, {
     "visualProperty" : "NODE_CUSTOMGRAPHICS_1",
     "value" : "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],"
@@ -254,7 +263,7 @@
     "value" : 0.0
   }, {
     "visualProperty" : "NODE_FILL_COLOR",
-    "value" : "#3A7FB6"
+    "value" : "#CCCCCC"
   }, {
     "visualProperty" : "NODE_HEIGHT",
     "value" : 40.0
@@ -263,16 +272,16 @@
     "value" : ""
   }, {
     "visualProperty" : "NODE_LABEL_COLOR",
-    "value" : "#666666"
+    "value" : "#000000"
   }, {
     "visualProperty" : "NODE_LABEL_FONT_FACE",
-    "value" : "Dialog.plain,plain,12"
+    "value" : "SansSerif.plain,plain,12"
   }, {
     "visualProperty" : "NODE_LABEL_FONT_SIZE",
-    "value" : 20
+    "value" : 12
   }, {
     "visualProperty" : "NODE_LABEL_POSITION",
-    "value" : "E,W,c,5.00,0.00"
+    "value" : "C,C,c,0.00,0.00"
   }, {
     "visualProperty" : "NODE_LABEL_TRANSPARENCY",
     "value" : 255
@@ -296,7 +305,7 @@
     "value" : "ELLIPSE"
   }, {
     "visualProperty" : "NODE_SIZE",
-    "value" : 50.0
+    "value" : 40.0
   }, {
     "visualProperty" : "NODE_TOOLTIP",
     "value" : ""
@@ -320,6 +329,656 @@
     "value" : 0.0
   } ],
   "mappings" : [ {
+    "mappingType" : "continuous",
+    "mappingColumn" : "max_chemdir",
+    "mappingColumnType" : "Number",
+    "visualProperty" : "EDGE_UNSELECTED_PAINT",
+    "points" : [ {
+      "value" : 0.0,
+      "lesser" : "#FDE725",
+      "equal" : "#FBE723",
+      "greater" : "#FBE723"
+    }, {
+      "value" : 1.44716215133667,
+      "lesser" : "#21918C",
+      "equal" : "#21918C",
+      "greater" : "#21918C"
+    }, {
+      "value" : 2.8943244062389963,
+      "lesser" : "#440256",
+      "equal" : "#440256",
+      "greater" : "#440154"
+    } ]
+  }, {
+    "mappingType" : "discrete",
+    "mappingColumn" : "sign_chemdir",
+    "mappingColumnType" : "Double",
+    "visualProperty" : "EDGE_SOURCE_ARROW_SHAPE",
+    "map" : [ {
+      "key" : "1.0",
+      "value" : "DELTA"
+    } ]
+  }, {
+    "mappingType" : "discrete",
+    "mappingColumn" : "Analog:Compound_Name",
+    "mappingColumnType" : "String",
+    "visualProperty" : "NODE_FILL_COLOR",
+    "map" : [ {
+      "key" : "PC(16:0/20:3); [M+H]+ C44H83N1O8P1",
+      "value" : "#D95F02"
+    }, {
+      "key" : "3-Cysteinylacetaminophen",
+      "value" : "#D95F02"
+    }, {
+      "key" : "Monoerucin",
+      "value" : "#D95F02"
+    }, {
+      "key" : "Ginsenoside Rg3 (R-form)",
+      "value" : "#D95F02"
+    }, {
+      "key" : "Spectral Match to 9S-Hydroxy-10E,12Z,15Z-octadecatrienoic acid from NIST14",
+      "value" : "#D95F02"
+    }, {
+      "key" : "Clindamycin sulfoxide",
+      "value" : "#D95F02"
+    }, {
+      "key" : "Ethylenediaminetetraacetic acid",
+      "value" : "#D95F02"
+    }, {
+      "key" : "Succinoadenosine",
+      "value" : "#D95F02"
+    }, {
+      "key" : "Oleanolic acid methyl ester",
+      "value" : "#D95F02"
+    }, {
+      "key" : "Omeprazole (Prilosec)",
+      "value" : "#D95F02"
+    }, {
+      "key" : "Ginkgolic acid I",
+      "value" : "#D95F02"
+    }, {
+      "key" : "2-Oleoyl-1-palmitoyl-sn-glycero-3-phosphocholine",
+      "value" : "#D95F02"
+    }, {
+      "key" : "Spectral Match to Sulfachloropyridazine from NIST14",
+      "value" : "#D95F02"
+    }, {
+      "key" : "TOP Psoriasis biomarker FeatureID=1247 295.226_C18H30O3_5.47_1247",
+      "value" : "#D95F02"
+    }, {
+      "key" : "Massbank:EA282609 Ketamine|2-(2-chlorophenyl)-2-(methylamino)-1-cyclohexanone",
+      "value" : "#D95F02"
+    }, {
+      "key" : "MoNA:784624 Linoleic acid",
+      "value" : "#D95F02"
+    }, {
+      "key" : "syringaresinol",
+      "value" : "#D95F02"
+    }, {
+      "key" : "Spectral Match to trans-EKODE-(E)-Ib from NIST14",
+      "value" : "#D95F02"
+    }, {
+      "key" : "3.alpha.,6.alpha.-Mannotriose",
+      "value" : "#D95F02"
+    }, {
+      "key" : "trans-Vaccenic acid",
+      "value" : "#D95F02"
+    }, {
+      "key" : "Gal-alpha1-4-Gal-alpha1-4-Glc-Beta-Cer(18:1/16:0)",
+      "value" : "#D95F02"
+    }, {
+      "key" : "Spectral Match to L-Tryptophan from NIST14",
+      "value" : "#D95F02"
+    }, {
+      "key" : "Spectral Match to 1-Hexadecanoyl-2-(9Z-octadecenoyl)-sn-glycero-3-phosphocholine from NIST14",
+      "value" : "#D95F02"
+    }, {
+      "key" : "Spectral Match to Glu Phe from METLIN",
+      "value" : "#D95F02"
+    }, {
+      "key" : "Adipoyl-L-carnitine",
+      "value" : "#D95F02"
+    }, {
+      "key" : "1-Stearoyl-2-arachidonyl-sn-glycero-3-phosphocholine",
+      "value" : "#D95F02"
+    }, {
+      "key" : "Dereplicator Identification - rhapsamine",
+      "value" : "#D95F02"
+    }, {
+      "key" : "12-Ketodeoxycholic acid",
+      "value" : "#D95F02"
+    }, {
+      "key" : "[putative] omeprazole sulfide 5-carboxylic acid",
+      "value" : "#D95F02"
+    }, {
+      "key" : "5-hydroxyomeprazole",
+      "value" : "#D95F02"
+    }, {
+      "key" : "CocamidopropylBetaine",
+      "value" : "#D95F02"
+    }, {
+      "key" : "PC(16:0/20:4); [M+H]+ C44H81N1O8P1",
+      "value" : "#D95F02"
+    }, {
+      "key" : "L-Tryptophan",
+      "value" : "#D95F02"
+    }, {
+      "key" : "NCGC00380283-01!4-[5-[[4-[5-[acetyl(hydroxy)amino]pentylamino]-4-oxobutanoyl]-hydroxyamino]pentylamino]-4-oxobutanoic acid",
+      "value" : "#D95F02"
+    }, {
+      "key" : "1'-Hydroxymidazolam .beta.-D-glucuronide",
+      "value" : "#D95F02"
+    }, {
+      "key" : "cis-Vaccenic acid",
+      "value" : "#D95F02"
+    }, {
+      "key" : "Dextromethorphan-d3",
+      "value" : "#D95F02"
+    }, {
+      "key" : "Spectral Match to Sulfadimethoxine from NIST14",
+      "value" : "#D95F02"
+    }, {
+      "key" : "Phenylalanine",
+      "value" : "#D95F02"
+    }, {
+      "key" : "Spectral Match to Hippuric acid from NIST14",
+      "value" : "#D95F02"
+    }, {
+      "key" : "Soyasapogenol B",
+      "value" : "#D95F02"
+    }, {
+      "key" : "Palmitoleic acid ethyl ester",
+      "value" : "#D95F02"
+    }, {
+      "key" : "\"1,2,3,4-tetrahydroharmane-3-carboxylic acid\"",
+      "value" : "#D95F02"
+    }, {
+      "key" : "NCGC00385223-01!(2R,3S)-7-[(2S,3R,4R)-3,4-dihydroxy-4-(hydroxymethyl)oxolan-2-yl]oxy-2-(3,4-dihydroxyphenyl)-3,4-dihydro-2H-chromene-3,5-diol",
+      "value" : "#D95F02"
+    }, {
+      "key" : "MassbankEU:SM876601 Lauric isopropanolamide|N-(2-hydroxypropyl)dodecanamide",
+      "value" : "#D95F02"
+    }, {
+      "key" : "Spectral Match to Hemin cation from NIST14",
+      "value" : "#D95F02"
+    }, {
+      "key" : "1-Hexadecyl-sn-glycero-3-phosphocholine",
+      "value" : "#D95F02"
+    }, {
+      "key" : "Pantothenic acid",
+      "value" : "#D95F02"
+    }, {
+      "key" : "Carboxyomeprazole",
+      "value" : "#D95F02"
+    }, {
+      "key" : "1-Stearoyl-2-hydroxy-sn-glycero-3-phosphocholine",
+      "value" : "#D95F02"
+    }, {
+      "key" : "GLYCOCHENODEOXYCHOLIC ACID",
+      "value" : "#D95F02"
+    }, {
+      "key" : "Omeprazole sulfone",
+      "value" : "#D95F02"
+    }, {
+      "key" : "Spectral Match to Decaethylene glycol tridecyl ether from NIST14",
+      "value" : "#D95F02"
+    }, {
+      "key" : "2-Furanpropanoic acid, 3-carboxy-4-methyl-5-propyl-",
+      "value" : "#D95F02"
+    }, {
+      "key" : "PC(16:0/18:1); [M+H]+ C42H83N1O8P1",
+      "value" : "#D95F02"
+    }, {
+      "key" : "THEOBROMINE",
+      "value" : "#D95F02"
+    }, {
+      "key" : "PC(18:0/18:1); [M+H]+ C44H87N1O8P1",
+      "value" : "#D95F02"
+    }, {
+      "key" : "Spectral Match to Valerylcarnitine from NIST14",
+      "value" : "#D95F02"
+    }, {
+      "key" : "Massbank:EA020210 Naproxen|2-(6-methoxy-2-naphthalenyl)propanoic acid",
+      "value" : "#D95F02"
+    }, {
+      "key" : "1,2-dioleoyl-sn-glycero-3-phosphatidylcholine",
+      "value" : "#D95F02"
+    }, {
+      "key" : "Biliverdin",
+      "value" : "#D95F02"
+    }, {
+      "key" : "Monolinolenin (9c,12c,15c)",
+      "value" : "#D95F02"
+    }, {
+      "key" : "TOP19 Psoriasis feature - Unknown FeatureID=3668",
+      "value" : "#D95F02"
+    }, {
+      "key" : "PIPERINE",
+      "value" : "#D95F02"
+    }, {
+      "key" : "2-[(4-hydroxy-3,5-dimethoxyphenyl)methoxy]-6-(hydroxymethyl)oxane-3,4,5-triol",
+      "value" : "#D95F02"
+    }, {
+      "key" : "p-Acetamidophenyl .beta.-D-glucuronide",
+      "value" : "#D95F02"
+    }, {
+      "key" : "Monopalmitolein (9c)",
+      "value" : "#D95F02"
+    }, {
+      "key" : "PC(18:1/20:2); [M+H]+ C46H87N1O8P1",
+      "value" : "#D95F02"
+    }, {
+      "key" : "Spectral Match to PyroGlu-Pro from NIST14",
+      "value" : "#D95F02"
+    }, {
+      "key" : "NCGC00385962-01_C16H24O3_",
+      "value" : "#D95F02"
+    }, {
+      "key" : "Spectral Match to Lithocholic acid from NIST14",
+      "value" : "#D95F02"
+    }, {
+      "key" : "trimethyl(2-{[3-[octadeca-9,12-dienoyloxy]-2-(octadecanoyloxy)propyl phosphonato]oxy}ethyl)azanium",
+      "value" : "#D95F02"
+    }, {
+      "key" : "5-O-Desmethylomeprazole sulfide",
+      "value" : "#D95F02"
+    }, {
+      "key" : "Chenodeoxycholic acid",
+      "value" : "#D95F02"
+    }, {
+      "key" : "NCGC00380746-01!1,7-bis(4-hydroxyphenyl)heptane-3,5-diol",
+      "value" : "#D95F02"
+    }, {
+      "key" : "Androsterone glucuronide",
+      "value" : "#D95F02"
+    }, {
+      "key" : "Androstan-3-ol-17-one 3-glucuronide",
+      "value" : "#D95F02"
+    }, {
+      "key" : "Enterolactone",
+      "value" : "#D95F02"
+    }, {
+      "key" : "Spectral Match to Biliverdin from NIST14",
+      "value" : "#D95F02"
+    }, {
+      "key" : "Acetyl-DL-carnitine",
+      "value" : "#D95F02"
+    }, {
+      "key" : "Dextromethorphan",
+      "value" : "#D95F02"
+    }, {
+      "key" : "Spectral Match to Urobilin from NIST14",
+      "value" : "#D95F02"
+    }, {
+      "key" : "2-Hydroxyibuprofen",
+      "value" : "#D95F02"
+    }, {
+      "key" : "Spectral Match to 9-Oxo-10E,12Z-octadecadienoic acid from NIST14",
+      "value" : "#D95F02"
+    }, {
+      "key" : "Spectral Match to .alpha.-L-Asp-L-Phe from NIST14",
+      "value" : "#D95F02"
+    }, {
+      "key" : "Spectral Match to Bilirubin from METLIN",
+      "value" : "#D95F02"
+    }, {
+      "key" : "(-)-Epicatechin",
+      "value" : "#D95F02"
+    }, {
+      "key" : "Spectral Match to 12(13)-Epoxy-9Z-octadecenoic acid from NIST14",
+      "value" : "#D95F02"
+    }, {
+      "key" : "Spectral Match to 1-(9Z-Octadecenoyl)-sn-glycero-3-phosphoethanolamine from NIST14",
+      "value" : "#D95F02"
+    }, {
+      "key" : "Glycoursodeoxycholic acid",
+      "value" : "#D95F02"
+    }, {
+      "key" : "MoNA:729 Sulfamethazine (Trisulfapyrimidines)",
+      "value" : "#D95F02"
+    }, {
+      "key" : "NCGC00385377-01_C19H32O7_4-(2,6,6-Trimethyl-4-oxo-2-cyclohexen-1-yl)-2-butanyl beta-D-glucopyranoside",
+      "value" : "#D95F02"
+    }, {
+      "key" : "1-Oleoyl-sn-glycero-3-phosphocholine",
+      "value" : "#D95F02"
+    }, {
+      "key" : "Tri-2-ethylhexyl trimellitate",
+      "value" : "#D95F02"
+    }, {
+      "key" : "Omeprazole",
+      "value" : "#D95F02"
+    }, {
+      "key" : "Spectral Match to Arachidonoylthio-PC from NIST14",
+      "value" : "#D95F02"
+    }, {
+      "key" : "Spectral Match to D-erythro-C18-Sphingosine from NIST14",
+      "value" : "#D95F02"
+    }, {
+      "key" : "(2-{[3-(hexadecanoyloxy)-2-[octadeca-9,12-dienoyloxy]propyl phosphonato]oxy}ethyl)trimethylazanium",
+      "value" : "#D95F02"
+    }, {
+      "key" : "\"(R)-4-((3R,5S,7R,8R,9S,10S,12S,13R,14S,17R)-3,7,12-trihydroxy-10,13-dimethylhexadecahydro-1H-cyclopenta[a]phenanthren-17-yl)pentanoic acid\"",
+      "value" : "#D95F02"
+    }, {
+      "key" : "Spectral Match to 3-Hydroxy-4-methoxycinnamic acid from NIST14",
+      "value" : "#D95F02"
+    }, {
+      "key" : "TOP 8 Psoriasis feature - Unknown FeatureID=4262",
+      "value" : "#D95F02"
+    }, {
+      "key" : "Midazolam",
+      "value" : "#D95F02"
+    }, {
+      "key" : "\"(4R)-4-((5S,7R,9S,10S,12S,13R,14S,17R)-7,12-dihydroxy-10,13-dimethylhexadecahydro-1H-cyclopenta[a]phenanthren-17-yl)pentanoic acid\"",
+      "value" : "#D95F02"
+    }, {
+      "key" : "3-Methyl-L-histidine",
+      "value" : "#D95F02"
+    }, {
+      "key" : "1-Methyl-L-histidine",
+      "value" : "#D95F02"
+    }, {
+      "key" : "(2R)-3-Hydroxyisovaleroylcarnitine",
+      "value" : "#D95F02"
+    }, {
+      "key" : "Cholic acid",
+      "value" : "#D95F02"
+    }, {
+      "key" : "9-Oxo-11-(3-pentyl-2-oxiranyl)-10E-undecenoic acid",
+      "value" : "#D95F02"
+    }, {
+      "key" : "16-Hydroxyhexadecanoic acid",
+      "value" : "#D95F02"
+    }, {
+      "key" : "MassbankEU:SM814103 Octocrylene|2-Ethylhexyl 2-cyano-3,3-diphenylprop-2-enoate|2-Ethylhexyl 2-cyano-3,3-diphenylacrylate",
+      "value" : "#D95F02"
+    }, {
+      "key" : "Spectral Match to 9(10)-EpOME from NIST14",
+      "value" : "#D95F02"
+    }, {
+      "key" : "Tetranorprostaglandin J2",
+      "value" : "#D95F02"
+    }, {
+      "key" : "Massbank:PB000432 Citrulline|2-amino-5-(carbamoylamino)pentanoic acid",
+      "value" : "#D95F02"
+    }, {
+      "key" : "Spectral Match to Oleic acid ethyl ester from NIST14",
+      "value" : "#D95F02"
+    }, {
+      "key" : "cis-13-Docosenoic acid",
+      "value" : "#D95F02"
+    }, {
+      "key" : "N-Acetyl-L-tyrosine",
+      "value" : "#D95F02"
+    }, {
+      "key" : "1-Stearoyl-2-hydroxy-sn-glycero-3-phosphoethanolamine",
+      "value" : "#D95F02"
+    }, {
+      "key" : "Spectral Match to Avobenzone from NIST14",
+      "value" : "#D95F02"
+    }, {
+      "key" : "lenticin",
+      "value" : "#D95F02"
+    }, {
+      "key" : "9(10)-Epoxy-12Z-octadecenoic acid",
+      "value" : "#D95F02"
+    }, {
+      "key" : "9E,11E-Octadecadienoic acid",
+      "value" : "#D95F02"
+    }, {
+      "key" : "NCGC00169660-02_C22H30O3_2-Hydroxy-6-[(8Z,11Z)-8,11,14-pentadecatrien-1-yl]benzoic acid",
+      "value" : "#D95F02"
+    }, {
+      "key" : "L-Glutarylcarnitine",
+      "value" : "#D95F02"
+    }, {
+      "key" : "Procyanidin B2",
+      "value" : "#D95F02"
+    }, {
+      "key" : "9-Oxo-10E,12Z-octadecadienoic acid",
+      "value" : "#D95F02"
+    }, {
+      "key" : "Dextrorphan",
+      "value" : "#D95F02"
+    }, {
+      "key" : "Omeprazole sulfide",
+      "value" : "#D95F02"
+    }, {
+      "key" : "Clindamycin",
+      "value" : "#D95F02"
+    }, {
+      "key" : "Oleic acid methyl ester",
+      "value" : "#D95F02"
+    }, {
+      "key" : "Octadecenoic acid",
+      "value" : "#D95F02"
+    }, {
+      "key" : "Hemin cation",
+      "value" : "#D95F02"
+    }, {
+      "key" : "PC(18:0/20:4); [M+H]+ C46H85N1O8P1",
+      "value" : "#D95F02"
+    }, {
+      "key" : "Spectral Match to Cholesterol from NIST14",
+      "value" : "#D95F02"
+    }, {
+      "key" : "13S-Hydroxy-9Z,11E,15Z-octadecatrienoic acid",
+      "value" : "#D95F02"
+    }, {
+      "key" : "N-[(1R)-2-Hydroxy-1-methylethyl-9Z-octadecenamide",
+      "value" : "#D95F02"
+    }, {
+      "key" : "Phenylacetyl-L-glutamine",
+      "value" : "#D95F02"
+    }, {
+      "key" : "Lactosylceramide(18:1/16:0)",
+      "value" : "#D95F02"
+    }, {
+      "key" : "N-Acetyl-L-carnosine",
+      "value" : "#D95F02"
+    }, {
+      "key" : "4-Cholestenone",
+      "value" : "#D95F02"
+    }, {
+      "key" : "7.alpha.-Hydroxy-3-oxo-4-cholestenoic acid",
+      "value" : "#D95F02"
+    }, {
+      "key" : "25(S)-26-Hydroxycholesterol",
+      "value" : "#D95F02"
+    }, {
+      "key" : "Fructoselysine",
+      "value" : "#D95F02"
+    }, {
+      "key" : "Spectral Match to 1-Hexadecanoyl-2-octadecadienoyl-sn-glycero-3-phosphocholine from NIST14",
+      "value" : "#D95F02"
+    }, {
+      "key" : "Spectral Match to 12-Ketodeoxycholic acid from NIST14",
+      "value" : "#D95F02"
+    }, {
+      "key" : "Spectral Match to 1-(9Z-Octadecenoyl)-sn-glycero-3-phosphocholine from NIST14",
+      "value" : "#D95F02"
+    }, {
+      "key" : "Spectral Match to Cholic acid from NIST14",
+      "value" : "#D95F02"
+    }, {
+      "key" : "Asp-Ile",
+      "value" : "#D95F02"
+    }, {
+      "key" : "Dexpanthenol",
+      "value" : "#D95F02"
+    }, {
+      "key" : "roseoside",
+      "value" : "#D95F02"
+    }, {
+      "key" : "Spectral Match to Chenodeoxycholic acid from NIST14",
+      "value" : "#D95F02"
+    }, {
+      "key" : "N-.alpha.-Acetyl-L-arginine",
+      "value" : "#D95F02"
+    }, {
+      "key" : "Spectral Match to Carboxyibuprofen from NIST14",
+      "value" : "#D95F02"
+    }, {
+      "key" : "NCGC00180497-02!",
+      "value" : "#D95F02"
+    }, {
+      "key" : "Arachidonoylthiophosphorylcholine",
+      "value" : "#D95F02"
+    }, {
+      "key" : "Citric acid",
+      "value" : "#D95F02"
+    }, {
+      "key" : "1-Stearoyl-rac-glycerol",
+      "value" : "#D95F02"
+    }, {
+      "key" : "Spectral Match to Deoxycholic acid from NIST14",
+      "value" : "#D95F02"
+    }, {
+      "key" : "Sulfamethizole",
+      "value" : "#D95F02"
+    }, {
+      "key" : "1,2-Dilinoleoyl-sn-glycero-3-phosphocholine",
+      "value" : "#D95F02"
+    }, {
+      "key" : "PC(18:0/18:2); [M+H]+ C44H85N1O8P1",
+      "value" : "#D95F02"
+    }, {
+      "key" : "Spectral Match to 1-Octadecanoyl-2-octadecenoyl-sn-glycero-3-phosphocholine from NIST14",
+      "value" : "#D95F02"
+    }, {
+      "key" : "Dextrorphan-d3",
+      "value" : "#D95F02"
+    }, {
+      "key" : "NCGC00180666-02!(2R,3S,4S,5R,6S)-2-[(3,4,5-trihydroxyoxan-2-yl)oxymethyl]-6-(3,4,5-trimethoxyphenoxy)oxane-3,4,5-triol",
+      "value" : "#D95F02"
+    }, {
+      "key" : "Spectral Match to Undecaethylene glycol tridecyl ether from NIST14",
+      "value" : "#D95F02"
+    }, {
+      "key" : "Midazolam-d4",
+      "value" : "#D95F02"
+    }, {
+      "key" : "trans-13-Octadecenoic acid",
+      "value" : "#D95F02"
+    }, {
+      "key" : "N-Lauroylsarcosine",
+      "value" : "#D95F02"
+    }, {
+      "key" : "Omeprazole-d3",
+      "value" : "#D95F02"
+    }, {
+      "key" : "9-Oxo-10(E),12(E)-octadecadienoic acid",
+      "value" : "#D95F02"
+    }, {
+      "key" : "Bilirubin",
+      "value" : "#D95F02"
+    }, {
+      "key" : "3-Methylglutarylcarnitine",
+      "value" : "#D95F02"
+    }, {
+      "key" : "Massbank:FIO00474 Amitryptiline",
+      "value" : "#D95F02"
+    }, {
+      "key" : "Dextrorphan O-.beta.-D-glucuronide",
+      "value" : "#D95F02"
+    }, {
+      "key" : "1-hydroxymidazolam",
+      "value" : "#D95F02"
+    }, {
+      "key" : "\"(4R)-4-((3R,5R,6S,7R,9S,10R,12S,13R,14S,17R)-3,6,7,12-tetrahydroxy-10,13-dimethylhexadecahydro-1H-cyclopenta[a]phenanthren-17-yl)pentanoic acid\"",
+      "value" : "#D95F02"
+    }, {
+      "key" : "PC(18:1/18:2); [M+H]+ C44H83N1O8P1",
+      "value" : "#D95F02"
+    }, {
+      "key" : ".beta.-Hyodeoxycholic acid",
+      "value" : "#D95F02"
+    }, {
+      "key" : "NCGC00347704-02_C24H32O7_2H-Oxireno[1,10a]phenanthro[3,2-b]furan-10(11bH)-one, 5,7-bis(acetyloxy)-3,3a,4,5,6,7,7a,7b,8,8a-decahydro-4,4,7a,11-tetramethyl-, (1aS,3aR,5S,7S,7aR,7bS,8aR,11bR)-",
+      "value" : "#D95F02"
+    }, {
+      "key" : "1-Oleoyl-2-palmitoyl-sn-glycero-3-phosphocholine",
+      "value" : "#D95F02"
+    }, {
+      "key" : "Agomelatine",
+      "value" : "#D95F02"
+    }, {
+      "key" : "Spectral Match to 1-Palmitoyl-2-docosahexaenoyl-sn-glycero-3-phosphocholine from NIST14",
+      "value" : "#D95F02"
+    }, {
+      "key" : "Spectral Match to Undecaethylene glycol from NIST14",
+      "value" : "#D95F02"
+    }, {
+      "key" : "cis,cis-9,12-Octadecadien-1-ol",
+      "value" : "#D95F02"
+    }, {
+      "key" : "Spectral Match to Linoleic acid ethyl ester from NIST14",
+      "value" : "#D95F02"
+    }, {
+      "key" : "Palmitoyleicosapentaenoyl phosphatidylcholine",
+      "value" : "#D95F02"
+    }, {
+      "key" : "NCGC00385199-01!2-[3,4-bis[[(2S,3R,4S,5S,6R)-3,4,5-trihydroxy-6-(hydroxymethyl)oxan-2-yl]oxy]phenyl]-5,7-dihydroxychromen-4-one",
+      "value" : "#D95F02"
+    }, {
+      "key" : "\"(R)-4-((3R,5R,8R,9S,10S,12S,13R,14S,17R)-3,12-dihydroxy-10,13-dimethylhexadecahydro-1H-cyclopenta[a]phenanthren-17-yl)pent-2-enoic acid\"",
+      "value" : "#D95F02"
+    }, {
+      "key" : "13-cis-Retinol",
+      "value" : "#D95F02"
+    }, {
+      "key" : "Spectral Match to Bis(2-ethylhexyl) phthalate from NIST14",
+      "value" : "#D95F02"
+    }, {
+      "key" : "1-Palmitoyl-sn-glycero-3-phosphocholine",
+      "value" : "#D95F02"
+    }, {
+      "key" : "Hydroxyomeprazole-5-O-glucuronide",
+      "value" : "#D95F02"
+    }, {
+      "key" : "Isoxadifen-ethyl",
+      "value" : "#D95F02"
+    }, {
+      "key" : "Stercobilin",
+      "value" : "#D95F02"
+    }, {
+      "key" : "Spectral Match to 13-Docosenamide, (Z)- from NIST14",
+      "value" : "#D95F02"
+    }, {
+      "key" : "Spectral Match to Linolenic acid ethyl ester from NIST14",
+      "value" : "#D95F02"
+    }, {
+      "key" : "(2-{[3-(hexadecanoyloxy)-2-[icosa-5,8,11,14-tetraenoyloxy]propyl phosphonato]oxy}ethyl)trimethylazanium",
+      "value" : "#D95F02"
+    }, {
+      "key" : "Ceramide (18:1/16:0)",
+      "value" : "#D95F02"
+    }, {
+      "key" : "Spectral Match to 1-Stearoyl-2-linoleoyl-sn-glycero-3-phosphocholine from NIST14",
+      "value" : "#D95F02"
+    }, {
+      "key" : "Glycodeoxycholic acid",
+      "value" : "#D95F02"
+    }, {
+      "key" : "Spectral Match to 1-Palmitoyl-2-hydroxy-sn-glycero-3-phosphoethanolamine from NIST14",
+      "value" : "#D95F02"
+    }, {
+      "key" : "1-Stearoyl-2-linoleoyl-sn-glycero-3-phosphocholine",
+      "value" : "#D95F02"
+    }, {
+      "key" : "4.beta.-Hydroxycholesterol 4-acetate",
+      "value" : "#D95F02"
+    }, {
+      "key" : ".alpha.-Ionone",
+      "value" : "#D95F02"
+    } ]
+  }, {
+    "mappingType" : "passthrough",
+    "mappingColumn" : "max_chemdir",
+    "mappingColumnType" : "Double",
+    "visualProperty" : "EDGE_LABEL"
+  }, {
     "mappingType" : "discrete",
     "mappingColumn" : "sign_chemdir",
     "mappingColumnType" : "Double",
@@ -329,18 +988,25 @@
       "value" : "DELTA"
     } ]
   }, {
-    "mappingType" : "passthrough",
-    "mappingColumn" : "name",
-    "mappingColumnType" : "String",
-    "visualProperty" : "NODE_LABEL"
-  }, {
-    "mappingType" : "discrete",
-    "mappingColumn" : "sign_chemdir",
-    "mappingColumnType" : "Double",
-    "visualProperty" : "EDGE_SOURCE_ARROW_SHAPE",
-    "map" : [ {
-      "key" : "1.0",
-      "value" : "ARROW"
+    "mappingType" : "continuous",
+    "mappingColumn" : "max_chemdir",
+    "mappingColumnType" : "Number",
+    "visualProperty" : "EDGE_STROKE_UNSELECTED_PAINT",
+    "points" : [ {
+      "value" : 0.0,
+      "lesser" : "#FDE725",
+      "equal" : "#FBE723",
+      "greater" : "#FBE723"
+    }, {
+      "value" : 1.44716215133667,
+      "lesser" : "#21918C",
+      "equal" : "#21918C",
+      "greater" : "#21918C"
+    }, {
+      "value" : 2.8943244062389963,
+      "lesser" : "#440256",
+      "equal" : "#440256",
+      "greater" : "#440154"
     } ]
   } ]
 }
