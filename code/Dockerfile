@@ -1,9 +1,10 @@
-FROM ubuntu:latest
+FROM ubuntu:20.04
 MAINTAINER Mingxun Wang "mwang87@gmail.com"
 
 RUN apt-get update -y
 RUN apt-get install -y python3-pip python3-dev build-essential
 RUN apt-get install -y zlib1g-dev
+RUN DEBIAN_FRONTEND="noninteractive" apt-get -y install tzdata
 RUN apt-get install -y libxml2-dev
 RUN apt-get install -y xvfb
 
@@ -24,6 +25,7 @@ RUN pip3 install pathvalidate
 RUN pip3 install psutil
 RUN pip3 install redis
 RUN pip3 install -U Celery
+RUN pip3 install networkx==2.1
 
 COPY . /app
 WORKDIR /app
