@@ -58,7 +58,7 @@ def dashboard():
 
 #Retreiving graphml from workflow output. 
 def get_graph_object(taskid, workflow_name, output_graphml_filename):
-    url_to_graph = ""
+    url_to_graph = "https://gnps.ucsd.edu/ProteoSAFe/DownloadResultFile?task={}&block=main&file=gnps_molecular_network_graphml/".format(taskid)
 
     if workflow_name == "MS2LDA_MOTIFDB":
         #Special case using zip file
@@ -99,6 +99,9 @@ def get_graph_object(taskid, workflow_name, output_graphml_filename):
             url_to_graph = "https://gnps.ucsd.edu/ProteoSAFe/DownloadResultFile?task=%s&block=main&file=output_folder/chemdir_network.graphml" % (taskid)
         if workflow_name == "MERGE_NETWORKS_POLARITY":
             url_to_graph = "https://gnps.ucsd.edu/ProteoSAFe/DownloadResultFile?task=%s&block=main&file=merged_network/" % (taskid)
+        if workflow_name == "SPEC2VEC":
+            url_to_graph = "https://gnps.ucsd.edu/ProteoSAFe/DownloadResultFile?task={}&block=main&file=gnps_molecular_network_graphml/gnps_spec2vec.graphml".format(taskid)
+            
 
         print(url_to_graph)
         local_file = open(output_graphml_filename, "w")
