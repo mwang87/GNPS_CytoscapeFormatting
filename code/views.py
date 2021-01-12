@@ -57,7 +57,7 @@ def dashboard():
         randomnumber=str(random.randint(1,10001)))
 
 #Retreiving graphml from workflow output. 
-def get_graph_object(taskid, workflow_name, output_graphml_filename):
+def get_graph_object(taskid, workflow_name, output_graphml_filename, override_path=None):
     url_to_graph = "https://gnps.ucsd.edu/ProteoSAFe/DownloadResultFile?task={}&block=main&file=gnps_molecular_network_graphml/".format(taskid)
 
     if workflow_name == "MS2LDA_MOTIFDB":
@@ -101,7 +101,9 @@ def get_graph_object(taskid, workflow_name, output_graphml_filename):
             url_to_graph = "https://gnps.ucsd.edu/ProteoSAFe/DownloadResultFile?task=%s&block=main&file=merged_network/" % (taskid)
         if workflow_name == "SPEC2VEC":
             url_to_graph = "https://gnps.ucsd.edu/ProteoSAFe/DownloadResultFile?task={}&block=main&file=gnps_molecular_network_graphml/gnps_spec2vec.graphml".format(taskid)
-            
+
+        if override_path is not None:
+            url_to_graph = "https://gnps.ucsd.edu/ProteoSAFe/DownloadResultFile?task={}&block=main&file={}".format(taskid, override_path)
 
         print(url_to_graph)
         local_file = open(output_graphml_filename, "w")
@@ -127,7 +129,9 @@ def process_ajax():
     task_status = requests.get(task_status_url).json()
     workflow_name = task_status["workflow"]
 
-    retreval_status = get_graph_object(taskid, workflow_name, output_graphml_filename)
+    # Try to get the path on GNPS if it is not the default
+    override_path = request.values.get("override_path", None)
+    retreval_status = get_graph_object(taskid, workflow_name, output_graphml_filename, override_path=override_path)
 
     if not retreval_status:
         raise Exception("Did not retreive graphml properly")
@@ -140,7 +144,9 @@ def process_ajax():
     if workflow_name == "CHEMDIR":
         style_filename = "Styles/ChemDir.json"
     if workflow_name == "MERGE_NETWORKS_POLARITY":
-        style_filename = "Styles/MergeNetworks.json"        
+        style_filename = "Styles/MergeNetworks.json"
+    if workflow_name == "SEARCH_SINGLE_SPECTRUM":
+        style_filename = "Styles/MASST.json"
 
     #Option to filter data
     if "filter" in request.values:
@@ -184,7 +190,7 @@ def process_ajax():
 
 #Calculating the output cytoscape and img filename
 def calculate_output_filenames(params_dict):
-    expected_keys = ["task", "filter", "source", "molnetenhancer_superclass", "style"]
+    expected_keys = ["task", "filter", "source", "molnetenhancer_superclass", "style", "override_path"]
     param_keys = list(params_dict.keys())
     param_keys.sort()
     all_values = [os.path.basename(sanitize_filename(str(params_dict[key])).replace(" ", "")) for key in param_keys if key in expected_keys]
