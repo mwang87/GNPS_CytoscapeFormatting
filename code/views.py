@@ -144,7 +144,9 @@ def process_ajax():
     if workflow_name == "CHEMDIR":
         style_filename = "Styles/ChemDir.json"
     if workflow_name == "MERGE_NETWORKS_POLARITY":
-        style_filename = "Styles/MergeNetworks.json"        
+        style_filename = "Styles/MergeNetworks.json"
+    if workflow_name == "SEARCH_SINGLE_SPECTRUM":
+        style_filename = "Styles/MASST.json"
 
     #Option to filter data
     if "filter" in request.values:
