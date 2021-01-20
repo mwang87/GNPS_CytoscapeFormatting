@@ -21,6 +21,9 @@ RUN wget http://chianti.ucsd.edu/cytoscape-3.6.1/Cytoscape_3_6_1_unix.sh
 RUN chmod u+x  Cytoscape_3_6_1_unix.sh
 RUN sh Cytoscape_3_6_1_unix.sh -q
 
+# Setting the options properly
+RUN echo "-Xms2048M\n-Xmx16036M" > /usr/local/Cytoscape_v3.6.1/Cytoscape.vmoptions
+
 RUN pip3 install pathvalidate
 RUN pip3 install psutil
 RUN pip3 install redis
