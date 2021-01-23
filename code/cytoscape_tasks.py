@@ -34,12 +34,12 @@ def create_cytoscape(input_graphml, input_style, output_cytoscape_filename, outp
     print("Graph node count", number_of_nodes)
     print("Graph edge count", number_of_edges)
 
-    MAX_NODES = 10000
-    MAX_EDGES = 50000
-    if number_of_nodes > MAX_NODES:
-        raise Exception("Too Many Nodes in Graphml, will crash Cytoscape")
-    if number_of_edges > MAX_EDGES:
-        raise Exception("Too Many EDGES in Graphml, will crash Cytoscape")
+    # MAX_NODES = 10000
+    # MAX_EDGES = 50000
+    # if number_of_nodes > MAX_NODES:
+    #     raise Exception("Too Many Nodes in Graphml, will crash Cytoscape")
+    # if number_of_edges > MAX_EDGES:
+    #     raise Exception("Too Many EDGES in Graphml, will crash Cytoscape")
 
     cytoscape_process = subprocess.Popen("Cytoscape", shell=True, 
             stdout=subprocess.PIPE,
