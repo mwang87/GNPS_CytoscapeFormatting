@@ -31,7 +31,7 @@ services:
     deploy:
       resources:
         limits:
-          memory: 8000M
+          memory: 16000M
   # worker2:
   #   build: .
   #   container_name: gnpscytoscape_worker2
