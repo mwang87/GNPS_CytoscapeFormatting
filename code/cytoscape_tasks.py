@@ -11,7 +11,7 @@ from py2cytoscape.data.cyrest_client import CyRestClient
 
 
 print("Before Celery App")
-celery_instance = Celery('cytoscape_tasks', backend='redis://redis', broker='redis://redis')
+celery_instance = Celery('cytoscape_tasks', backend='redis://cytoscape-redis', broker='redis://cytoscape-redis')
 
 @celery_instance.task
 def test_celery(input_value, input_value2):

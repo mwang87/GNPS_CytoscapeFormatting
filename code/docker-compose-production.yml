@@ -1,6 +1,6 @@
 version: '3'
 services:
-  web:
+  cytoscape-web:
     networks:
       - default
       - nginx-net
