@@ -1,6 +1,6 @@
 version: '3'
 services:
-  web:
+  cytoscape-web:
     build: .
     container_name: gnpscytoscape
     ports:
@@ -8,11 +8,16 @@ services:
     volumes:
     - ./static:/app/static
     depends_on: 
-      - redis
+      - cytoscape-redis
     networks:
       - default
     restart: unless-stopped
-  worker1:
+    deploy:
+      resources:
+        limits:
+          memory: 8000M
+  
+  cytoscape-worker1:
     build: .
     container_name: gnpscytoscape_worker1
     volumes:
@@ -20,9 +25,13 @@ services:
     command: /app/run_celery_worker.sh
     restart: unless-stopped
     depends_on: 
-      - redis
+      - cytoscape-redis
     networks:
       - default
+    deploy:
+      resources:
+        limits:
+          memory: 8000M
   # worker2:
   #   build: .
   #   container_name: gnpscytoscape_worker2
@@ -56,7 +65,7 @@ services:
   #     - redis
   #   networks:
   #     - default
-  redis:
+  cytoscape-redis:
     image: redis
     networks:
       - default
