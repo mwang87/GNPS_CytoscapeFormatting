@@ -6,7 +6,8 @@ RUN DEBIAN_FRONTEND="noninteractive" apt-get update && apt-get install -y build-
 COPY requirements.txt .
 RUN pip install -r requirements.txt
 
-RUN conda install -c conda-forge openjdk
+RUN conda install -c conda-forge mamba
+RUN mamba install -c conda-forge openjdk=9 -y
 
 RUN wget http://chianti.ucsd.edu/cytoscape-3.6.1/Cytoscape_3_6_1_unix.sh
 RUN chmod u+x  Cytoscape_3_6_1_unix.sh
