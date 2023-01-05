@@ -1,0 +1,10 @@
+ftputil
+flask
+gunicorn
+requests
+py2cytoscape
+pathvalidate
+psutil
+redis
+networkx==2.1
+celery
