@@ -20,20 +20,23 @@ server-compose-build:
 
 	
 server-compose-interactive:
-	docker-compose build
+	docker-compose --compatibility build
 	docker-compose --compatibility up
 
 server-compose:
-	docker-compose build
+	docker-compose --compatibility build
 	docker-compose --compatibility up -d
 
 server-compose-production-interactive:
-	docker-compose build
+	docker-compose --compatibility build
 	docker-compose -f docker-compose.yml -f docker-compose-production.yml --compatibility up
 
 server-compose-production:
-	docker-compose build
+	docker-compose --compatibility build
 	docker-compose -f docker-compose.yml -f docker-compose-production.yml --compatibility up -d
 
 attach:
 	docker exec -i -t gnpscytoscape  /bin/bash
+
+attach-worker:
+	docker exec -i -t gnpscytoscape_worker1  /bin/bash
