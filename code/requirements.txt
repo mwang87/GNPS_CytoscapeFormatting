@@ -8,3 +8,4 @@ psutil
 redis
 networkx==2.1
 celery
+importlib-metadata==4.13.0
