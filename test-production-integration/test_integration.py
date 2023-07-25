@@ -1,6 +1,6 @@
 import requests
 
-PRODUCTION_URL = "gnps-cytoscape.ucsd.edu"
+PRODUCTION_URL = "cytoscape.gnps2.org"
 
 def test_production():
     url = f"https://{PRODUCTION_URL}/process"
