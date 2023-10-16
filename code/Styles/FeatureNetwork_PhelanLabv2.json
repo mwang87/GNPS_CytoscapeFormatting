@@ -1,0 +1,473 @@
+{
+  "title" : "ClassDefault",
+  "defaults" : [ {
+    "visualProperty" : "COMPOUND_NODE_PADDING",
+    "value" : 10.0
+  }, {
+    "visualProperty" : "COMPOUND_NODE_SHAPE",
+    "value" : "ROUND_RECTANGLE"
+  }, {
+    "visualProperty" : "DING_RENDERING_ENGINE_ROOT",
+    "value" : "org.cytoscape.view.presentation.property.NullVisualProperty$NullDataTypeImpl@1c5f43ac"
+  }, {
+    "visualProperty" : "EDGE",
+    "value" : "DefaultVisualizableVisualProperty(id=EDGE, name=Edge Visual Property)"
+  }, {
+    "visualProperty" : "EDGE_BEND",
+    "value" : ""
+  }, {
+    "visualProperty" : "EDGE_CURVED",
+    "value" : true
+  }, {
+    "visualProperty" : "EDGE_LABEL",
+    "value" : ""
+  }, {
+    "visualProperty" : "EDGE_LABEL_COLOR",
+    "value" : "#000000"
+  }, {
+    "visualProperty" : "EDGE_LABEL_FONT_FACE",
+    "value" : "SansSerif.plain,plain,10"
+  }, {
+    "visualProperty" : "EDGE_LABEL_FONT_SIZE",
+    "value" : 10
+  }, {
+    "visualProperty" : "EDGE_LABEL_TRANSPARENCY",
+    "value" : 255
+  }, {
+    "visualProperty" : "EDGE_LABEL_WIDTH",
+    "value" : 200.0
+  }, {
+    "visualProperty" : "EDGE_LINE_TYPE",
+    "value" : "SOLID"
+  }, {
+    "visualProperty" : "EDGE_PAINT",
+    "value" : "#808080"
+  }, {
+    "visualProperty" : "EDGE_SELECTED",
+    "value" : false
+  }, {
+    "visualProperty" : "EDGE_SELECTED_PAINT",
+    "value" : "#FF0000"
+  }, {
+    "visualProperty" : "EDGE_SOURCE_ARROW_SELECTED_PAINT",
+    "value" : "#FFFF00"
+  }, {
+    "visualProperty" : "EDGE_SOURCE_ARROW_SHAPE",
+    "value" : "NONE"
+  }, {
+    "visualProperty" : "EDGE_SOURCE_ARROW_SIZE",
+    "value" : 6.0
+  }, {
+    "visualProperty" : "EDGE_SOURCE_ARROW_UNSELECTED_PAINT",
+    "value" : "#000000"
+  }, {
+    "visualProperty" : "EDGE_STROKE_SELECTED_PAINT",
+    "value" : "#FF0000"
+  }, {
+    "visualProperty" : "EDGE_STROKE_UNSELECTED_PAINT",
+    "value" : "#CCCCCC"
+  }, {
+    "visualProperty" : "EDGE_TARGET_ARROW_SELECTED_PAINT",
+    "value" : "#FFFF00"
+  }, {
+    "visualProperty" : "EDGE_TARGET_ARROW_SHAPE",
+    "value" : "NONE"
+  }, {
+    "visualProperty" : "EDGE_TARGET_ARROW_SIZE",
+    "value" : 6.0
+  }, {
+    "visualProperty" : "EDGE_TARGET_ARROW_UNSELECTED_PAINT",
+    "value" : "#000000"
+  }, {
+    "visualProperty" : "EDGE_TOOLTIP",
+    "value" : ""
+  }, {
+    "visualProperty" : "EDGE_TRANSPARENCY",
+    "value" : 255
+  }, {
+    "visualProperty" : "EDGE_UNSELECTED_PAINT",
+    "value" : "#404040"
+  }, {
+    "visualProperty" : "EDGE_VISIBLE",
+    "value" : true
+  }, {
+    "visualProperty" : "EDGE_WIDTH",
+    "value" : 20.0
+  }, {
+    "visualProperty" : "NETWORK",
+    "value" : "DefaultVisualizableVisualProperty(id=NETWORK, name=Network Visual Property)"
+  }, {
+    "visualProperty" : "NETWORK_ANNOTATION_SELECTION",
+    "value" : false
+  }, {
+    "visualProperty" : "NETWORK_BACKGROUND_PAINT",
+    "value" : "#FFFFFF"
+  }, {
+    "visualProperty" : "NETWORK_CENTER_X_LOCATION",
+    "value" : 0.0
+  }, {
+    "visualProperty" : "NETWORK_CENTER_Y_LOCATION",
+    "value" : 0.0
+  }, {
+    "visualProperty" : "NETWORK_CENTER_Z_LOCATION",
+    "value" : 0.0
+  }, {
+    "visualProperty" : "NETWORK_DEPTH",
+    "value" : 0.0
+  }, {
+    "visualProperty" : "NETWORK_EDGE_SELECTION",
+    "value" : true
+  }, {
+    "visualProperty" : "NETWORK_HEIGHT",
+    "value" : 400.0
+  }, {
+    "visualProperty" : "NETWORK_NODE_SELECTION",
+    "value" : true
+  }, {
+    "visualProperty" : "NETWORK_SCALE_FACTOR",
+    "value" : 1.0
+  }, {
+    "visualProperty" : "NETWORK_SIZE",
+    "value" : 550.0
+  }, {
+    "visualProperty" : "NETWORK_TITLE",
+    "value" : ""
+  }, {
+    "visualProperty" : "NETWORK_WIDTH",
+    "value" : 550.0
+  }, {
+    "visualProperty" : "NODE",
+    "value" : "DefaultVisualizableVisualProperty(id=NODE, name=Node Visual Property)"
+  }, {
+    "visualProperty" : "NODE_BORDER_PAINT",
+    "value" : "#FFFFFF"
+  }, {
+    "visualProperty" : "NODE_BORDER_STROKE",
+    "value" : "SOLID"
+  }, {
+    "visualProperty" : "NODE_BORDER_TRANSPARENCY",
+    "value" : 255
+  }, {
+    "visualProperty" : "NODE_BORDER_WIDTH",
+    "value" : 15.0
+  }, {
+    "visualProperty" : "NODE_CUSTOMGRAPHICS_1",
+    "value" : "org.cytoscape.PieChart:{\"cy_range\":[0.0,0.0],\"cy_colors\":[\"#E8747C\",\"#74CBE8\",\"#74E883\",\"#FFA500\",\"#FFFF00\",\"#808080\"],\"cy_dataColumns\":[\"GNPSGROUP:rhlR\",\"GNPSGROUP:WT\"]}"
+  }, {
+    "visualProperty" : "NODE_CUSTOMGRAPHICS_2",
+    "value" : "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],"
+  }, {
+    "visualProperty" : "NODE_CUSTOMGRAPHICS_3",
+    "value" : "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],"
+  }, {
+    "visualProperty" : "NODE_CUSTOMGRAPHICS_4",
+    "value" : "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],"
+  }, {
+    "visualProperty" : "NODE_CUSTOMGRAPHICS_5",
+    "value" : "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],"
+  }, {
+    "visualProperty" : "NODE_CUSTOMGRAPHICS_6",
+    "value" : "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],"
+  }, {
+    "visualProperty" : "NODE_CUSTOMGRAPHICS_7",
+    "value" : "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],"
+  }, {
+    "visualProperty" : "NODE_CUSTOMGRAPHICS_8",
+    "value" : "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],"
+  }, {
+    "visualProperty" : "NODE_CUSTOMGRAPHICS_9",
+    "value" : "org.cytoscape.ding.customgraphics.NullCustomGraphics,0,[ Remove Graphics ],"
+  }, {
+    "visualProperty" : "NODE_CUSTOMGRAPHICS_POSITION_1",
+    "value" : "C,C,c,0.00,0.00"
+  }, {
+    "visualProperty" : "NODE_CUSTOMGRAPHICS_POSITION_2",
+    "value" : "C,C,c,0.00,0.00"
+  }, {
+    "visualProperty" : "NODE_CUSTOMGRAPHICS_POSITION_3",
+    "value" : "C,C,c,0.00,0.00"
+  }, {
+    "visualProperty" : "NODE_CUSTOMGRAPHICS_POSITION_4",
+    "value" : "C,C,c,0.00,0.00"
+  }, {
+    "visualProperty" : "NODE_CUSTOMGRAPHICS_POSITION_5",
+    "value" : "C,C,c,0.00,0.00"
+  }, {
+    "visualProperty" : "NODE_CUSTOMGRAPHICS_POSITION_6",
+    "value" : "C,C,c,0.00,0.00"
+  }, {
+    "visualProperty" : "NODE_CUSTOMGRAPHICS_POSITION_7",
+    "value" : "C,C,c,0.00,0.00"
+  }, {
+    "visualProperty" : "NODE_CUSTOMGRAPHICS_POSITION_8",
+    "value" : "C,C,c,0.00,0.00"
+  }, {
+    "visualProperty" : "NODE_CUSTOMGRAPHICS_POSITION_9",
+    "value" : "C,C,c,0.00,0.00"
+  }, {
+    "visualProperty" : "NODE_CUSTOMGRAPHICS_SIZE_1",
+    "value" : 0.0
+  }, {
+    "visualProperty" : "NODE_CUSTOMGRAPHICS_SIZE_2",
+    "value" : 0.0
+  }, {
+    "visualProperty" : "NODE_CUSTOMGRAPHICS_SIZE_3",
+    "value" : 0.0
+  }, {
+    "visualProperty" : "NODE_CUSTOMGRAPHICS_SIZE_4",
+    "value" : 0.0
+  }, {
+    "visualProperty" : "NODE_CUSTOMGRAPHICS_SIZE_5",
+    "value" : 0.0
+  }, {
+    "visualProperty" : "NODE_CUSTOMGRAPHICS_SIZE_6",
+    "value" : 0.0
+  }, {
+    "visualProperty" : "NODE_CUSTOMGRAPHICS_SIZE_7",
+    "value" : 0.0
+  }, {
+    "visualProperty" : "NODE_CUSTOMGRAPHICS_SIZE_8",
+    "value" : 0.0
+  }, {
+    "visualProperty" : "NODE_CUSTOMGRAPHICS_SIZE_9",
+    "value" : 0.0
+  }, {
+    "visualProperty" : "NODE_CUSTOMPAINT_1",
+    "value" : "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_1, name=Node Custom Paint 1)"
+  }, {
+    "visualProperty" : "NODE_CUSTOMPAINT_2",
+    "value" : "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_2, name=Node Custom Paint 2)"
+  }, {
+    "visualProperty" : "NODE_CUSTOMPAINT_3",
+    "value" : "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_3, name=Node Custom Paint 3)"
+  }, {
+    "visualProperty" : "NODE_CUSTOMPAINT_4",
+    "value" : "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_4, name=Node Custom Paint 4)"
+  }, {
+    "visualProperty" : "NODE_CUSTOMPAINT_5",
+    "value" : "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_5, name=Node Custom Paint 5)"
+  }, {
+    "visualProperty" : "NODE_CUSTOMPAINT_6",
+    "value" : "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_6, name=Node Custom Paint 6)"
+  }, {
+    "visualProperty" : "NODE_CUSTOMPAINT_7",
+    "value" : "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_7, name=Node Custom Paint 7)"
+  }, {
+    "visualProperty" : "NODE_CUSTOMPAINT_8",
+    "value" : "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_8, name=Node Custom Paint 8)"
+  }, {
+    "visualProperty" : "NODE_CUSTOMPAINT_9",
+    "value" : "DefaultVisualizableVisualProperty(id=NODE_CUSTOMPAINT_9, name=Node Custom Paint 9)"
+  }, {
+    "visualProperty" : "NODE_DEPTH",
+    "value" : 0.0
+  }, {
+    "visualProperty" : "NODE_FILL_COLOR",
+    "value" : "#3A7FB6"
+  }, {
+    "visualProperty" : "NODE_HEIGHT",
+    "value" : 40.0
+  }, {
+    "visualProperty" : "NODE_LABEL",
+    "value" : ""
+  }, {
+    "visualProperty" : "NODE_LABEL_COLOR",
+    "value" : "#000000"
+  }, {
+    "visualProperty" : "NODE_LABEL_FONT_FACE",
+    "value" : "Dialog.plain,plain,12"
+  }, {
+    "visualProperty" : "NODE_LABEL_FONT_SIZE",
+    "value" : 25
+  }, {
+    "visualProperty" : "NODE_LABEL_POSITION",
+    "value" : "E,W,c,5.00,0.00"
+  }, {
+    "visualProperty" : "NODE_LABEL_TRANSPARENCY",
+    "value" : 255
+  }, {
+    "visualProperty" : "NODE_LABEL_WIDTH",
+    "value" : 200.0
+  }, {
+    "visualProperty" : "NODE_NESTED_NETWORK_IMAGE_VISIBLE",
+    "value" : true
+  }, {
+    "visualProperty" : "NODE_PAINT",
+    "value" : "#787878"
+  }, {
+    "visualProperty" : "NODE_SELECTED",
+    "value" : false
+  }, {
+    "visualProperty" : "NODE_SELECTED_PAINT",
+    "value" : "#FFFF00"
+  }, {
+    "visualProperty" : "NODE_SHAPE",
+    "value" : "ELLIPSE"
+  }, {
+    "visualProperty" : "NODE_SIZE",
+    "value" : 80.0
+  }, {
+    "visualProperty" : "NODE_TOOLTIP",
+    "value" : ""
+  }, {
+    "visualProperty" : "NODE_TRANSPARENCY",
+    "value" : 255
+  }, {
+    "visualProperty" : "NODE_VISIBLE",
+    "value" : true
+  }, {
+    "visualProperty" : "NODE_WIDTH",
+    "value" : 60.0
+  }, {
+    "visualProperty" : "NODE_X_LOCATION",
+    "value" : 0.0
+  }, {
+    "visualProperty" : "NODE_Y_LOCATION",
+    "value" : 0.0
+  }, {
+    "visualProperty" : "NODE_Z_LOCATION",
+    "value" : 0.0
+  } ],
+  "mappings" : [ {
+    "mappingType" : "continuous",
+    "mappingColumn" : "cosine_score",
+    "mappingColumnType" : "Number",
+    "visualProperty" : "EDGE_WIDTH",
+    "points" : [ {
+      "value" : 0.701,
+      "lesser" : "1.0",
+      "equal" : "4.390243902439025",
+      "greater" : "4.390243902439025"
+    }, {
+      "value" : 1.0,
+      "lesser" : "30.0",
+      "equal" : "30.0",
+      "greater" : "1.0"
+    } ]
+  }, {
+    "mappingType" : "discrete",
+    "mappingColumn" : "library_compound_name",
+    "mappingColumnType" : "String",
+    "visualProperty" : "NODE_BORDER_PAINT",
+    "map" : [ {
+      "key" : "2-(undec-1-en-1-yl)quinolin-4-ol:Series 2 HAQ C11:1",
+      "value" : "#000000"
+    }, {
+      "key" : "C9:db-PQS, C9:DB-NQNO",
+      "value" : "#000000"
+    }, {
+      "key" : "NCGC00384639-01_C14H16N2O3_Pyrrolo[1,2-a]pyrazine-1,4-dione, hexahydro-3-[(4-hydroxyphenyl)methyl]-",
+      "value" : "#000000"
+    }, {
+      "key" : "Pyocyanin",
+      "value" : "#000000"
+    }, {
+      "key" : "NCGC00381364-02_C10H16N2O2_Pyrrolo[1,2-a]pyrazine-1,4-dione, hexahydro-3-(1-methylethyl)-",
+      "value" : "#000000"
+    }, {
+      "key" : "Rhamnolipid Rha-Rha-C10-C10",
+      "value" : "#000000"
+    }, {
+      "key" : "Spectral Match to Tris(2-butoxyethyl) phosphate from NIST14",
+      "value" : "#000000"
+    }, {
+      "key" : "HQNO (2-heptyl-4-Hydroxyquinolone)",
+      "value" : "#000000"
+    }, {
+      "key" : "mixedMS2: 2-(non-1-en-1-yl)quinolin-4-ol (Series 2 HAQ C9:1) and 2-nonylquinolin-4-ol (Series 1 HAQ C9 aka HNQ)",
+      "value" : "#000000"
+    }, {
+      "key" : "HHQ",
+      "value" : "#000000"
+    }, {
+      "key" : "Massbank:PB000409 Phenylalanine|2-amino-3-phenylpropanoic acid",
+      "value" : "#000000"
+    }, {
+      "key" : "Spectral Match to DL-Indole-3-lactic acid from NIST14",
+      "value" : "#000000"
+    }, {
+      "key" : "4-hydroxy-2-octylquinoline 1-oxide:Series 4 HAQ C8",
+      "value" : "#000000"
+    }, {
+      "key" : "NHQ_C9:db",
+      "value" : "#000000"
+    }, {
+      "key" : "CocamidopropylBetaine",
+      "value" : "#000000"
+    }, {
+      "key" : "Massbank:KNA00454 Ribitol|Adonitol",
+      "value" : "#000000"
+    }, {
+      "key" : "2-heptylquinoline-3,4-diol:Pseudomonas quinolone signal:PQS:Series 3 HAQ C7",
+      "value" : "#000000"
+    }, {
+      "key" : "NCGC00381359-01_C14H18N2O3_Phenylalanine, prolyl-",
+      "value" : "#000000"
+    }, {
+      "key" : "Rhamnolipid Rha-Rha-C10-C12:1",
+      "value" : "#000000"
+    }, {
+      "key" : "Massbank:FIO00476 Amitryptiline",
+      "value" : "#000000"
+    }, {
+      "key" : "Spectral Match to Tyr-Pro from NIST14",
+      "value" : "#000000"
+    }, {
+      "key" : "Spectral Match to Leu-Pro-Lys from NIST14",
+      "value" : "#000000"
+    }, {
+      "key" : "Spectral Match to Pro-Leu from NIST14",
+      "value" : "#000000"
+    }, {
+      "key" : "MoNA:936698 DBP",
+      "value" : "#000000"
+    }, {
+      "key" : "Rha-Rha-C10-C10 (M+H)",
+      "value" : "#000000"
+    }, {
+      "key" : "Pyochelin",
+      "value" : "#000000"
+    }, {
+      "key" : "NCGC00347704-02_C24H32O7_2H-Oxireno[1,10a]phenanthro[3,2-b]furan-10(11bH)-one, 5,7-bis(acetyloxy)-3,3a,4,5,6,7,7a,7b,8,8a-decahydro-4,4,7a,11-tetramethyl-, (1aS,3aR,5S,7S,7aR,7bS,8aR,11bR)-",
+      "value" : "#000000"
+    }, {
+      "key" : "Spectral Match to Dioctyl phthalate from NIST14",
+      "value" : "#000000"
+    }, {
+      "key" : "Spectral Match to Glycocholic acid from NIST14",
+      "value" : "#000000"
+    }, {
+      "key" : "NCGC00169428-02!3-(2-methylpropyl)-2,3,6,7,8,8a-hexahydropyrrolo[1,2-a]pyrazine-1,4-dione",
+      "value" : "#000000"
+    }, {
+      "key" : "mixedMS2: 2-(undec-1-en-1-yl)quinolin-4-ol (Series 2 HAQ C11:1) and 2-undecylquinolin-4-ol (Series 1 HAQ C11)",
+      "value" : "#000000"
+    }, {
+      "key" : "Rhamnolipid Rha-C10-C10",
+      "value" : "#000000"
+    }, {
+      "key" : "MLS000777209-01!phenazine-1-carboxylic acid",
+      "value" : "#000000"
+    }, {
+      "key" : "Spectral Match to 1-Hexadecanoyl-2-(9Z-octadecenoyl)-sn-glycero-3-phosphoethanolamine from NIST14",
+      "value" : "#000000"
+    }, {
+      "key" : "NCGC00385962-01_C16H24O3_",
+      "value" : "#000000"
+    }, {
+      "key" : "Spectral Match to L-Tryptophan from NIST14",
+      "value" : "#000000"
+    }, {
+      "key" : "Spectral Match to Ile-Pro-Ile from NIST14",
+      "value" : "#000000"
+    }, {
+      "key" : "Spectral Match to Didodecyl 3,3'-thiodipropionate oxide from NIST14",
+      "value" : "#000000"
+    } ]
+  }, {
+    "mappingType" : "passthrough",
+    "mappingColumn" : "mz",
+    "mappingColumnType" : "Double",
+    "visualProperty" : "NODE_LABEL"
+  } ]
+}

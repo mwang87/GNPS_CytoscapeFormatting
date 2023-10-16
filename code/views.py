@@ -158,6 +158,9 @@ def process_ajax():
         task_status_url = "https://gnps2.org/status.json?task={}".format(taskid)
         task_status = requests.get(task_status_url).json()
         workflow_name = task_status["workflowname"]
+
+        style_filename = "Styles/GNPS2Default.json"
+
         gnps_version = 2
 
     if gnps_version == 1:
