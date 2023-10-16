@@ -57,7 +57,7 @@ def dashboard():
         randomnumber=str(random.randint(1,10001)))
 
 #Retreiving graphml from workflow output. 
-def get_graph_object(taskid, workflow_name, output_graphml_filename, override_path=None):
+def get_graph_object_gnps1(taskid, workflow_name, output_graphml_filename, override_path=None):
     url_to_graph = "https://gnps.ucsd.edu/ProteoSAFe/DownloadResultFile?task={}&block=main&file=gnps_molecular_network_graphml/".format(taskid)
 
     if workflow_name == "MS2LDA_MOTIFDB":
@@ -113,6 +113,26 @@ def get_graph_object(taskid, workflow_name, output_graphml_filename, override_pa
     #TODO checkout to make sure the graphml is ok
     return True
 
+
+def get_graph_object_gnps2(taskid, workflow_name, output_graphml_filename, override_path=None):
+    url_to_graph = "https://gnps2.org/resultfile?task={}&file=nf_output/networking/network.graphml".format(taskid)
+
+    if workflow_name == "classical_networking_workflow":
+        url_to_graph = "https://gnps2.org/resultfile?task={}&file=nf_output/networking/network.graphml".format(taskid)
+
+    if override_path is not None:
+        url_to_graph = "https://gnps.ucsd.edu/ProteoSAFe/DownloadResultFile?task={}&block=main&file={}".format(taskid, override_path)
+
+    print(url_to_graph)
+    local_file = open(output_graphml_filename, "w")
+    local_file.write(requests.get(url_to_graph).text)
+    local_file.close()
+
+    #TODO checkout to make sure the graphml is ok
+    return True
+
+
+
 #Actually doing the processing
 @app.route('/process', methods=['POST'])
 def process_ajax():
@@ -125,14 +145,27 @@ def process_ajax():
     style_filename = "Styles/GNPSDefault.json"
     taskid = request.values["task"]
 
-    task_status_url = "https://gnps.ucsd.edu/ProteoSAFe/status_json.jsp?task=%s" % (taskid)
-    task_status = requests.get(task_status_url).json()
-    workflow_name = task_status["workflow"]
-
-    # Try to get the path on GNPS if it is not the default
     override_path = request.values.get("override_path", None)
-    retreval_status = get_graph_object(taskid, workflow_name, output_graphml_filename, override_path=override_path)
 
+    gnps_version = 1
+
+    try:
+        task_status_url = "https://gnps.ucsd.edu/ProteoSAFe/status_json.jsp?task=%s" % (taskid)
+        task_status = requests.get(task_status_url).json()
+        workflow_name = task_status["workflow"]
+        gnps_version = 1
+    except:
+        task_status_url = "https://gnps2.org/status.json?task={}".format(taskid)
+        task_status = requests.get(task_status_url).json()
+        workflow_name = task_status["workflowname"]
+        gnps_version = 2
+
+    if gnps_version == 1:
+        # Try to get the path on GNPS if it is not the default
+        retreval_status = get_graph_object_gnps1(taskid, workflow_name, output_graphml_filename, override_path=override_path)
+    else:
+        retreval_status = get_graph_object_gnps2(taskid, workflow_name, output_graphml_filename, override_path=override_path)
+    
     if not retreval_status:
         raise Exception("Did not retreive graphml properly")
 
