@@ -31,7 +31,7 @@ def heartbeat():
 @app.route('/process', methods=['GET'])
 def process():
     taskid = request.args["task"]
-    override_path = request.args.get("task", "")
+    override_path = request.args.get("override_path", "")
 
     expected_graphml_filename, output_cytoscape_filename, output_img_filename = calculate_output_filenames(request.values)
 
