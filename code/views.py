@@ -31,6 +31,7 @@ def heartbeat():
 @app.route('/process', methods=['GET'])
 def process():
     taskid = request.args["task"]
+    override_path = request.args.get("task", "")
 
     expected_graphml_filename, output_cytoscape_filename, output_img_filename = calculate_output_filenames(request.values)
 
@@ -45,7 +46,7 @@ def process():
             imagefilename=os.path.basename(output_img_filename), \
             randomnumber=str(random.randint(1,10001)))
 
-    return render_template("process.html", task=taskid, query_parameters=dict(request.values))
+    return render_template("process.html", task=taskid, override_path=override_path, query_parameters=dict(request.values))
 
 @app.route('/dashboard', methods=['GET'])
 def dashboard():
@@ -146,6 +147,9 @@ def process_ajax():
     taskid = request.values["task"]
 
     override_path = request.values.get("override_path", None)
+
+    if len(override_path) < 5:
+        override_path = None
 
     gnps_version = 1
 
