@@ -121,7 +121,7 @@ def get_graph_object_gnps2(taskid, workflow_name, output_graphml_filename, overr
         url_to_graph = "https://gnps2.org/resultfile?task={}&file=nf_output/networking/network.graphml".format(taskid)
 
     if override_path is not None:
-        url_to_graph = "https://gnps.ucsd.edu/ProteoSAFe/DownloadResultFile?task={}&block=main&file={}".format(taskid, override_path)
+        url_to_graph = "https://gnps2.org/resultfile?task={}&file={}".format(taskid, override_path)
 
     print(url_to_graph)
     local_file = open(output_graphml_filename, "w")
