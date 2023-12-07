@@ -40,13 +40,12 @@ def process():
         force_generate = True
 
     if os.path.exists(output_cytoscape_filename) and force_generate == False:
-        return render_template("dashboard.html", \
-            task=taskid, \
-            cytoscapefilename=os.path.basename(output_cytoscape_filename), \
-            imagefilename=os.path.basename(output_img_filename), \
-            randomnumber=str(random.randint(1,10001)))
-
-    return override_path
+        return render_template("dashboard.html",
+            task=taskid,
+            cytoscapefilename=os.path.basename(output_cytoscape_filename),
+            imagefilename=os.path.basename(output_img_filename),
+            randomnumber=str(random.randint(1,10001)),
+            override_path=override_path)
 
     return render_template("process.html", task=taskid, override_path=override_path, query_parameters=dict(request.values))
 
