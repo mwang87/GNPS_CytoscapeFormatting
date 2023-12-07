@@ -46,6 +46,8 @@ def process():
             imagefilename=os.path.basename(output_img_filename), \
             randomnumber=str(random.randint(1,10001)))
 
+    return override_path
+
     return render_template("process.html", task=taskid, override_path=override_path, query_parameters=dict(request.values))
 
 @app.route('/dashboard', methods=['GET'])
