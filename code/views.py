@@ -149,7 +149,10 @@ def process_ajax():
 
     override_path = request.values.get("override_path", None)
 
-    if len(override_path) < 5:
+    try:
+        if len(override_path) < 5:
+            override_path = None
+    except:
         override_path = None
 
     gnps_version = 1
