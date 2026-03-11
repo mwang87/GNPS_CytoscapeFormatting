@@ -3,6 +3,8 @@ flask
 gunicorn
 requests
 py2cytoscape
+python-igraph==0.11.8
+igraph==0.11.8
 pathvalidate
 psutil
 redis
